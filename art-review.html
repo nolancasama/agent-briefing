@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Briefing — Art Candidate Review</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="art/review.css">
+</head>
+<body class="review-body">
+  <header class="review-header">
+    <div>
+      <p class="eyebrow">DEV TOOL · NOT LINKED FROM THE GAME</p>
+      <h1>Art Candidate Review</h1>
+      <p>Compare the procedural art with manually generated candidates. Nothing reaches the game until a candidate is marked <strong>Use As-Is</strong> and artwork is applied.</p>
+    </div>
+    <div class="review-actions">
+      <button class="review-button primary" id="apply-selected" type="button">Apply Selected Artwork</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="questions-panel" aria-labelledby="questions-heading">
+      <div class="section-heading">
+        <p class="eyebrow">ART DIRECTION</p>
+        <h2 id="questions-heading">Resolved Decisions</h2>
+      </div>
+      <p class="blocking-note">The art director's questions have been resolved. Answers below are read from the manifest and retained with the production record.</p>
+      <div id="open-questions"></div>
+    </section>
+
+    <div class="status-bar" id="status-bar" role="status" aria-live="polite">Loading manifest and review history…</div>
+    <section id="asset-list" class="asset-list" aria-label="Artwork assets"></section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/art.js"></script>
+  <script src="art/review.js"></script>
+</body>
+</html>

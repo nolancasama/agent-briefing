@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-12T01:38:41.076Z",
+  "assets": {
+    "dossier_ben": {
+      "src": "assets/dossier_ben.png",
+      "sourceCandidateId": "dossier_ben:generation-1:main:01",
+      "sourcePath": "art/art-review/dossier_ben/generation-1/candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_front.npc1": {
+      "src": "assets/npc_agents_front/npc1.png",
+      "sourceCandidateId": "npc_agents_front:generation-1:npc1:02",
+      "sourcePath": "art/art-review/npc_agents_front/generation-1/npc1_candidate-02.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_front.npc2": {
+      "src": "assets/npc_agents_front/npc2.png",
+      "sourceCandidateId": "npc_agents_front:generation-1:npc2:01",
+      "sourcePath": "art/art-review/npc_agents_front/generation-1/npc2_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_front.npc3": {
+      "src": "assets/npc_agents_front/npc3.png",
+      "sourceCandidateId": "npc_agents_front:generation-1:npc3:01",
+      "sourcePath": "art/art-review/npc_agents_front/generation-1/npc3_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_front.npc4": {
+      "src": "assets/npc_agents_front/npc4.png",
+      "sourceCandidateId": "npc_agents_front:generation-1:npc4:02",
+      "sourcePath": "art/art-review/npc_agents_front/generation-1/npc4_candidate-02.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "title_background": {
+      "src": "assets/title_background.png",
+      "sourceCandidateId": "title_background:generation-1:main:02",
+      "sourcePath": "art/art-review/title_background/generation-1/candidate-02.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "archive_background": {
+      "src": "assets/archive_background.png",
+      "sourceCandidateId": "archive_background:generation-1:main:01",
+      "sourcePath": "art/art-review/archive_background/generation-1/candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "dossier_others.mia": {
+      "src": "assets/dossier_others/mia.png",
+      "sourceCandidateId": "dossier_others:generation-1:mia:01",
+      "sourcePath": "art/art-review/dossier_others/generation-1/mia_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "dossier_others.leo": {
+      "src": "assets/dossier_others/leo.png",
+      "sourceCandidateId": "dossier_others:generation-1:leo:01",
+      "sourcePath": "art/art-review/dossier_others/generation-1/leo_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "dossier_others.emma": {
+      "src": "assets/dossier_others/emma.png",
+      "sourceCandidateId": "dossier_others:generation-1:emma:01",
+      "sourcePath": "art/art-review/dossier_others/generation-1/emma_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "dossier_others.sam": {
+      "src": "assets/dossier_others/sam.png",
+      "sourceCandidateId": "dossier_others:generation-1:sam:01",
+      "sourcePath": "art/art-review/dossier_others/generation-1/sam_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "dossier_others.lily": {
+      "src": "assets/dossier_others/lily.png",
+      "sourceCandidateId": "dossier_others:generation-1:lily:01",
+      "sourcePath": "art/art-review/dossier_others/generation-1/lily_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_back.npc1": {
+      "src": "assets/npc_agents_back/npc1.png",
+      "sourceCandidateId": "npc_agents_back:generation-1:npc1:01",
+      "sourcePath": "art/art-review/npc_agents_back/generation-1/npc1_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_back.npc2": {
+      "src": "assets/npc_agents_back/npc2.png",
+      "sourceCandidateId": "npc_agents_back:generation-1:npc2:01",
+      "sourcePath": "art/art-review/npc_agents_back/generation-1/npc2_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_back.npc3": {
+      "src": "assets/npc_agents_back/npc3.png",
+      "sourceCandidateId": "npc_agents_back:generation-1:npc3:01",
+      "sourcePath": "art/art-review/npc_agents_back/generation-1/npc3_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "npc_agents_back.npc4": {
+      "src": "assets/npc_agents_back/npc4.png",
+      "sourceCandidateId": "npc_agents_back:generation-1:npc4:01",
+      "sourcePath": "art/art-review/npc_agents_back/generation-1/npc4_candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "commander": {
+      "src": "assets/commander.png",
+      "sourceCandidateId": "commander:generation-2:main:01",
+      "sourcePath": "art/art-review/commander/generation-2/candidate-01.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    },
+    "room_background": {
+      "src": "assets/room_background.png",
+      "sourceCandidateId": "room_background:generation-1:main:02",
+      "sourcePath": "art/art-review/room_background/generation-1/candidate-02.png",
+      "appliedAt": "2026-09-12T01:38:41.076Z"
+    }
+  }
+}

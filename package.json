@@ -1,0 +1,8 @@
+{
+  "name": "agent-briefing",
+  "private": true,
+  "scripts": {
+    "art:prepare": "node art/generate.js",
+    "art:review": "node art/review-server.js"
+  }
+}

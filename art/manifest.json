@@ -1,0 +1,420 @@
+{
+  "version": 1,
+  "authoredBy": "Claude (art director)",
+  "note": "Generation briefs for the Agent Briefing art-review pipeline. Final image prompt = styleGuide.positive + asset brief fields + compositionConstraints + technical line + styleGuide.negative. Codex composes and may add technical/format wording, but must not rewrite the creative content of these briefs.",
+
+  "styleGuide": {
+    "positive": "Polished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.",
+    "negative": "Do not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+    "consistency": "All assets belong to one fictional agency and must look drawn by the same artist in the same production: identical linework weight, identical shading approach, identical palette family, identical level of detail."
+  },
+
+  "openQuestions": [
+    {
+      "id": "avatar-customization-conflict",
+      "question": "The Agent ID screen lets each student customize skin / hair / suit / tie / sunglasses, which works because the avatar is parametric SVG. A painted raster avatar cannot be recolored per student. Options: (a) keep the SVG avatar and skip raster replacement for it, (b) generate a small set of painted avatar presets and change the Agent ID screen from parameter pickers to preset picking, (c) one canonical painted avatar and retire customization.",
+      "blocks": "applying player_avatar artwork",
+      "doesNotBlock": "building the pipeline, or generating base avatar candidates",
+      "claudeRecommendation": "(b) - keeps student ownership, which is the motivational point of the Agent ID screen, and painted presets look far better than parametric recolor. Decide at review time.",
+      "resolved": true,
+      "resolvedOn": "2026-08-25",
+      "answer": "(b) painted presets. Four presets, sharing one identical pose, camera, crop, suit and lighting so they read as one squad. The Agent ID screen becomes a preset picker. That UI change is deferred until approved preset art exists - do not degrade the working customizer before there is art to replace it with."
+    },
+    {
+      "id": "logo-radar-sweep",
+      "question": "The agency logo currently has a live rotating radar sweep animated in SVG. A raster logo loses it unless the sweep stays as a CSS overlay on top of the image.",
+      "claudeRecommendation": "Generate candidates for comparison, but 'Keep Existing' is a strong default here - a clean vector emblem is not the crude-cutout problem we are solving.",
+      "resolved": true,
+      "resolvedOn": "2026-08-25",
+      "answer": "Keep Existing. The SVG emblem stays as-is and is dropped from the generation queue entirely - do not generate candidates for it."
+    }
+  ],
+
+  "phases": {
+    "1": "Anchor pass. Establishes the visual direction. Generate and review these first.",
+    "2": "Gated on phase 1 approvals - remaining dossier portraits and NPC back views, generated using the approved phase 1 art as a reference image.",
+    "3": "Gated on a locked canonical design - animation variants only."
+  },
+
+  "assets": [
+    {
+      "id": "room_background",
+      "name": "Headquarters Briefing Room",
+      "phase": 1,
+      "usedIn": "Final Headquarters Debrief (screen-room)",
+      "sourceRef": "styles.css .room-wall / .conf-table - currently a CSS gradient and a CSS-drawn table",
+      "purpose": "The room the student's agent walks into to deliver the mission briefing. It is on screen for the entire climax of the game.",
+      "assetType": "background",
+      "visibility": "high",
+      "candidates": 3,
+      "displayAspect": "16:9",
+      "displaySize": "up to 960x540 css px inside .cinema",
+      "generateAspect": "3:2 landscape",
+      "transparency": "opaque",
+      "brief": {
+        "subject": "The interior of a modern secret intelligence agency briefing room, empty of people.",
+        "environment": "A wide underground command room. Dark navy panelled walls with recessed amber strip lighting. Subtle holographic world-map glow and faint data readouts on the side walls, dim and out of focus. A polished dark wood and steel conference table sweeping across the bottom foreground. Cool blue key light from a large wall display area, warm amber fill from side sconces.",
+        "camera": "Eye-level wide cinematic shot, symmetrical, slight perspective toward the far wall.",
+        "crop": "Full room, floor visible in the lower third, ceiling implied at the very top.",
+        "lighting": "Cinematic, moody but not dark or scary. Warm and safe, like a heroic mission-briefing scene in a family animated film.",
+        "negativeSpace": "CRITICAL - the upper centre of the frame must be a plain, unlit, uncluttered wall area, because a bright projector-screen UI panel is overlaid there occupying the centre 44 percent of the width from 8 to 66 percent of the height. The lower third must stay dark and low-contrast because characters and a table are composited over it."
+      },
+      "compositionConstraints": [
+        "Centre-top 44% x 58% region: keep flat, dark, detail-free. A UI projector panel sits exactly there.",
+        "Left edge, lower half: keep clear - the player's agent stands at approximately 9% from the left.",
+        "Right side, lower half: keep clear - the commander stands there.",
+        "Bottom 34%: will be covered by a conference table; keep it simple and dark.",
+        "No focal point or bright highlight anywhere text or characters will sit. The room must recede behind the UI, never compete with it.",
+        "No people. No chairs occupying the character positions."
+      ],
+      "animationVariants": null
+    },
+
+    {
+      "id": "commander",
+      "name": "Briefing Room Commander",
+      "phase": 1,
+      "usedIn": "Final Headquarters Debrief - right side of the conference table",
+      "sourceRef": "js/art.js commander()",
+      "purpose": "Senior intelligence officer who listens to the student's presentation and reacts. His approval is the emotional payoff of the game.",
+      "assetType": "character",
+      "visibility": "high",
+      "candidates": 3,
+      "displayAspect": "140:225 (approx 5:8 portrait)",
+      "displaySize": "approx 150-190px wide within a 960px stage",
+      "generateAspect": "2:3 portrait",
+      "transparency": "required - transparent PNG background",
+      "brief": {
+        "subject": "A distinguished male intelligence-agency commander, the head of the department.",
+        "age": "Late 50s.",
+        "pose": "Standing behind a conference table, upper body only, squared toward the viewer, hands not visible or resting lightly out of frame. Calm and still - he is listening, not speaking.",
+        "expression": "Composed and quietly attentive. Warm authority. A faint approving steadiness. Not stern, not scowling, not grinning.",
+        "camera": "Eye-level, straight-on front view, medium shot.",
+        "crop": "From roughly mid-chest upward. Head fully in frame with a little headroom.",
+        "clothing": "Immaculate dark navy double-breasted officer's dress uniform with gold shoulder braid, crisp white shirt, deep burgundy tie, a single gold star insignia on the chest. No readable insignia lettering.",
+        "features": "Neat silver-grey hair, a trimmed silver moustache, strong kind eyes.",
+        "lighting": "Soft cool key from the front-left, warm amber rim light from the right, matching the briefing room."
+      },
+      "compositionConstraints": [
+        "Isolated on a fully transparent background - no floor, no room, no shadow plate.",
+        "Perfectly upright and centred, so reaction variants can be swapped in without the sprite shifting.",
+        "Face large and clear enough to read expression at approximately 170px wide."
+      ],
+      "animationVariants": {
+        "phase": 3,
+        "gatedOn": "commander design locked",
+        "frames": ["neutral", "blink", "attentive_nod", "thoughtful_chin"],
+        "rule": "Identical identity, hair, uniform, body position, camera, crop, lighting and canvas dimensions. Only the eyes, head tilt and brow change."
+      }
+    },
+
+    {
+      "id": "player_avatar",
+      "name": "Player Agent Avatar - Preset 1 (STYLE ANCHOR)",
+      "phase": 1,
+      "role": "STYLE ANCHOR for all four selectable avatar presets",
+      "presetId": "p1",
+      "usedIn": "Agent ID customization screen, and standing at the podium delivering the debrief in the student's own recorded voice",
+      "sourceRef": "js/art.js agentFull()",
+      "purpose": "The student's own on-screen self. It lip-syncs to their real recorded English. This is the character the student identifies with. Resolved design: the student picks one of four painted presets rather than adjusting colour parameters.",
+      "assetType": "character",
+      "visibility": "high",
+      "candidates": 3,
+      "displayAspect": "140:260 (approx 8:15 portrait)",
+      "displaySize": "118-150px wide",
+      "generateAspect": "2:3 portrait",
+      "transparency": "required - transparent PNG background",
+      "seeOpenQuestion": "avatar-customization-conflict",
+      "brief": {
+        "subject": "A young rookie secret agent - the hero the player becomes. Preset 1: a boy with short neat black hair and warm light skin.",
+        "age": "Around 11 to 12 years old. Clearly a confident kid: not an adult, not a toddler.",
+        "pose": "Standing full body, feet apart and planted, shoulders back, chin level. Confident and ready to give a report. Arms relaxed at the sides. Facing forward.",
+        "expression": "Bright, determined, a little proud. Eyes open, mouth closed in a small confident line.",
+        "camera": "Eye-level, straight-on front view, full body.",
+        "crop": "Head to feet with small margins. The head occupies roughly the top fifth of the frame.",
+        "clothing": "A sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie, a small gold agency pin on the lapel. Optional dark sunglasses.",
+        "lighting": "Soft front key, subtle amber rim matching the briefing room."
+      },
+      "compositionConstraints": [
+        "Fully transparent background, no shadow, no floor.",
+        "Perfectly symmetrical straight-on stance, dead-centred, because facial animation overlays must register exactly.",
+        "The face must be drawn clean and unobstructed - eyes and mouth will be replaced by animation overlays.",
+        "Head large enough that the mouth reads clearly at 130px total sprite width."
+      ],
+      "animationVariants": {
+        "phase": 3,
+        "gatedOn": "each preset's base design locked by the user",
+        "perPreset": true,
+        "preferred": "separate transparent facial overlays registered to the base: avatar_base, eyes_open, eyes_closed, mouth_closed, mouth_small, mouth_medium, mouth_wide",
+        "fallback": "full-frame variants if overlays cannot register cleanly",
+        "rule": "Identity, body pose, head position, hair, clothing, proportions, camera, crop, lighting and canvas dimensions must be pixel-stable across every frame. The character must never visibly redraw or jump between states.",
+        "claudeNoteForPhase3": "Do not assume these overlays must be image-generated. Getting ChatGPT to produce pixel-registered facial overlays across seven frames is the least reliable step in this whole pipeline. The likely better approach is to generate only the neutral painted base per preset, then drive the eyes and mouth with a small drawn overlay positioned over the painted face - which keeps registration exact, costs nothing per frame, and reuses the existing Art.setMouth machinery. Evaluate both before committing."
+      }
+    },
+
+    {
+      "id": "avatar_presets_others",
+      "name": "Player Agent Avatar - Presets 2 to 4",
+      "phase": 2,
+      "gatedOn": "player_avatar (preset 1) approved - the approved preset 1 image is passed as the style reference image",
+      "usedIn": "Agent ID preset picker, and the podium during the debrief",
+      "sourceRef": "js/art.js agentFull()",
+      "purpose": "The remaining selectable avatars, so each student can pick an agent they identify with.",
+      "assetType": "character",
+      "visibility": "high",
+      "candidatesEach": 2,
+      "displayAspect": "140:260 (approx 8:15 portrait)",
+      "generateAspect": "2:3 portrait",
+      "transparency": "required - transparent PNG background",
+      "sharedBrief": {
+        "framing": "Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.",
+        "clothing": "The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.",
+        "expression": "The same bright, determined, slightly proud neutral: eyes open, mouth closed."
+      },
+      "subjects": [
+        { "id": "p2", "brief": "A girl around 11 to 12. Long black hair in a high ponytail, warm light skin. Confident and quick." },
+        { "id": "p3", "brief": "A boy around 11 to 12. Dark brown spiky hair, tan skin, wearing dark sunglasses. Cool and unshakeable." },
+        { "id": "p4", "brief": "A girl around 11 to 12. Chestnut chin-length bob, fair skin, round glasses. Sharp and observant." }
+      ],
+      "compositionConstraints": [
+        "Head position and size must match preset 1 as closely as possible - facial animation registers against it.",
+        "Fully transparent background, no shadow, no floor.",
+        "Straight-on, symmetrical, dead-centred."
+      ],
+      "animationVariants": {
+        "phase": 3,
+        "gatedOn": "each preset's base design locked",
+        "perPreset": true,
+        "rule": "Same pixel-stability rule as preset 1. See player_avatar.animationVariants.claudeNoteForPhase3."
+      }
+    },
+
+    {
+      "id": "dossier_ben",
+      "name": "Dossier Portrait - Ben (FOX CUB)",
+      "phase": 1,
+      "role": "STYLE ANCHOR for all six dossier portraits",
+      "usedIn": "Intelligence Archive wall, Dossier detail view, and the briefing-room projector screen",
+      "sourceRef": "js/art.js portrait() with DATA.CHARACTERS[0]",
+      "purpose": "The Person of Interest the student investigates and then describes in English. This face is the subject of every sentence the student speaks.",
+      "assetType": "character portrait",
+      "visibility": "high",
+      "candidates": 3,
+      "displayAspect": "approx 7:8 portrait",
+      "displaySize": "150x170 on the archive wall, 180x200 in detail, 150x168 on the projector",
+      "generateAspect": "1:1 square",
+      "transparency": "opaque - a flat neutral studio backdrop is correct for an ID photo",
+      "brief": {
+        "subject": "An ID-photo style portrait of Ben, a friendly elementary-school boy who is the agency's harmless 'person of interest'.",
+        "age": "Around 10 years old.",
+        "pose": "Head and shoulders, squared to camera, an official identification photograph.",
+        "expression": "Open and kind, with a small natural smile. He is likeable - the joke of the game is that this dramatic dossier is about a nice kid who likes soccer.",
+        "camera": "Straight-on, eye-level, ID photograph framing.",
+        "crop": "Head and upper shoulders, centred, small headroom.",
+        "clothing": "A bright red casual t-shirt or polo.",
+        "features": "Short warm brown hair, light-warm skin, brown eyes.",
+        "environment": "A flat, evenly lit, desaturated blue-grey studio backdrop, like a school or agency ID photo."
+      },
+      "compositionConstraints": [
+        "This anchor fixes the character style for all six dossiers - it must be the most carefully judged image in the set.",
+        "Face clearly readable at 150px wide.",
+        "Backdrop flat and uniform. No gradient banding, no props, no text."
+      ],
+      "animationVariants": null
+    },
+
+    {
+      "id": "dossier_others",
+      "name": "Dossier Portraits - Mia, Leo, Emma, Sam, Lily",
+      "phase": 2,
+      "gatedOn": "dossier_ben approved - the approved Ben image is passed as the style reference image",
+      "usedIn": "Intelligence Archive wall, Dossier detail, projector",
+      "sourceRef": "js/art.js portrait() with DATA.CHARACTERS[1..5]",
+      "purpose": "The other five Persons of Interest.",
+      "assetType": "character portrait",
+      "visibility": "medium",
+      "candidatesEach": 2,
+      "displayAspect": "approx 7:8 portrait",
+      "generateAspect": "1:1 square",
+      "transparency": "opaque",
+      "sharedBrief": {
+        "framing": "This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.",
+        "pose": "Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.",
+        "camera": "Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.",
+        "crop": "Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.",
+        "clothing": "A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.",
+        "lighting": "Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.",
+        "environment": "The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue."
+      },
+      "subjects": [
+        { "id": "mia",  "brief": "Mia (codename PINK PANDA), a girl around 10. Dark chocolate-brown chin-length bob with a soft blunt fringe, fair-warm peach skin, dark brown eyes. Funny and playful: a bright mischievous grin showing a hint of top teeth, eyes slightly crinkled as if she is about to laugh, one eyebrow raised a touch. Bubblegum-pink t-shirt (#ff6fa5)." },
+        { "id": "leo",  "brief": "Leo (codename TURBO TIGER), a boy around 10. Near-black spiky hair swept up and back in bold anime spikes, warm golden-tan skin, dark brown eyes. Brave and energetic: a bold confident grin, chin lifted slightly, eyebrows set with determination - the kid who volunteers first. Bright tangerine-orange t-shirt (#f39c12)." },
+        { "id": "emma", "brief": "Emma (codename SMART OWL), a girl around 10. Long straight honey-blonde hair falling past her shoulders with a neat side part, fair skin, light brown eyes behind thin round wire-frame glasses that catch a small rim-light glint. Smart and calm: a quiet knowing closed-lip smile, eyes steady and thoughtful. Soft amethyst-purple t-shirt (#9b59b6)." },
+        { "id": "sam",  "brief": "Sam (codename JET SHARK), a boy around 10. Short black hair with tight natural curls, warm medium-brown skin, dark brown eyes. Friendly and easygoing: a wide, open, genuine smile, cheeks lifted, the kid everyone wants on their team. Teal-green t-shirt (#16a085)." },
+        { "id": "lily", "brief": "Lily (codename SUNNY BEE), a girl around 10. Long very dark brown hair, nearly black, worn loose with a few strands tucked behind one ear, light-warm skin, dark brown eyes. Happy and gentle: a sunny, soft, open-mouthed smile, eyes bright and warm. Sunflower-yellow t-shirt (#f4c518)." }
+      ]
+    },
+
+    {
+      "id": "npc_agents_front",
+      "name": "Briefing Room Agents - front view (4 characters)",
+      "phase": 1,
+      "usedIn": "Final Headquarters Debrief - front row reaction close-ups",
+      "sourceRef": "js/art.js npcFront() with Art.NPC_LOOKS",
+      "purpose": "The audience of junior agents who nod, take notes and applaud while the student presents. They make the student feel listened to.",
+      "assetType": "character",
+      "visibility": "medium",
+      "candidatesEach": 2,
+      "displayAspect": "140:200 (7:10 portrait)",
+      "displaySize": "approx 130-230px wide",
+      "generateAspect": "2:3 portrait",
+      "transparency": "required - transparent PNG background",
+      "sharedBrief": {
+        "pose": "Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.",
+        "expression": "Engaged, friendly, listening. Interested rather than amused.",
+        "camera": "Eye-level, straight-on front view, medium shot.",
+        "crop": "From the tabletop line at the bottom of the frame up to just above the head.",
+        "clothing": "Dark navy agency suit, white shirt, individual tie colour as listed.",
+        "lighting": "The same cool key plus amber rim as the commander, so every room character matches."
+      },
+      "subjects": [
+        { "id": "npc1", "brief": "Male agent, 30s. Warm-tan skin, short black hair, dark sunglasses, crimson tie. Cool and unflappable." },
+        { "id": "npc2", "brief": "Female agent, late 20s. Fair skin, auburn chin-length bob, slim rectangular glasses, blue tie. Precise and studious - this is the one taking notes." },
+        { "id": "npc3", "brief": "Male agent, 40s. Deep brown skin, short black curly hair, green tie. Calm and reassuring." },
+        { "id": "npc4", "brief": "Female agent, 30s. Light skin, short blonde spiky hair, dark sunglasses, purple tie. Sharp and energetic." }
+      ],
+      "compositionConstraints": [
+        "Transparent background, no room, no shadow plate.",
+        "Consistent seated eye-line across all four, so the front row does not look staggered.",
+        "All four must clearly be colleagues of the commander in the same organisation."
+      ],
+      "animationVariants": {
+        "phase": 3,
+        "frames": ["neutral", "blink"],
+        "rule": "Blink variant only. Do not generate further reaction frames for ordinary audience members."
+      }
+    },
+
+    {
+      "id": "npc_agents_back",
+      "name": "Briefing Room Agents - back of head (4 characters)",
+      "phase": 2,
+      "gatedOn": "npc_agents_front approved - each approved front view is the reference image for its own back view",
+      "usedIn": "Final Headquarters Debrief - the wide shot, seated at the conference table with their backs to camera",
+      "sourceRef": "js/art.js npcBack()",
+      "purpose": "Foreground silhouettes that frame the wide shot and sway and nod while the student speaks.",
+      "assetType": "character",
+      "visibility": "minor",
+      "candidatesEach": 1,
+      "displayAspect": "120:116 (approx 1:1)",
+      "generateAspect": "1:1 square",
+      "transparency": "required - transparent PNG background",
+      "sharedBrief": {
+        "subject": "The same agent as the attached approved front-view reference, now seen from directly behind while seated at the briefing table, watching a presentation at the far end of the room.",
+        "pose": "Back of the head, neck and shoulders, seated upright but leaning very slightly forward, head level and facing straight away from the viewer - attentive, listening. No face, no profile, no hands visible.",
+        "camera": "Eye-level, directly behind, as if the viewer is sitting one row back. Reads as a dark foreground framing element at the bottom of a wide shot.",
+        "crop": "From the tops of the shoulders, which run off the bottom edge of the frame, up to just above the crown of the head. Head centred horizontally.",
+        "clothing": "The same dark charcoal-navy suit jacket as the front view: visible collar and the upper back seams, with a thin sliver of white shirt collar at the nape.",
+        "lighting": "Backlit from the projector ahead: a soft cool-blue rim light tracing the outline of the hair and shoulders, and a faint warm amber edge on one side, matching the front views. The back of the head and suit fall into soft shadow - darker and lower contrast than the front views."
+      },
+      "subjects": [
+        { "id": "npc1", "brief": "npc1: short black hair combed back with a side part, neatly tapered at the nape; the thin dark arms of his sunglasses just visible over the tops of his ears; warm-tan skin at the neck." },
+        { "id": "npc2", "brief": "npc2: auburn chin-length bob, the ends curving in at the jaw line, one side tucked behind the ear; the slim temple arm of her rectangular glasses visible over that ear; fair skin at the neck." },
+        { "id": "npc3", "brief": "npc3: short, tightly curled black hair cut close and even; deep brown skin at the neck; broad, calm, steady shoulders." },
+        { "id": "npc4", "brief": "npc4: short platinum-blonde hair in a sharp asymmetric spiky cut, longer spikes swept to one side; the dark arms of her sunglasses visible over her ears; light skin at the neck." }
+      ],
+      "compositionConstraints": [
+        "Must match the hair colour, hair shape and suit of the corresponding approved front view exactly.",
+        "Deliberately low contrast and low detail. They frame the shot; they are not the subject."
+      ],
+      "animationVariants": null
+    },
+
+    {
+      "id": "title_background",
+      "name": "Title Screen Key Art",
+      "phase": 1,
+      "usedIn": "Title screen (screen-title)",
+      "sourceRef": "styles.css body background - currently a CSS gradient",
+      "purpose": "The first thing the class sees. It sets the promise of the whole game: you are about to become a secret agent.",
+      "assetType": "background",
+      "visibility": "medium",
+      "candidates": 2,
+      "displayAspect": "16:9 and wider, full viewport",
+      "generateAspect": "3:2 landscape",
+      "transparency": "opaque",
+      "brief": {
+        "subject": "The grand entrance hall of a secret intelligence agency headquarters at night - atmospheric, empty of people.",
+        "environment": "Sleek modern architecture, deep navy and black, amber and gold accent lighting, a glowing holographic world map or radar display far in the background, a reflective polished floor, dramatic depth.",
+        "camera": "Wide cinematic establishing shot with a strong central vanishing point.",
+        "lighting": "Night, moody, cinematic, but warm and inviting rather than threatening. Adventure, not danger.",
+        "negativeSpace": "The centre of the frame must stay calm and dark - a large agency logo and a START MISSION button are overlaid there. Keep the brightest interest toward the edges and the far background."
+      },
+      "compositionConstraints": [
+        "Centre 40% of the frame: low contrast, no clutter, no bright highlights. Overlaid UI must stay readable.",
+        "Must tolerate being cropped by any viewport shape - keep important content away from all four edges.",
+        "No people, no text, no readable signage."
+      ],
+      "animationVariants": null
+    },
+
+    {
+      "id": "archive_background",
+      "name": "Intelligence Archive Backdrop",
+      "phase": 1,
+      "usedIn": "Intelligence Archive - the wall of six confidential dossiers",
+      "sourceRef": "styles.css screen-archive area - currently a CSS gradient",
+      "purpose": "The room where the student picks a mission. Six paper dossier cards sit on top of it.",
+      "assetType": "background",
+      "visibility": "minor",
+      "candidates": 1,
+      "displayAspect": "16:9 and wider, full viewport",
+      "generateAspect": "3:2 landscape",
+      "transparency": "opaque",
+      "brief": {
+        "subject": "A quiet secret archive room - rows of steel filing cabinets and a dark wooden desk surface, empty of people.",
+        "environment": "Warm low lamp light, dust motes in a shaft of light, deep shadows, navy and amber palette matching the rest of the agency.",
+        "camera": "Slightly high three-quarter angle looking down toward a desk surface.",
+        "lighting": "Warm, low, cosy. Mysterious but safe.",
+        "negativeSpace": "The whole central area is covered by six manila dossier cards, so it must be dark, even and uncluttered."
+      },
+      "compositionConstraints": [
+        "Effectively a texture, not a scene. Almost no focal point. Nothing bright behind the dossier cards.",
+        "No text, no readable file labels, no people."
+      ],
+      "animationVariants": null
+    },
+
+    {
+      "id": "agency_logo",
+      "name": "Agency Emblem",
+      "phase": 1,
+      "usedIn": "Title screen and the briefing room wall",
+      "sourceRef": "js/art.js logo()",
+      "purpose": "The agency's identity mark.",
+      "assetType": "decorative",
+      "visibility": "medium",
+      "candidates": 0,
+      "decision": "keep-existing",
+      "decisionNote": "Resolved 2026-08-25 - the SVG emblem with its live radar sweep stays. Excluded from the generation queue. The card remains on the review page for the record, but must not be generated for or applied.",
+      "displayAspect": "1:1",
+      "displaySize": "150px on title, 64px on the room wall",
+      "generateAspect": "1:1 square",
+      "transparency": "required - transparent PNG background",
+      "seeOpenQuestion": "logo-radar-sweep",
+      "brief": {
+        "subject": "A circular intelligence-agency emblem: a bold gold star at the centre inside a navy disc, ringed by a fine dashed radar circle and crosshair lines, with a gold outer rim.",
+        "environment": "None - an isolated emblem.",
+        "camera": "Flat-on, perfectly symmetrical.",
+        "lighting": "Subtle metallic sheen on the gold, a slight inner glow on the navy field."
+      },
+      "compositionConstraints": [
+        "Absolutely no text or letterforms.",
+        "Must stay legible at 64px.",
+        "Radially symmetrical and dead-centred, so a CSS radar sweep can be overlaid on top of it.",
+        "Transparent background."
+      ],
+      "animationVariants": null
+    }
+  ]
+}

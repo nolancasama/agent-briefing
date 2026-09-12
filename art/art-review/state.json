@@ -1,0 +1,2084 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "room_background:generation-1:main:01:1787660121763:89766c",
+      "kind": "generate",
+      "assetId": "room_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Headquarters Briefing Room.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The interior of a modern secret intelligence agency briefing room, empty of people.\nEnvironment: A wide underground command room. Dark navy panelled walls with recessed amber strip lighting. Subtle holographic world-map glow and faint data readouts on the side walls, dim and out of focus. A polished dark wood and steel conference table sweeping across the bottom foreground. Cool blue key light from a large wall display area, warm amber fill from side sconces.\nCamera: Eye-level wide cinematic shot, symmetrical, slight perspective toward the far wall.\nCrop: Full room, floor visible in the lower third, ceiling implied at the very top.\nLighting: Cinematic, moody but not dark or scary. Warm and safe, like a heroic mission-briefing scene in a family animated film.\nNegative Space: CRITICAL - the upper centre of the frame must be a plain, unlit, uncluttered wall area, because a bright projector-screen UI panel is overlaid there occupying the centre 44 percent of the width from 8 to 66 percent of the height. The lower third must stay dark and low-contrast because characters and a table are composited over it.\n\nComposition constraints:\n- Centre-top 44% x 58% region: keep flat, dark, detail-free. A UI projector panel sits exactly there.\n- Left edge, lower half: keep clear - the player's agent stands at approximately 9% from the left.\n- Right side, lower half: keep clear - the commander stands there.\n- Bottom 34%: will be covered by a conference table; keep it simple and dark.\n- No focal point or bright highlight anywhere text or characters will sit. The room must recede behind the UI, never compete with it.\n- No people. No chairs occupying the character positions.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-08-25T12:15:21.763Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "room_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1\\candidate-01.png",
+          "relativePath": "art/art-review/room_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "room_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/room_background/generation-1/candidate-01.png",
+          "relativePath": "art/art-review/room_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "room_background:generation-1:main:02:1787660121764:l9mjc8",
+      "kind": "generate",
+      "assetId": "room_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Headquarters Briefing Room.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The interior of a modern secret intelligence agency briefing room, empty of people.\nEnvironment: A wide underground command room. Dark navy panelled walls with recessed amber strip lighting. Subtle holographic world-map glow and faint data readouts on the side walls, dim and out of focus. A polished dark wood and steel conference table sweeping across the bottom foreground. Cool blue key light from a large wall display area, warm amber fill from side sconces.\nCamera: Eye-level wide cinematic shot, symmetrical, slight perspective toward the far wall.\nCrop: Full room, floor visible in the lower third, ceiling implied at the very top.\nLighting: Cinematic, moody but not dark or scary. Warm and safe, like a heroic mission-briefing scene in a family animated film.\nNegative Space: CRITICAL - the upper centre of the frame must be a plain, unlit, uncluttered wall area, because a bright projector-screen UI panel is overlaid there occupying the centre 44 percent of the width from 8 to 66 percent of the height. The lower third must stay dark and low-contrast because characters and a table are composited over it.\n\nComposition constraints:\n- Centre-top 44% x 58% region: keep flat, dark, detail-free. A UI projector panel sits exactly there.\n- Left edge, lower half: keep clear - the player's agent stands at approximately 9% from the left.\n- Right side, lower half: keep clear - the commander stands there.\n- Bottom 34%: will be covered by a conference table; keep it simple and dark.\n- No focal point or bright highlight anywhere text or characters will sit. The room must recede behind the UI, never compete with it.\n- No people. No chairs occupying the character positions.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-08-25T12:15:21.764Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "room_background:generation-1:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1\\candidate-02.png",
+          "relativePath": "art/art-review/room_background/generation-1/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "room_background:generation-1:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "art/art-review/room_background/generation-1/candidate-02.png",
+          "relativePath": "art/art-review/room_background/generation-1/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "room_background:generation-1:main:03:1787660121764:cwa2ud",
+      "kind": "generate",
+      "assetId": "room_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Headquarters Briefing Room.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The interior of a modern secret intelligence agency briefing room, empty of people.\nEnvironment: A wide underground command room. Dark navy panelled walls with recessed amber strip lighting. Subtle holographic world-map glow and faint data readouts on the side walls, dim and out of focus. A polished dark wood and steel conference table sweeping across the bottom foreground. Cool blue key light from a large wall display area, warm amber fill from side sconces.\nCamera: Eye-level wide cinematic shot, symmetrical, slight perspective toward the far wall.\nCrop: Full room, floor visible in the lower third, ceiling implied at the very top.\nLighting: Cinematic, moody but not dark or scary. Warm and safe, like a heroic mission-briefing scene in a family animated film.\nNegative Space: CRITICAL - the upper centre of the frame must be a plain, unlit, uncluttered wall area, because a bright projector-screen UI panel is overlaid there occupying the centre 44 percent of the width from 8 to 66 percent of the height. The lower third must stay dark and low-contrast because characters and a table are composited over it.\n\nComposition constraints:\n- Centre-top 44% x 58% region: keep flat, dark, detail-free. A UI projector panel sits exactly there.\n- Left edge, lower half: keep clear - the player's agent stands at approximately 9% from the left.\n- Right side, lower half: keep clear - the commander stands there.\n- Bottom 34%: will be covered by a conference table; keep it simple and dark.\n- No focal point or bright highlight anywhere text or characters will sit. The room must recede behind the UI, never compete with it.\n- No people. No chairs occupying the character positions.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-08-25T12:15:21.764Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "room_background:generation-1:main:03",
+          "label": "Candidate 03",
+          "candidateLabel": "03",
+          "candidateIndex": 3,
+          "filename": "candidate-03.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\room_background\\generation-1\\candidate-03.png",
+          "relativePath": "art/art-review/room_background/generation-1/candidate-03.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_ben:generation-1:main:01:1789137680433:ae2h6x",
+      "kind": "generate",
+      "assetId": "dossier_ben",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portrait - Ben (FOX CUB).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: An ID-photo style portrait of Ben, a friendly elementary-school boy who is the agency's harmless 'person of interest'.\nAge: Around 10 years old.\nPose: Head and shoulders, squared to camera, an official identification photograph.\nExpression: Open and kind, with a small natural smile. He is likeable - the joke of the game is that this dramatic dossier is about a nice kid who likes soccer.\nCamera: Straight-on, eye-level, ID photograph framing.\nCrop: Head and upper shoulders, centred, small headroom.\nClothing: A bright red casual t-shirt or polo.\nFeatures: Short warm brown hair, light-warm skin, brown eyes.\nEnvironment: A flat, evenly lit, desaturated blue-grey studio backdrop, like a school or agency ID photo.\n\nComposition constraints:\n- This anchor fixes the character style for all six dossiers - it must be the most carefully judged image in the set.\n- Face clearly readable at 150px wide.\n- Backdrop flat and uniform. No gradient banding, no props, no text.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.433Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "dossier_ben:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png",
+          "relativePath": "art/art-review/dossier_ben/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_ben:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/dossier_ben/generation-1/candidate-01.png",
+          "relativePath": "art/art-review/dossier_ben/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_ben:generation-1:main:02:1789137680434:4aep12",
+      "kind": "generate",
+      "assetId": "dossier_ben",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portrait - Ben (FOX CUB).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: An ID-photo style portrait of Ben, a friendly elementary-school boy who is the agency's harmless 'person of interest'.\nAge: Around 10 years old.\nPose: Head and shoulders, squared to camera, an official identification photograph.\nExpression: Open and kind, with a small natural smile. He is likeable - the joke of the game is that this dramatic dossier is about a nice kid who likes soccer.\nCamera: Straight-on, eye-level, ID photograph framing.\nCrop: Head and upper shoulders, centred, small headroom.\nClothing: A bright red casual t-shirt or polo.\nFeatures: Short warm brown hair, light-warm skin, brown eyes.\nEnvironment: A flat, evenly lit, desaturated blue-grey studio backdrop, like a school or agency ID photo.\n\nComposition constraints:\n- This anchor fixes the character style for all six dossiers - it must be the most carefully judged image in the set.\n- Face clearly readable at 150px wide.\n- Backdrop flat and uniform. No gradient banding, no props, no text.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.434Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "dossier_ben:generation-1:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-02.png",
+          "relativePath": "art/art-review/dossier_ben/generation-1/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_ben:generation-1:main:03:1789137680434:a6tcep",
+      "kind": "generate",
+      "assetId": "dossier_ben",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portrait - Ben (FOX CUB).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: An ID-photo style portrait of Ben, a friendly elementary-school boy who is the agency's harmless 'person of interest'.\nAge: Around 10 years old.\nPose: Head and shoulders, squared to camera, an official identification photograph.\nExpression: Open and kind, with a small natural smile. He is likeable - the joke of the game is that this dramatic dossier is about a nice kid who likes soccer.\nCamera: Straight-on, eye-level, ID photograph framing.\nCrop: Head and upper shoulders, centred, small headroom.\nClothing: A bright red casual t-shirt or polo.\nFeatures: Short warm brown hair, light-warm skin, brown eyes.\nEnvironment: A flat, evenly lit, desaturated blue-grey studio backdrop, like a school or agency ID photo.\n\nComposition constraints:\n- This anchor fixes the character style for all six dossiers - it must be the most carefully judged image in the set.\n- Face clearly readable at 150px wide.\n- Backdrop flat and uniform. No gradient banding, no props, no text.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.434Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "dossier_ben:generation-1:main:03",
+          "label": "Candidate 03",
+          "candidateLabel": "03",
+          "candidateIndex": 3,
+          "filename": "candidate-03.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-03.png",
+          "relativePath": "art/art-review/dossier_ben/generation-1/candidate-03.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc1:01:1789137680440:ypn4d2",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Male agent, 30s. Warm-tan skin, short black hair, dark sunglasses, crimson tie. Cool and unflappable.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc1:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc1_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc1_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc1_candidate-01.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc1:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc1_candidate-01.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc1_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc1_candidate-01.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc1:02:1789137680440:pwpgyx",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Male agent, 30s. Warm-tan skin, short black hair, dark sunglasses, crimson tie. Cool and unflappable.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc1:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc1_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc1_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc1_candidate-02.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc1:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc1_candidate-02.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc1_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc1_candidate-02.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc2:01:1789137680440:4nxod2",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Female agent, late 20s. Fair skin, auburn chin-length bob, slim rectangular glasses, blue tie. Precise and studious - this is the one taking notes.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc2:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc2_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc2_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc2_candidate-01.png",
+          "subject": "npc2",
+          "subjectId": "npc2",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc2:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc2_candidate-01.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc2_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc2_candidate-01.png",
+          "subject": "npc2",
+          "subjectId": "npc2",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc2:02:1789137680440:va2mo2",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Female agent, late 20s. Fair skin, auburn chin-length bob, slim rectangular glasses, blue tie. Precise and studious - this is the one taking notes.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc2:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc2_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc2_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc2_candidate-02.png",
+          "subject": "npc2",
+          "subjectId": "npc2",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc3:01:1789137680440:ktuay5",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Male agent, 40s. Deep brown skin, short black curly hair, green tie. Calm and reassuring.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc3:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc3_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc3_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc3_candidate-01.png",
+          "subject": "npc3",
+          "subjectId": "npc3",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc3:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc3_candidate-01.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc3_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc3_candidate-01.png",
+          "subject": "npc3",
+          "subjectId": "npc3",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc3:02:1789137680440:9rvaqz",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Male agent, 40s. Deep brown skin, short black curly hair, green tie. Calm and reassuring.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc3:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc3_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc3_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc3_candidate-02.png",
+          "subject": "npc3",
+          "subjectId": "npc3",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc4:01:1789137680440:yj9qr2",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Female agent, 30s. Light skin, short blonde spiky hair, dark sunglasses, purple tie. Sharp and energetic.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc4:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc4_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc4_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc4_candidate-01.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc4:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc4_candidate-01.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc4_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc4_candidate-01.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_front:generation-1:npc4:02:1789137680440:hfv5j0",
+      "kind": "generate",
+      "assetId": "npc_agents_front",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - front view (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nPose: Seated at a conference table, upper body, squared to camera. Attentive and still. One of them holds a pen over a small notepad, mid-note.\nExpression: Engaged, friendly, listening. Interested rather than amused.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From the tabletop line at the bottom of the frame up to just above the head.\nClothing: Dark navy agency suit, white shirt, individual tie colour as listed.\nLighting: The same cool key plus amber rim as the commander, so every room character matches.\nSubject: Female agent, 30s. Light skin, short blonde spiky hair, dark sunglasses, purple tie. Sharp and energetic.\n\nComposition constraints:\n- Transparent background, no room, no shadow plate.\n- Consistent seated eye-line across all four, so the front row does not look staggered.\n- All four must clearly be colleagues of the commander in the same organisation.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.440Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc4:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc4_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc4_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc4_candidate-02.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_front:generation-1:npc4:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "npc4_candidate-02.png",
+          "path": "art/art-review/npc_agents_front/generation-1/npc4_candidate-02.png",
+          "relativePath": "art/art-review/npc_agents_front/generation-1/npc4_candidate-02.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "title_background:generation-1:main:01:1789137680446:ef2gx9",
+      "kind": "generate",
+      "assetId": "title_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Title Screen Key Art.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The grand entrance hall of a secret intelligence agency headquarters at night - atmospheric, empty of people.\nEnvironment: Sleek modern architecture, deep navy and black, amber and gold accent lighting, a glowing holographic world map or radar display far in the background, a reflective polished floor, dramatic depth.\nCamera: Wide cinematic establishing shot with a strong central vanishing point.\nLighting: Night, moody, cinematic, but warm and inviting rather than threatening. Adventure, not danger.\nNegative Space: The centre of the frame must stay calm and dark - a large agency logo and a START MISSION button are overlaid there. Keep the brightest interest toward the edges and the far background.\n\nComposition constraints:\n- Centre 40% of the frame: low contrast, no clutter, no bright highlights. Overlaid UI must stay readable.\n- Must tolerate being cropped by any viewport shape - keep important content away from all four edges.\n- No people, no text, no readable signage.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.446Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\title_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "title_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\title_background\\generation-1\\candidate-01.png",
+          "relativePath": "art/art-review/title_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "title_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/title_background/generation-1/candidate-01.png",
+          "relativePath": "art/art-review/title_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "title_background:generation-1:main:02:1789137680446:gb6crw",
+      "kind": "generate",
+      "assetId": "title_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Title Screen Key Art.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The grand entrance hall of a secret intelligence agency headquarters at night - atmospheric, empty of people.\nEnvironment: Sleek modern architecture, deep navy and black, amber and gold accent lighting, a glowing holographic world map or radar display far in the background, a reflective polished floor, dramatic depth.\nCamera: Wide cinematic establishing shot with a strong central vanishing point.\nLighting: Night, moody, cinematic, but warm and inviting rather than threatening. Adventure, not danger.\nNegative Space: The centre of the frame must stay calm and dark - a large agency logo and a START MISSION button are overlaid there. Keep the brightest interest toward the edges and the far background.\n\nComposition constraints:\n- Centre 40% of the frame: low contrast, no clutter, no bright highlights. Overlaid UI must stay readable.\n- Must tolerate being cropped by any viewport shape - keep important content away from all four edges.\n- No people, no text, no readable signage.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.446Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\title_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "title_background:generation-1:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\title_background\\generation-1\\candidate-02.png",
+          "relativePath": "art/art-review/title_background/generation-1/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "title_background:generation-1:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "art/art-review/title_background/generation-1/candidate-02.png",
+          "relativePath": "art/art-review/title_background/generation-1/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "archive_background:generation-1:main:01:1789137680450:izf83d",
+      "kind": "generate",
+      "assetId": "archive_background",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Intelligence Archive Backdrop.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A quiet secret archive room - rows of steel filing cabinets and a dark wooden desk surface, empty of people.\nEnvironment: Warm low lamp light, dust motes in a shaft of light, deep shadows, navy and amber palette matching the rest of the agency.\nCamera: Slightly high three-quarter angle looking down toward a desk surface.\nLighting: Warm, low, cosy. Mysterious but safe.\nNegative Space: The whole central area is covered by six manila dossier cards, so it must be dark, even and uncluttered.\n\nComposition constraints:\n- Effectively a texture, not a scene. Almost no focal point. Nothing bright behind the dossier cards.\n- No text, no readable file labels, no people.\n\nTechnical requirements: one image only, 1536 x 1024 pixels, 3:2 landscape. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T14:41:20.450Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\archive_background\\generation-1",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "archive_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\archive_background\\generation-1\\candidate-01.png",
+          "relativePath": "art/art-review/archive_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "archive_background:generation-1:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/archive_background/generation-1/candidate-01.png",
+          "relativePath": "art/art-review/archive_background/generation-1/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1536,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:mia:01:1789141424169:2jcyh8",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Mia (codename PINK PANDA), a girl around 10. Dark chocolate-brown chin-length bob with a soft blunt fringe, fair-warm peach skin, dark brown eyes. Funny and playful: a bright mischievous grin showing a hint of top teeth, eyes slightly crinkled as if she is about to laugh, one eyebrow raised a touch. Bubblegum-pink t-shirt (#ff6fa5).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.169Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:mia:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "mia_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\mia_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/mia_candidate-01.png",
+          "subject": "mia",
+          "subjectId": "mia",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_others:generation-1:mia:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "mia_candidate-01.png",
+          "path": "art/art-review/dossier_others/generation-1/mia_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/mia_candidate-01.png",
+          "subject": "mia",
+          "subjectId": "mia",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:mia:02:1789141424170:dh3yok",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Mia (codename PINK PANDA), a girl around 10. Dark chocolate-brown chin-length bob with a soft blunt fringe, fair-warm peach skin, dark brown eyes. Funny and playful: a bright mischievous grin showing a hint of top teeth, eyes slightly crinkled as if she is about to laugh, one eyebrow raised a touch. Bubblegum-pink t-shirt (#ff6fa5).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.170Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:mia:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "mia_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\mia_candidate-02.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/mia_candidate-02.png",
+          "subject": "mia",
+          "subjectId": "mia",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_others:generation-1:leo:01:1789141424172:g0pk8n",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Leo (codename TURBO TIGER), a boy around 10. Near-black spiky hair swept up and back in bold anime spikes, warm golden-tan skin, dark brown eyes. Brave and energetic: a bold confident grin, chin lifted slightly, eyebrows set with determination - the kid who volunteers first. Bright tangerine-orange t-shirt (#f39c12).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.172Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:leo:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "leo_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\leo_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/leo_candidate-01.png",
+          "subject": "leo",
+          "subjectId": "leo",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_others:generation-1:leo:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "leo_candidate-01.png",
+          "path": "art/art-review/dossier_others/generation-1/leo_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/leo_candidate-01.png",
+          "subject": "leo",
+          "subjectId": "leo",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:leo:02:1789141424172:zcquz4",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Leo (codename TURBO TIGER), a boy around 10. Near-black spiky hair swept up and back in bold anime spikes, warm golden-tan skin, dark brown eyes. Brave and energetic: a bold confident grin, chin lifted slightly, eyebrows set with determination - the kid who volunteers first. Bright tangerine-orange t-shirt (#f39c12).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.172Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:leo:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "leo_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\leo_candidate-02.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/leo_candidate-02.png",
+          "subject": "leo",
+          "subjectId": "leo",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_others:generation-1:emma:01:1789141424173:gejp0n",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Emma (codename SMART OWL), a girl around 10. Long straight honey-blonde hair falling past her shoulders with a neat side part, fair skin, light brown eyes behind thin round wire-frame glasses that catch a small rim-light glint. Smart and calm: a quiet knowing closed-lip smile, eyes steady and thoughtful. Soft amethyst-purple t-shirt (#9b59b6).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.173Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:emma:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "emma_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\emma_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/emma_candidate-01.png",
+          "subject": "emma",
+          "subjectId": "emma",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_others:generation-1:emma:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "emma_candidate-01.png",
+          "path": "art/art-review/dossier_others/generation-1/emma_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/emma_candidate-01.png",
+          "subject": "emma",
+          "subjectId": "emma",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:emma:02:1789141424173:h9gnlm",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Emma (codename SMART OWL), a girl around 10. Long straight honey-blonde hair falling past her shoulders with a neat side part, fair skin, light brown eyes behind thin round wire-frame glasses that catch a small rim-light glint. Smart and calm: a quiet knowing closed-lip smile, eyes steady and thoughtful. Soft amethyst-purple t-shirt (#9b59b6).\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.173Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:emma:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "emma_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\emma_candidate-02.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/emma_candidate-02.png",
+          "subject": "emma",
+          "subjectId": "emma",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_others:generation-1:sam:01:1789141424175:oyb111",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Sam (codename JET SHARK), a boy around 10. Short black hair with tight natural curls, warm medium-brown skin, dark brown eyes. Friendly and easygoing: a wide, open, genuine smile, cheeks lifted, the kid everyone wants on their team. Teal-green t-shirt (#16a085).\nExisting game data for sam: skin #b07b4f; hair color #141414; hair style curly; shirt color #16a085.\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.175Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:sam:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "sam_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\sam_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/sam_candidate-01.png",
+          "subject": "sam",
+          "subjectId": "sam",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_others:generation-1:sam:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "sam_candidate-01.png",
+          "path": "art/art-review/dossier_others/generation-1/sam_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/sam_candidate-01.png",
+          "subject": "sam",
+          "subjectId": "sam",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:sam:02:1789141424175:6zftqc",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Sam (codename JET SHARK), a boy around 10. Short black hair with tight natural curls, warm medium-brown skin, dark brown eyes. Friendly and easygoing: a wide, open, genuine smile, cheeks lifted, the kid everyone wants on their team. Teal-green t-shirt (#16a085).\nExisting game data for sam: skin #b07b4f; hair color #141414; hair style curly; shirt color #16a085.\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.175Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:sam:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "sam_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\sam_candidate-02.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/sam_candidate-02.png",
+          "subject": "sam",
+          "subjectId": "sam",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "dossier_others:generation-1:lily:01:1789141424176:p8s88h",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Lily (codename SUNNY BEE), a girl around 10. Long very dark brown hair, nearly black, worn loose with a few strands tucked behind one ear, light-warm skin, dark brown eyes. Happy and gentle: a sunny, soft, open-mouthed smile, eyes bright and warm. Sunflower-yellow t-shirt (#f4c518).\nExisting game data for lily: skin #f2c197; hair color #241a12; hair style long; shirt color #f4c518.\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.176Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:lily:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "lily_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\lily_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/lily_candidate-01.png",
+          "subject": "lily",
+          "subjectId": "lily",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "dossier_others:generation-1:lily:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "lily_candidate-01.png",
+          "path": "art/art-review/dossier_others/generation-1/lily_candidate-01.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/lily_candidate-01.png",
+          "subject": "lily",
+          "subjectId": "lily",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": false
+        }
+      ]
+    },
+    {
+      "id": "dossier_others:generation-1:lily:02:1789141424176:fewm3x",
+      "kind": "generate",
+      "assetId": "dossier_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Dossier Portraits - Mia, Leo, Emma, Sam, Lily.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: This portrait joins a set of six ID photos and must be indistinguishable in treatment from the attached approved Ben portrait: same painter, same linework weight, same soft cel shading, same painterly hair rendering with fine individual strands and a cool blue rim light along the hair edge, same large warm anime eyes with a single soft catchlight each, same light scatter of rosy colour on the cheeks, same age band. Only the individual described below changes.\nPose: Head and upper shoulders, squared to camera, head tilted a few degrees off dead-centre - a relaxed school-ID-photo posture, never a stiff mugshot.\nCamera: Straight-on, eye-level, ID-photo framing, natural 50mm-equivalent compression. Head the same size and at the same height in frame as Ben's, so the six cards line up on the archive wall.\nCrop: Head and upper shoulders, centred, small headroom above the hair, shirt collar and shoulders visible at the bottom edge exactly like Ben's.\nClothing: A plain crew-neck t-shirt in the character's signature colour, ribbed collar sitting naturally. No logos, prints or text.\nLighting: Soft even key from slightly above camera-left, gentle falloff to camera-right, cool blue rim light on the hair edge - matched to the Ben reference.\nEnvironment: The exact same backdrop as the attached Ben reference: a smooth slate-blue studio backdrop, brightest directly behind the head and falling off slightly darker toward the corners. Match its hue and brightness, not a grey or a different blue.\nSubject: Lily (codename SUNNY BEE), a girl around 10. Long very dark brown hair, nearly black, worn loose with a few strands tucked behind one ear, light-warm skin, dark brown eyes. Happy and gentle: a sunny, soft, open-mouthed smile, eyes bright and warm. Sunflower-yellow t-shirt (#f4c518).\nExisting game data for lily: skin #f2c197; hair color #241a12; hair style long; shirt color #f4c518.\nReference image: Use the attached approved dossier_ben image as the exact style reference specified by the manifest.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a fully opaque image.\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.176Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_ben\\generation-1\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "dossier_others:generation-1:lily:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "lily_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\dossier_others\\generation-1\\lily_candidate-02.png",
+          "relativePath": "art/art-review/dossier_others/generation-1/lily_candidate-02.png",
+          "subject": "lily",
+          "subjectId": "lily",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "npc_agents_back:generation-1:npc1:01:1789141424187:1gj5r4",
+      "kind": "generate",
+      "assetId": "npc_agents_back",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - back of head (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The same agent as the attached approved front-view reference, now seen from directly behind while seated at the briefing table, watching a presentation at the far end of the room.\nPose: Back of the head, neck and shoulders, seated upright but leaning very slightly forward, head level and facing straight away from the viewer - attentive, listening. No face, no profile, no hands visible.\nCamera: Eye-level, directly behind, as if the viewer is sitting one row back. Reads as a dark foreground framing element at the bottom of a wide shot.\nCrop: From the tops of the shoulders, which run off the bottom edge of the frame, up to just above the crown of the head. Head centred horizontally.\nClothing: The same dark charcoal-navy suit jacket as the front view: visible collar and the upper back seams, with a thin sliver of white shirt collar at the nape.\nLighting: Backlit from the projector ahead: a soft cool-blue rim light tracing the outline of the hair and shoulders, and a faint warm amber edge on one side, matching the front views. The back of the head and suit fall into soft shadow - darker and lower contrast than the front views.\nSubject: npc1: short black hair combed back with a side part, neatly tapered at the nape; the thin dark arms of his sunglasses just visible over the tops of his ears; warm-tan skin at the neck.\nReference image: Use the attached approved front view for npc1 as the identity, hair, and clothing reference specified by the manifest.\n\nComposition constraints:\n- Must match the hair colour, hair shape and suit of the corresponding approved front view exactly.\n- Deliberately low contrast and low detail. They frame the shot; they are not the subject.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.187Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc1_candidate-02.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc1:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc1_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1\\npc1_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc1_candidate-01.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc1:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc1_candidate-01.png",
+          "path": "art/art-review/npc_agents_back/generation-1/npc1_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc1_candidate-01.png",
+          "subject": "npc1",
+          "subjectId": "npc1",
+          "width": 1254,
+          "height": 1254,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_back:generation-1:npc2:01:1789141424189:w0i2cj",
+      "kind": "generate",
+      "assetId": "npc_agents_back",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - back of head (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The same agent as the attached approved front-view reference, now seen from directly behind while seated at the briefing table, watching a presentation at the far end of the room.\nPose: Back of the head, neck and shoulders, seated upright but leaning very slightly forward, head level and facing straight away from the viewer - attentive, listening. No face, no profile, no hands visible.\nCamera: Eye-level, directly behind, as if the viewer is sitting one row back. Reads as a dark foreground framing element at the bottom of a wide shot.\nCrop: From the tops of the shoulders, which run off the bottom edge of the frame, up to just above the crown of the head. Head centred horizontally.\nClothing: The same dark charcoal-navy suit jacket as the front view: visible collar and the upper back seams, with a thin sliver of white shirt collar at the nape.\nLighting: Backlit from the projector ahead: a soft cool-blue rim light tracing the outline of the hair and shoulders, and a faint warm amber edge on one side, matching the front views. The back of the head and suit fall into soft shadow - darker and lower contrast than the front views.\nSubject: npc2: auburn chin-length bob, the ends curving in at the jaw line, one side tucked behind the ear; the slim temple arm of her rectangular glasses visible over that ear; fair skin at the neck.\nReference image: Use the attached approved front view for npc2 as the identity, hair, and clothing reference specified by the manifest.\n\nComposition constraints:\n- Must match the hair colour, hair shape and suit of the corresponding approved front view exactly.\n- Deliberately low contrast and low detail. They frame the shot; they are not the subject.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.189Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc2_candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc2:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc2_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1\\npc2_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc2_candidate-01.png",
+          "subject": "npc2",
+          "subjectId": "npc2",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc2:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc2_candidate-01.png",
+          "path": "art/art-review/npc_agents_back/generation-1/npc2_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc2_candidate-01.png",
+          "subject": "npc2",
+          "subjectId": "npc2",
+          "width": 1254,
+          "height": 1254,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_back:generation-1:npc3:01:1789141424191:wwr3zn",
+      "kind": "generate",
+      "assetId": "npc_agents_back",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - back of head (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The same agent as the attached approved front-view reference, now seen from directly behind while seated at the briefing table, watching a presentation at the far end of the room.\nPose: Back of the head, neck and shoulders, seated upright but leaning very slightly forward, head level and facing straight away from the viewer - attentive, listening. No face, no profile, no hands visible.\nCamera: Eye-level, directly behind, as if the viewer is sitting one row back. Reads as a dark foreground framing element at the bottom of a wide shot.\nCrop: From the tops of the shoulders, which run off the bottom edge of the frame, up to just above the crown of the head. Head centred horizontally.\nClothing: The same dark charcoal-navy suit jacket as the front view: visible collar and the upper back seams, with a thin sliver of white shirt collar at the nape.\nLighting: Backlit from the projector ahead: a soft cool-blue rim light tracing the outline of the hair and shoulders, and a faint warm amber edge on one side, matching the front views. The back of the head and suit fall into soft shadow - darker and lower contrast than the front views.\nSubject: npc3: short, tightly curled black hair cut close and even; deep brown skin at the neck; broad, calm, steady shoulders.\nReference image: Use the attached approved front view for npc3 as the identity, hair, and clothing reference specified by the manifest.\n\nComposition constraints:\n- Must match the hair colour, hair shape and suit of the corresponding approved front view exactly.\n- Deliberately low contrast and low detail. They frame the shot; they are not the subject.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.191Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc3_candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc3:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc3_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1\\npc3_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc3_candidate-01.png",
+          "subject": "npc3",
+          "subjectId": "npc3",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc3:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc3_candidate-01.png",
+          "path": "art/art-review/npc_agents_back/generation-1/npc3_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc3_candidate-01.png",
+          "subject": "npc3",
+          "subjectId": "npc3",
+          "width": 1254,
+          "height": 1254,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "npc_agents_back:generation-1:npc4:01:1789141424193:jotbec",
+      "kind": "generate",
+      "assetId": "npc_agents_back",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Agents - back of head (4 characters).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: The same agent as the attached approved front-view reference, now seen from directly behind while seated at the briefing table, watching a presentation at the far end of the room.\nPose: Back of the head, neck and shoulders, seated upright but leaning very slightly forward, head level and facing straight away from the viewer - attentive, listening. No face, no profile, no hands visible.\nCamera: Eye-level, directly behind, as if the viewer is sitting one row back. Reads as a dark foreground framing element at the bottom of a wide shot.\nCrop: From the tops of the shoulders, which run off the bottom edge of the frame, up to just above the crown of the head. Head centred horizontally.\nClothing: The same dark charcoal-navy suit jacket as the front view: visible collar and the upper back seams, with a thin sliver of white shirt collar at the nape.\nLighting: Backlit from the projector ahead: a soft cool-blue rim light tracing the outline of the hair and shoulders, and a faint warm amber edge on one side, matching the front views. The back of the head and suit fall into soft shadow - darker and lower contrast than the front views.\nSubject: npc4: short platinum-blonde hair in a sharp asymmetric spiky cut, longer spikes swept to one side; the dark arms of her sunglasses visible over her ears; light skin at the neck.\nReference image: Use the attached approved front view for npc4 as the identity, hair, and clothing reference specified by the manifest.\n\nComposition constraints:\n- Must match the hair colour, hair shape and suit of the corresponding approved front view exactly.\n- Deliberately low contrast and low detail. They frame the shot; they are not the subject.\n\nTechnical requirements: one image only, 1024 x 1024 pixels, 1:1 square. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-11T15:43:44.193Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_front\\generation-1\\npc4_candidate-02.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc4:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc4_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\npc_agents_back\\generation-1\\npc4_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc4_candidate-01.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1024,
+          "height": 1024,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "npc_agents_back:generation-1:npc4:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "npc4_candidate-01.png",
+          "path": "art/art-review/npc_agents_back/generation-1/npc4_candidate-01.png",
+          "relativePath": "art/art-review/npc_agents_back/generation-1/npc4_candidate-01.png",
+          "subject": "npc4",
+          "subjectId": "npc4",
+          "width": 1254,
+          "height": 1254,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "commander:generation-2:main:01:1789176088633:ckujnc",
+      "kind": "generate",
+      "assetId": "commander",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Commander.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A distinguished male intelligence-agency commander, the head of the department.\nAge: Late 50s.\nPose: Standing behind a conference table, upper body only, squared toward the viewer, hands not visible or resting lightly out of frame. Calm and still - he is listening, not speaking.\nExpression: Composed and quietly attentive. Warm authority. A faint approving steadiness. Not stern, not scowling, not grinning.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From roughly mid-chest upward. Head fully in frame with a little headroom.\nClothing: Immaculate dark navy double-breasted officer's dress uniform with gold shoulder braid, crisp white shirt, deep burgundy tie, a single gold star insignia on the chest. No readable insignia lettering.\nFeatures: Neat silver-grey hair, a trimmed silver moustache, strong kind eyes.\nLighting: Soft cool key from the front-left, warm amber rim light from the right, matching the briefing room.\n\nComposition constraints:\n- Isolated on a fully transparent background - no floor, no room, no shadow plate.\n- Perfectly upright and centred, so reaction variants can be swapped in without the sprite shifting.\n- Face large and clear enough to read expression at approximately 170px wide.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.633Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "commander:generation-2:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2\\candidate-01.png",
+          "relativePath": "art/art-review/commander/generation-2/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "commander:generation-2:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/commander/generation-2/candidate-01.png",
+          "relativePath": "art/art-review/commander/generation-2/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "commander:generation-2:main:02:1789176088642:3cxm5k",
+      "kind": "generate",
+      "assetId": "commander",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Commander.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A distinguished male intelligence-agency commander, the head of the department.\nAge: Late 50s.\nPose: Standing behind a conference table, upper body only, squared toward the viewer, hands not visible or resting lightly out of frame. Calm and still - he is listening, not speaking.\nExpression: Composed and quietly attentive. Warm authority. A faint approving steadiness. Not stern, not scowling, not grinning.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From roughly mid-chest upward. Head fully in frame with a little headroom.\nClothing: Immaculate dark navy double-breasted officer's dress uniform with gold shoulder braid, crisp white shirt, deep burgundy tie, a single gold star insignia on the chest. No readable insignia lettering.\nFeatures: Neat silver-grey hair, a trimmed silver moustache, strong kind eyes.\nLighting: Soft cool key from the front-left, warm amber rim light from the right, matching the briefing room.\n\nComposition constraints:\n- Isolated on a fully transparent background - no floor, no room, no shadow plate.\n- Perfectly upright and centred, so reaction variants can be swapped in without the sprite shifting.\n- Face large and clear enough to read expression at approximately 170px wide.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.642Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "commander:generation-2:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2\\candidate-02.png",
+          "relativePath": "art/art-review/commander/generation-2/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "commander:generation-2:main:03:1789176088643:85aesw",
+      "kind": "generate",
+      "assetId": "commander",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Briefing Room Commander.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A distinguished male intelligence-agency commander, the head of the department.\nAge: Late 50s.\nPose: Standing behind a conference table, upper body only, squared toward the viewer, hands not visible or resting lightly out of frame. Calm and still - he is listening, not speaking.\nExpression: Composed and quietly attentive. Warm authority. A faint approving steadiness. Not stern, not scowling, not grinning.\nCamera: Eye-level, straight-on front view, medium shot.\nCrop: From roughly mid-chest upward. Head fully in frame with a little headroom.\nClothing: Immaculate dark navy double-breasted officer's dress uniform with gold shoulder braid, crisp white shirt, deep burgundy tie, a single gold star insignia on the chest. No readable insignia lettering.\nFeatures: Neat silver-grey hair, a trimmed silver moustache, strong kind eyes.\nLighting: Soft cool key from the front-left, warm amber rim light from the right, matching the briefing room.\n\nComposition constraints:\n- Isolated on a fully transparent background - no floor, no room, no shadow plate.\n- Perfectly upright and centred, so reaction variants can be swapped in without the sprite shifting.\n- Face large and clear enough to read expression at approximately 170px wide.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.643Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "commander:generation-2:main:03",
+          "label": "Candidate 03",
+          "candidateLabel": "03",
+          "candidateIndex": 3,
+          "filename": "candidate-03.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\commander\\generation-2\\candidate-03.png",
+          "relativePath": "art/art-review/commander/generation-2/candidate-03.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "player_avatar:generation-2:main:01:1789176088710:yeow78",
+      "kind": "generate",
+      "assetId": "player_avatar",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "candidates-ready",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Preset 1 (STYLE ANCHOR).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A young rookie secret agent - the hero the player becomes. Preset 1: a boy with short neat black hair and warm light skin.\nAge: Around 11 to 12 years old. Clearly a confident kid: not an adult, not a toddler.\nPose: Standing full body, feet apart and planted, shoulders back, chin level. Confident and ready to give a report. Arms relaxed at the sides. Facing forward.\nExpression: Bright, determined, a little proud. Eyes open, mouth closed in a small confident line.\nCamera: Eye-level, straight-on front view, full body.\nCrop: Head to feet with small margins. The head occupies roughly the top fifth of the frame.\nClothing: A sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie, a small gold agency pin on the lapel. Optional dark sunglasses.\nLighting: Soft front key, subtle amber rim matching the briefing room.\n\nComposition constraints:\n- Fully transparent background, no shadow, no floor.\n- Perfectly symmetrical straight-on stance, dead-centred, because facial animation overlays must register exactly.\n- The face must be drawn clean and unobstructed - eyes and mouth will be replaced by animation overlays.\n- Head large enough that the mouth reads clearly at 130px total sprite width.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.710Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "player_avatar:generation-2:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png",
+          "relativePath": "art/art-review/player_avatar/generation-2/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": [
+        {
+          "id": "player_avatar:generation-2:main:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "candidate-01.png",
+          "path": "art/art-review/player_avatar/generation-2/candidate-01.png",
+          "relativePath": "art/art-review/player_avatar/generation-2/candidate-01.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": true
+        }
+      ]
+    },
+    {
+      "id": "player_avatar:generation-2:main:02:1789176088710:vjwv14",
+      "kind": "generate",
+      "assetId": "player_avatar",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Preset 1 (STYLE ANCHOR).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A young rookie secret agent - the hero the player becomes. Preset 1: a boy with short neat black hair and warm light skin.\nAge: Around 11 to 12 years old. Clearly a confident kid: not an adult, not a toddler.\nPose: Standing full body, feet apart and planted, shoulders back, chin level. Confident and ready to give a report. Arms relaxed at the sides. Facing forward.\nExpression: Bright, determined, a little proud. Eyes open, mouth closed in a small confident line.\nCamera: Eye-level, straight-on front view, full body.\nCrop: Head to feet with small margins. The head occupies roughly the top fifth of the frame.\nClothing: A sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie, a small gold agency pin on the lapel. Optional dark sunglasses.\nLighting: Soft front key, subtle amber rim matching the briefing room.\n\nComposition constraints:\n- Fully transparent background, no shadow, no floor.\n- Perfectly symmetrical straight-on stance, dead-centred, because facial animation overlays must register exactly.\n- The face must be drawn clean and unobstructed - eyes and mouth will be replaced by animation overlays.\n- Head large enough that the mouth reads clearly at 130px total sprite width.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.710Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "player_avatar:generation-2:main:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-02.png",
+          "relativePath": "art/art-review/player_avatar/generation-2/candidate-02.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "player_avatar:generation-2:main:03:1789176088710:fpj1cg",
+      "kind": "generate",
+      "assetId": "player_avatar",
+      "batch": "generation-2",
+      "label": "Generation 2",
+      "generation": 2,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Preset 1 (STYLE ANCHOR).\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nSubject: A young rookie secret agent - the hero the player becomes. Preset 1: a boy with short neat black hair and warm light skin.\nAge: Around 11 to 12 years old. Clearly a confident kid: not an adult, not a toddler.\nPose: Standing full body, feet apart and planted, shoulders back, chin level. Confident and ready to give a report. Arms relaxed at the sides. Facing forward.\nExpression: Bright, determined, a little proud. Eyes open, mouth closed in a small confident line.\nCamera: Eye-level, straight-on front view, full body.\nCrop: Head to feet with small margins. The head occupies roughly the top fifth of the frame.\nClothing: A sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie, a small gold agency pin on the lapel. Optional dark sunglasses.\nLighting: Soft front key, subtle amber rim matching the briefing room.\n\nComposition constraints:\n- Fully transparent background, no shadow, no floor.\n- Perfectly symmetrical straight-on stance, dead-centred, because facial animation overlays must register exactly.\n- The face must be drawn clean and unobstructed - eyes and mouth will be replaced by animation overlays.\n- Head large enough that the mouth reads clearly at 130px total sprite width.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:21:28.711Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2",
+      "references": [],
+      "expectedOutputs": [
+        {
+          "id": "player_avatar:generation-2:main:03",
+          "label": "Candidate 03",
+          "candidateLabel": "03",
+          "candidateIndex": 3,
+          "filename": "candidate-03.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-03.png",
+          "relativePath": "art/art-review/player_avatar/generation-2/candidate-03.png",
+          "subject": null,
+          "subjectId": null,
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p2:01:1789177153022:xyhcfa",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A girl around 11 to 12. Long black hair in a high ponytail, warm light skin. Confident and quick.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.022Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p2:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "p2_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p2_candidate-01.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p2_candidate-01.png",
+          "subject": "p2",
+          "subjectId": "p2",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p2:02:1789177153023:ln572c",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A girl around 11 to 12. Long black hair in a high ponytail, warm light skin. Confident and quick.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.023Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p2:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "p2_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p2_candidate-02.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p2_candidate-02.png",
+          "subject": "p2",
+          "subjectId": "p2",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p3:01:1789177153025:ous2ak",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A boy around 11 to 12. Dark brown spiky hair, tan skin, wearing dark sunglasses. Cool and unshakeable.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.025Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p3:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "p3_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p3_candidate-01.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p3_candidate-01.png",
+          "subject": "p3",
+          "subjectId": "p3",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p3:02:1789177153025:69h2zj",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A boy around 11 to 12. Dark brown spiky hair, tan skin, wearing dark sunglasses. Cool and unshakeable.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.025Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p3:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "p3_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p3_candidate-02.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p3_candidate-02.png",
+          "subject": "p3",
+          "subjectId": "p3",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p4:01:1789177153026:ceqgrb",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A girl around 11 to 12. Chestnut chin-length bob, fair skin, round glasses. Sharp and observant.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.026Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p4:01",
+          "label": "Candidate 01",
+          "candidateLabel": "01",
+          "candidateIndex": 1,
+          "filename": "p4_candidate-01.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p4_candidate-01.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p4_candidate-01.png",
+          "subject": "p4",
+          "subjectId": "p4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "avatar_presets_others:generation-1:p4:02:1789177153026:da4yc9",
+      "kind": "generate",
+      "assetId": "avatar_presets_others",
+      "batch": "generation-1",
+      "label": "Generation 1",
+      "generation": 1,
+      "status": "prepared",
+      "parentCandidate": null,
+      "instructions": "",
+      "revisionRequest": null,
+      "newDirection": null,
+      "locks": [],
+      "exactPrompt": "Generate a single image. Player Agent Avatar - Presets 2 to 4.\n\nPolished 2D Japanese anime / light-novel game illustration. Clean confident linework, soft cel shading with gentle gradient lighting, cinematic rim light, rich saturated but not garish color. Family-friendly modern espionage and intelligence-agency atmosphere: deep navy blue, gunmetal, brushed steel, warm amber and gold accents, cool glowing displays. Designed to appeal to Japanese elementary school students aged 8 to 12 - warm, expressive, slightly stylized proportions, characters who read as competent and cool rather than cute-for-cuteness. High production value, cinematic, modern mobile-game key-art quality.\n\nFraming: Identical to the approved preset 1 in every respect except the individual described below: same age, same standing pose, same feet placement, same arm position, same head height and size, same camera, same crop, same margins, same canvas dimensions, same suit design, same lighting and rim light, same line and shading style. These four must look like one squad photographed in one session.\nClothing: The same sharp kid-sized charcoal-navy agent suit, white shirt, amber-gold tie and small gold lapel pin as preset 1.\nExpression: The same bright, determined, slightly proud neutral: eyes open, mouth closed.\nSubject: A girl around 11 to 12. Chestnut chin-length bob, fair skin, round glasses. Sharp and observant.\nReference image: Use the attached approved player_avatar preset 1 image as the exact pose, camera, crop, suit, lighting, and art-style reference specified by the manifest.\n\nComposition constraints:\n- Head position and size must match preset 1 as closely as possible - facial animation registers against it.\n- Fully transparent background, no shadow, no floor.\n- Straight-on, symmetrical, dead-centred.\n\nTechnical requirements: one image only, 1024 x 1536 pixels, 2:3 portrait. Return a PNG with a genuinely transparent background (non-opaque alpha outside the subject).\n\nDo not use: flat vector cutout shapes, South Park style, simple geometric paper-doll characters, thick uniform outlines with no shading, generic corporate clip art, stock-illustration flat design, photorealism, 3D render or CGI look, western Cartoon-Network style, chibi or toddler proportions, babyish art. No text, letters, numbers, logos, watermarks, signatures, captions, speech bubbles, UI elements, borders, frames, or turnaround / multi-view sheets in the image. No weapons, no violence, no realistic firearms.",
+      "timestamp": "2026-09-12T01:39:13.026Z",
+      "generator": "manual",
+      "dryRun": false,
+      "outputDirectory": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1",
+      "references": [
+        "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\player_avatar\\generation-2\\candidate-01.png"
+      ],
+      "expectedOutputs": [
+        {
+          "id": "avatar_presets_others:generation-1:p4:02",
+          "label": "Candidate 02",
+          "candidateLabel": "02",
+          "candidateIndex": 2,
+          "filename": "p4_candidate-02.png",
+          "path": "C:\\Users\\nolan\\recipe-tester\\agent-briefing\\art\\art-review\\avatar_presets_others\\generation-1\\p4_candidate-02.png",
+          "relativePath": "art/art-review/avatar_presets_others/generation-1/p4_candidate-02.png",
+          "subject": "p4",
+          "subjectId": "p4",
+          "width": 1024,
+          "height": 1536,
+          "hasTransparency": null
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "decisions": {
+    "agency_logo": {
+      "choice": "keep-existing",
+      "candidateId": null,
+      "action": null,
+      "manifestDecision": true,
+      "updatedAt": "2026-08-25T09:53:43.096Z"
+    },
+    "dossier_ben": {
+      "choice": "candidate",
+      "candidateId": "dossier_ben:generation-1:main:01",
+      "candidateIds": [
+        "dossier_ben:generation-1:main:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-11T15:26:26.729Z"
+    },
+    "npc_agents_front": {
+      "choice": "candidate",
+      "candidateId": "npc_agents_front:generation-1:npc1:02",
+      "candidateIds": [
+        "npc_agents_front:generation-1:npc1:02",
+        "npc_agents_front:generation-1:npc2:01",
+        "npc_agents_front:generation-1:npc3:01",
+        "npc_agents_front:generation-1:npc4:02"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-11T15:26:27.552Z"
+    },
+    "title_background": {
+      "choice": "candidate",
+      "candidateId": "title_background:generation-1:main:02",
+      "candidateIds": [
+        "title_background:generation-1:main:02"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-11T15:26:28.429Z"
+    },
+    "archive_background": {
+      "choice": "candidate",
+      "candidateId": "archive_background:generation-1:main:01",
+      "candidateIds": [
+        "archive_background:generation-1:main:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-11T15:26:29.191Z"
+    },
+    "dossier_others": {
+      "choice": "candidate",
+      "candidateIds": [
+        "dossier_others:generation-1:mia:01",
+        "dossier_others:generation-1:leo:01",
+        "dossier_others:generation-1:emma:01",
+        "dossier_others:generation-1:sam:01",
+        "dossier_others:generation-1:lily:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-11T16:00:53.523Z"
+    },
+    "npc_agents_back": {
+      "choice": "candidate",
+      "candidateId": "npc_agents_back:generation-1:npc1:01",
+      "candidateIds": [
+        "npc_agents_back:generation-1:npc1:01",
+        "npc_agents_back:generation-1:npc2:01",
+        "npc_agents_back:generation-1:npc3:01",
+        "npc_agents_back:generation-1:npc4:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-12T01:18:34.000Z"
+    },
+    "commander": {
+      "choice": "candidate",
+      "candidateId": "commander:generation-2:main:01",
+      "candidateIds": [
+        "commander:generation-2:main:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-12T01:36:11.000Z"
+    },
+    "player_avatar": {
+      "choice": "candidate",
+      "candidateId": "player_avatar:generation-2:main:01",
+      "candidateIds": [
+        "player_avatar:generation-2:main:01"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-12T01:36:11.000Z"
+    },
+    "room_background": {
+      "choice": "candidate",
+      "candidateId": "room_background:generation-1:main:02",
+      "candidateIds": [
+        "room_background:generation-1:main:02"
+      ],
+      "action": "use-as-is",
+      "updatedAt": "2026-09-12T01:38:35.000Z"
+    }
+  },
+  "openQuestionAnswers": {
+    "avatar-customization-conflict": "(b) painted presets. Four presets, sharing one identical pose, camera, crop, suit and lighting so they read as one squad. The Agent ID screen becomes a preset picker. That UI change is deferred until approved preset art exists - do not degrade the working customizer before there is art to replace it with.",
+    "logo-radar-sweep": "Keep Existing. The SVG emblem stays as-is and is dropped from the generation queue entirely - do not generate candidates for it."
+  }
+}

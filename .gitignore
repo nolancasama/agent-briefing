@@ -1,0 +1,8 @@
+# Local-only working state, not part of the game
+.ai/
+.claude/
+debug.log
+node_modules/
+
+# Automatic pre-apply backups of production assets (regenerated locally on every apply)
+art/rollback/
