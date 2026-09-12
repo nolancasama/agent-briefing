@@ -28,7 +28,7 @@ const App = {
   save: loadSave(),
   char: null, pack: null, step: 0, clips: [],
   pendingClip: null, quietTries: 0, recState: 'idle',
-  recTimeout: 0, missionStartPoints: 0,
+  recTimeout: 0, recClock: 0, missionStartPoints: 0,
   debriefGen: 0, debriefSkip: false,
 };
 
@@ -98,60 +98,29 @@ function setScreen(html, cls) {
   Recorder.stopPlayback();
   Recorder.abortRecognition();
   clearTimeout(App.recTimeout);
+  clearInterval(App.recClock);
   const app = $('#app');
   app.className = 'screen-' + cls;
   app.innerHTML = html;
 }
 
-/* ---------- invisible "Briefing Quality" evaluation ----------
-   Speech recognition runs alongside every recording purely as a hint.
-   Missing/failed recognition (unsupported browser, no network, kid
-   mumbles and the API errors out) always falls back to a neutral-good
-   score — it only ever adds encouraging signal, never blocks or scores
-   a student down for a technical failure. */
-function wordsOf(s) {
-  return (s || '').toLowerCase().match(/[a-z']+/g) || [];
-}
+/* ---------- briefing evaluation ----------
+   All the judgement lives in js/evaluate.js (unit-tested in
+   test-eval.js). Here we only adapt a grammar-pack step into the
+   { fact, frame } target that module expects.
 
-function evaluateClip(step, c, stt) {
-  if (!stt || !stt.gotResult) return 0.75;
-  const transcriptWords = wordsOf(stt.transcript);
-  const factWords = wordsOf(step.fact(c));
-  const patternWords = wordsOf(step.prompt(c).replace('______', ''));
-  const tset = new Set(transcriptWords);
-  const factHit = factWords.length ? factWords.filter(w => tset.has(w)).length / factWords.length : 1;
-  const patHit = patternWords.length ? patternWords.filter(w => tset.has(w)).length / patternWords.length : 1;
-  const completeness = Math.min(1, transcriptWords.length / Math.max(3, factWords.length + patternWords.length));
-  const confidence = stt.confidence || 0.6;
-  const quality = 0.45 * factHit + 0.30 * patHit + 0.15 * completeness + 0.10 * confidence;
-  return Math.max(0, Math.min(1, quality));
+   Recognition never gates play: a mismatch or an unverifiable clip
+   still records, still sends, still appears in the debrief. */
+function targetFor(step, c) {
+  return { fact: step.fact(c), frame: step.prompt(c) };
 }
-
-/* Live convenience hint only, checked against interim (not-yet-final)
-   recognition results while the mic is still open — a positive here
-   auto-stops the recording early. It never gates or auto-retries: a
-   miss just means the student keeps talking until the manual stop or
-   the 8s cap, exactly as if this check didn't exist. */
-function looksComplete(step, c, transcript) {
-  const words = wordsOf(transcript);
-  if (words.length < 3) return false;
-  const tset = new Set(words);
-  const factWords = wordsOf(step.fact(c));
-  const patternWords = wordsOf(step.prompt(c).replace('______', ''));
-  const factHit = factWords.length ? factWords.filter(w => tset.has(w)).length / factWords.length : 1;
-  const patHit = patternWords.length ? patternWords.filter(w => tset.has(w)).length / patternWords.length : 1;
-  return factHit >= 0.8 && patHit >= 0.8;
-}
-
-function qualityTier(q) { return q >= 0.72 ? 'high' : q >= 0.45 ? 'medium' : 'low'; }
-function rankLetter(q) { return q >= 0.85 ? 'S' : q >= 0.7 ? 'A' : q >= 0.45 ? 'B' : 'C'; }
 
 function hudHTML() {
   const r = rankFor(App.save.points);
   return `<div class="hud">
     <div class="hud-chip hud-rank">${r.icon} <b>${r.name}</b></div>
-    <div class="hud-chip hud-pts">🏅 <b id="hud-points">${App.save.points}</b> pts</div>
-    <button class="icon-btn" id="btn-mute" title="Sound on/off">${App.save.muted ? '🔇' : '🔊'}</button>
+    <div class="hud-chip hud-pts">${Icons.medal(16)} <b id="hud-points">${App.save.points}</b> pts</div>
+    <button class="btn ghost" id="btn-mute" title="Sound on/off" aria-label="Sound on/off">${App.save.muted ? Icons.soundOff(20) : Icons.soundOn(20)}</button>
   </div>`;
 }
 
@@ -161,7 +130,7 @@ function wireHud() {
     App.save.muted = !App.save.muted;
     Sfx.setMuted(App.save.muted);
     persist();
-    b.textContent = App.save.muted ? '🔇' : '🔊';
+    b.innerHTML = App.save.muted ? Icons.soundOff(20) : Icons.soundOn(20);
   };
 }
 
@@ -186,12 +155,12 @@ function showTitle() {
     ${hudHTML()}
     <div class="title-wrap">
       <div class="title-logo">${Art.logo(150)}</div>
-      <div class="title-tape">★ TOP SECRET ★</div>
+      <div class="title-tape">TOP SECRET</div>
       <h1 class="title-big"><span>AGENT</span> <span>BRIEFING</span></h1>
       <p class="title-sub">SPEAK ENGLISH · COMPLETE THE MISSION</p>
       <div class="title-btns">
-        <button class="btn big primary" id="btn-start">▶ START MISSION</button>
-        <button class="btn" id="btn-agent-id">🕶 AGENT ID</button>
+        <button class="btn primary big" id="btn-start">${Icons.play(22)} START MISSION</button>
+        <button class="btn ghost" id="btn-agent-id">${Icons.id(20)} AGENT ID</button>
       </div>
       <p class="radio-line" id="title-radio"></p>
     </div>`, 'title');
@@ -201,7 +170,7 @@ function showTitle() {
     if (App.save.avatar) showArchive(); else showAgentId(true);
   };
   $('#btn-agent-id').onclick = () => showAgentId(false);
-  typeInto($('#title-radio'), '📻 HQ ► Welcome, Agent. Headquarters needs your report…', 30, false);
+  typeInto($('#title-radio'), 'HQ // Welcome, Agent. Headquarters needs your report…', 30, false);
 }
 
 /* ============================================================
@@ -219,7 +188,7 @@ function showAgentId(goArchiveAfter) {
   setScreen(`
     ${hudHTML()}
     <div class="panel agentid-wrap">
-      <h2 class="panel-title">🕶 AGENT ID CARD</h2>
+      <h2 class="panel-title">AGENT ID CARD</h2>
       <div class="agentid-cols">
         <div class="agentid-preview" id="av-preview">${Art.agentFull(av, 150)}</div>
         <div class="agentid-opts">
@@ -235,14 +204,14 @@ function showAgentId(goArchiveAfter) {
           ${swatchRow('TIE', 'tie', DATA.AVATAR_OPTIONS.ties)}
           <div class="opt-row"><span class="opt-label">SUNGLASSES</span>
             <div class="opt-vals">
-              <button class="pill ${av.shades ? 'sel' : ''}" data-key="shades" data-val="1">🕶 ON</button>
+              <button class="pill ${av.shades ? 'sel' : ''}" data-key="shades" data-val="1">ON</button>
               <button class="pill ${!av.shades ? 'sel' : ''}" data-key="shades" data-val="">OFF</button>
             </div></div>
         </div>
       </div>
       <div class="agentid-btns">
-        <button class="btn" id="btn-agent-back">◀ BACK</button>
-        <button class="btn big primary" id="btn-agent-save">✔ SAVE &amp; CONTINUE</button>
+        <button class="btn ghost" id="btn-agent-back">${Icons.back(18)} BACK</button>
+        <button class="btn secondary big" id="btn-agent-save">${Icons.check(20)} SAVE &amp; CONTINUE</button>
       </div>
     </div>`, 'agentid');
   wireHud();
@@ -281,10 +250,10 @@ function showArchive() {
   setScreen(`
     ${hudHTML()}
     <div class="archive-wrap">
-      <h2 class="archive-title">🗄 INTELLIGENCE ARCHIVE</h2>
+      <h2 class="archive-title">${Icons.archive(24)} INTELLIGENCE ARCHIVE</h2>
       <p class="archive-sub">Choose a Person of Interest to investigate</p>
       <div class="pack-toggle">
-        ${packs.map(p => `<button class="pack-btn ${p.id === curPack.id ? 'sel' : ''}" data-pack="${p.id}">${p.label}<small>${p.title}</small></button>`).join('')}
+        ${packs.map((p, i) => `<button class="pack-btn ${p.id === curPack.id ? 'sel' : ''}" data-pack="${p.id}" aria-pressed="${p.id === curPack.id}">${i === 0 ? 'FIRST REPORT' : 'DEEP COVER'}</button>`).join('')}
       </div>
       <div class="dossier-grid">
         ${DATA.CHARACTERS.map(c => {
@@ -294,13 +263,12 @@ function showArchive() {
             <span class="polaroid"><span class="clip"></span>${Art.portrait(c)}</span>
             <span class="file-no">FILE No. ${c.fileNo}</span>
             ${done[curPack.id]
-              ? '<span class="mini-stamp green">CASE CLOSED ✔</span>'
+              ? `<span class="mini-stamp green">CASE CLOSED ${Icons.check(12)}</span>`
               : '<span class="mini-stamp red">CLASSIFIED</span>'}
-            <span class="lvl-chips">${packs.map(p => done[p.id] ? `<span class="chip">${p.label} ✔</span>` : '').join('')}</span>
           </button>`;
         }).join('')}
       </div>
-      <button class="btn subtle" id="btn-back-title">◀ HQ LOBBY</button>
+      <button class="btn ghost" id="btn-back-title">${Icons.back(18)} HQ LOBBY</button>
     </div>`, 'archive');
   wireHud();
 
@@ -343,8 +311,8 @@ async function openDossier(c) {
         <div class="folder-cover"><span>CONFIDENTIAL</span></div>
       </div>
       <div class="dossier-btns">
-        <button class="btn" id="btn-back-archive">◀ BACK</button>
-        <button class="btn big primary" id="btn-accept">🎙 ACCEPT MISSION</button>
+        <button class="btn ghost" id="btn-back-archive">${Icons.back(18)} BACK</button>
+        <button class="btn primary big" id="btn-accept">${Icons.mic(22)} ACCEPT MISSION</button>
       </div>
     </div>`, 'dossier');
   wireHud();
@@ -360,6 +328,9 @@ async function openDossier(c) {
   const facts = $('#doss-facts');
   for (const s of App.pack.steps) {
     if (!document.contains(facts)) return;
+    // NAME already appears in the typed identity header above. Keep the
+    // dossier's facts for the additional intelligence only.
+    if (s.factLabel === 'NAME') continue;
     const row = document.createElement('div');
     row.className = 'fact-row';
     row.innerHTML = `<span class="fact-ico">${s.icon(c)}</span><span class="fact-label">${esc(s.factLabel)}:</span> <b>${esc(s.fact(c))}</b>`;
@@ -388,30 +359,32 @@ function startMission() {
   App.clips = [];
   App.quietTries = 0;
   App.missionStartPoints = App.save.points;
-  App.briefingQuality = null;
+  App.briefing = null;
   App.briefingTier = 'medium';
   Sfx.bgmStop();
 
   setScreen(`
     ${hudHTML()}
     <div class="mission-wrap">
-      <div class="radio-bar">📻 <span id="radio-msg"></span></div>
-      <div class="mission-cols">
-        <div class="mission-photo">
-          <div class="polaroid"><span class="clip"></span>${Art.portrait(App.char)}</div>
-          <div class="mission-name">${esc(App.char.name)}</div>
+      <div class="intel-display">
+        <div class="mission-head">
+          <span class="tech-label">HQ // CHANNEL 04</span>
+          <span class="tech-label" id="report-count">REPORT 1 / ${App.pack.steps.length}</span>
         </div>
-        <div class="mission-main">
-          <div class="progress-row">
-            ${App.pack.steps.map((s, i) => `<div class="prog-node" data-i="${i}">${i + 1}</div>`).join('')}
-            <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+        <div class="hq-question" id="radio-msg"></div>
+        <div class="mission-display-body">
+          <div class="mission-photo">
+            <div class="polaroid"><span class="clip"></span>${Art.portrait(App.char, 190, 215)}</div>
+            <div class="mission-name">PERSON OF INTEREST // ${esc(App.char.name)}</div>
           </div>
-          <div class="fact-card" id="fact-card"></div>
-          <div class="prompt-big" id="prompt-big"></div>
-          <div class="rec-zone" id="rec-zone"></div>
+          <div class="mission-main">
+            <div class="fact-card" id="fact-card"></div>
+            <div class="prompt-big" id="prompt-big"></div>
+            <div class="rec-zone" id="rec-zone"></div>
+          </div>
         </div>
       </div>
-      <button class="btn subtle" id="btn-abort">✕ ABORT MISSION</button>
+      <button class="btn danger" id="btn-abort">${Icons.close(18)} ABORT MISSION</button>
     </div>`, 'mission');
   wireHud();
   $('#btn-abort').onclick = () => { Recorder.stopPlayback(); clearTimeout(App.recTimeout); showArchive(); };
@@ -420,25 +393,25 @@ function startMission() {
 
 async function runStep() {
   const i = App.step, s = App.pack.steps[i], c = App.char;
-  $$('.prog-node').forEach((n, k) => n.classList.toggle('done', k < i));
-  const fill = $('#prog-fill');
-  if (fill) fill.style.width = (i / App.pack.steps.length * 100) + '%';
+  const report = $('#report-count');
+  if (report) report.textContent = `REPORT ${i + 1} / ${App.pack.steps.length}`;
 
   const fc = $('#fact-card');
   if (!fc) return;
-  fc.innerHTML = `<span class="fact-ico big">${s.icon(c)}</span>
-    <span class="fact-label">${esc(s.factLabel)}</span>
+  const prompt = s.prompt(c);
+  const cue = prompt.includes('______') ? prompt.split('______')[0].trim() : '';
+  fc.innerHTML = `<span class="fact-label">${esc(s.factLabel)}</span>
+    <span class="fact-cue">${esc(cue)}</span>
     <b class="fact-value" id="fact-value"></b>`;
   $('#prompt-big').innerHTML = '';
   renderRecZone('idle');
 
   Sfx.blip();
-  await typeInto($('#radio-msg'), 'HQ ► ' + s.radio(c), 20);
+  await typeInto($('#radio-msg'), s.radio(c), 20);
   await typeInto($('#fact-value'), s.fact(c), 34);
   const pb = $('#prompt-big');
   if (pb) {
-    pb.innerHTML = `<span class="say-ico">🗣</span> ` +
-      esc(s.prompt(c)).replace(/______/g, '<span class="blank">______</span>');
+    pb.innerHTML = esc(s.prompt(c)).replace(/______/g, '<span class="blank">______</span>');
     pb.classList.add('pop');
   }
 }
@@ -451,34 +424,36 @@ function renderRecZone(state, data) {
 
   if (state === 'idle') {
     z.innerHTML = `
-      <button class="mic-btn" id="btn-mic"><span class="mic-ico">🎙</span><span class="mic-txt">RECORD</span></button>
+      <button class="mic-btn" id="btn-mic" aria-label="Record"><span class="mic-ico">${Icons.mic(38)}</span><span class="mic-txt">RECORD</span></button>
       <div class="rec-side">
-        <button class="btn subtle" id="btn-example">🔊 EXAMPLE</button>
+        <button class="btn ghost" id="btn-example">${Icons.soundOn(18)} EXAMPLE</button>
         <div class="rec-hint">Press, then say the sentence!</div>
       </div>`;
     $('#btn-mic').onclick = beginCountdown;
     $('#btn-example').onclick = speakExample;
 
   } else if (state === 'count') {
-    z.innerHTML = `<div class="countdown" id="countdown">·</div>`;
+    z.innerHTML = `<div class="countdown" id="countdown">READY</div>`;
 
   } else if (state === 'rec') {
     z.innerHTML = `
-      <button class="mic-btn recording" id="btn-mic"><span class="mic-ico">■</span><span class="mic-txt">STOP</span></button>
+      <button class="mic-btn recording" id="btn-mic" aria-label="Stop recording"><span class="mic-ico">${Icons.stop(34)}</span><span class="mic-txt">STOP</span></button>
       <div class="rec-side">
         <div class="wave" id="wave">${'<span></span>'.repeat(7)}</div>
+        <div class="rec-clock" id="rec-clock">REC 0:00</div>
         <div class="rec-timer"><div class="rec-timer-fill" id="rec-timer-fill"></div></div>
       </div>`;
     $('#btn-mic').onclick = stopRec;
 
   } else if (state === 'review') {
     const forceRetry = data.quiet && App.quietTries < 2;
+    const duration = App.pendingClip ? App.pendingClip.dur.toFixed(1) + 's' : '0.0s';
     z.innerHTML = `
-      ${data.quiet ? '<div class="quiet-note">📻 HQ could not hear you! Speak louder 💪</div>' : ''}
+      ${data.quiet ? '<div class="quiet-note">HQ could not hear the signal. Please speak louder.</div>' : ''}
       <div class="review-row">
-        <button class="btn" id="btn-play">▶ LISTEN</button>
-        <button class="btn" id="btn-retry">↻ AGAIN</button>
-        <button class="btn primary" id="btn-send" ${forceRetry ? 'disabled' : ''}>📡 SEND TO HQ</button>
+        <button class="btn ghost review-play" id="btn-play" aria-label="Play recording">${Icons.play(22)} <span>${duration}</span></button>
+        <button class="btn secondary" id="btn-retry">${Icons.retry(19)} AGAIN</button>
+        <button class="btn primary big" id="btn-send" ${forceRetry ? 'disabled' : ''}>${Icons.send(21)} SEND TO HQ</button>
       </div>`;
     $('#btn-play').onclick = () => { if (App.pendingClip) Recorder.play(App.pendingClip.blob); };
     $('#btn-retry').onclick = () => { Recorder.stopPlayback(); beginCountdown(); };
@@ -488,17 +463,17 @@ function renderRecZone(state, data) {
 
 async function beginCountdown() {
   if (!Recorder.supported()) {
-    hqToast('🎙 This browser cannot record audio — please use Chrome or Edge.');
+    hqToast('This browser cannot record audio — please use Chrome or Edge.');
     return;
   }
   renderRecZone('count');
   const cd = $('#countdown');
-  if (cd) cd.textContent = '📡';
+  if (cd) cd.innerHTML = Icons.send(34);
   try {
     await Recorder.init();
   } catch (err) {
     renderRecZone('idle');
-    hqToast('🎙 Microphone blocked! Click the 🔒 icon in the address bar and allow the microphone, then try again.');
+    hqToast('Microphone blocked. Allow microphone access in the address bar, then try again.');
     return;
   }
   for (const n of ['3', '2', '1']) {
@@ -517,6 +492,12 @@ async function beginCountdown() {
 
 function startRec() {
   renderRecZone('rec');
+  const clockStarted = performance.now();
+  clearInterval(App.recClock);
+  App.recClock = setInterval(() => {
+    const clock = $('#rec-clock');
+    if (clock) clock.textContent = 'REC 0:' + String(Math.floor((performance.now() - clockStarted) / 1000)).padStart(2, '0');
+  }, 100);
   const bars = $$('#wave span');
   Recorder.start(v => {
     const btn = $('#btn-mic');
@@ -535,7 +516,7 @@ function startRec() {
   Recorder.startRecognition(transcript => {
     if (autoStopArmed || App.recState !== 'rec') return;
     if (performance.now() - recStartedAt < 900) return; // let a few words out first
-    if (!looksComplete(step, App.char, transcript)) return;
+    if (!Evaluate.looksComplete(targetFor(step, App.char), transcript)) return;
     autoStopArmed = true;
     clearTimeout(App.recTimeout);
     App.recTimeout = setTimeout(stopRec, 500); // brief grace period so the last word isn't cut off
@@ -545,6 +526,7 @@ function startRec() {
 
 async function stopRec() {
   clearTimeout(App.recTimeout);
+  clearInterval(App.recClock);
   if (App.recState !== 'rec') return;
   App.recState = 'stopping';
   const [clip, stt] = await Promise.all([Recorder.stop(), Recorder.stopRecognition()]);
@@ -563,26 +545,31 @@ async function sendClip() {
   Recorder.stopPlayback();
 
   const s = App.pack.steps[App.step];
-  const quality = evaluateClip(s, App.char, App.pendingClip.stt);
+  const evalResult = Evaluate.evaluateClip(targetFor(s, App.char), App.pendingClip.stt);
   App.clips.push({
     text: s.answer(App.char),
     blob: App.pendingClip.blob,
     ext: App.pendingClip.ext,
-    quality,
+    eval: evalResult,
   });
   App.pendingClip = null;
   App.quietTries = 0;
 
+  /* Truthful stamp: only claim VERIFIED when the fact actually came
+     through. Anything else is still accepted and still scores points —
+     it just says "received" rather than "verified". No child is told
+     mid-mission that they were wrong; that detail belongs in the
+     after-action report. */
   const z = $('#rec-zone');
   if (z) {
     z.innerHTML = '<div class="verify-slot" id="verify-slot"></div>';
-    slamStamp($('#verify-slot'), 'VERIFIED ✔', 'green');
+    const confirmed = evalResult.verification === 'confirmed';
+    slamStamp($('#verify-slot'),
+      confirmed ? 'VERIFIED' : 'RECEIVED',
+      confirmed ? 'green' : 'amber');
   }
   Sfx.chime();
   addPoints(DATA.POINTS_PER_CLIP);
-  const node = $(`.prog-node[data-i="${App.step}"]`);
-  if (node) node.classList.add('done');
-
   await sleep(1050);
   App.step++;
   if (!$('#rec-zone')) return;
@@ -591,19 +578,15 @@ async function sendClip() {
 }
 
 function missionEvidenceDone() {
-  const qs = App.clips.map(c => (c.quality != null ? c.quality : 0.75));
-  App.briefingQuality = qs.length ? qs.reduce((a, b) => a + b, 0) / qs.length : 0.75;
-  App.briefingTier = qualityTier(App.briefingQuality);
+  App.briefing = Evaluate.evaluateMission(App.clips.map(c => c.eval));
+  App.briefingTier = App.briefing.tier;
 
-  const fill = $('#prog-fill');
-  if (fill) fill.style.width = '100%';
-  $$('.prog-node').forEach(n => n.classList.add('done'));
-  const m = $('.mission-main');
+  const m = $('.mission-display-body');
   if (!m) return;
   m.innerHTML = `<div class="evidence-done">
     <div class="stamp gold big">ALL EVIDENCE COLLECTED</div>
     <p>HQ is waiting for your briefing, Agent${esc(agentName())}!</p>
-    <button class="btn big primary" id="btn-to-debrief">🏢 GO TO HEADQUARTERS ▶</button>
+    <button class="btn primary big" id="btn-to-debrief">${Icons.building(22)} GO TO HEADQUARTERS</button>
   </div>`;
   Sfx.fanfare();
   $('#btn-to-debrief').onclick = showDebrief;
@@ -653,7 +636,7 @@ function showDebrief() {
         <div class="caption-bar" id="caption"></div>
         <div class="debrief-overlay" id="debrief-overlay" hidden></div>
       </div>
-      <button class="btn subtle skip-btn" id="btn-skip">⏭ SKIP</button>
+      <button class="btn ghost skip-btn" id="btn-skip">${Icons.skip(18)} SKIP</button>
     </div>`, 'debrief');
 
   App.debriefGen++;
@@ -692,10 +675,14 @@ const REACTION_POOLS = {
 };
 const REACTION_INTERVAL = { high: 820, medium: 980, low: 1180 };
 
+/* The commander never claims HQ understood more than it did. When
+   nothing could be verified he thanks the agent for the report itself
+   rather than praising content he cannot vouch for. */
 const CMDR_LINES = {
   high:   name => `“Excellent work, Agent${name}!”`,
-  medium: name => `“Most of the intelligence was communicated clearly, Agent${name}.”`,
+  medium: name => `“Good report, Agent${name}. We have what we need.”`,
   low:    name => `“We gathered useful information, Agent${name}. Let's make the next report even clearer.”`,
+  unverified: name => `“Report received, Agent${name}. Good work out there.”`,
 };
 
 function scheduleReactions(tier) {
@@ -719,7 +706,7 @@ function setCommanderMood(tier) {
   cm.classList.remove('mood-impressed', 'mood-thinking', 'mood-neutral');
   cm.classList.add(tier === 'high' ? 'mood-impressed' : tier === 'low' ? 'mood-thinking' : 'mood-neutral');
   if (badge) {
-    badge.textContent = tier === 'high' ? '👍' : tier === 'low' ? '🤔' : '🧐';
+    badge.textContent = tier === 'high' ? 'APPROVED' : tier === 'low' ? 'ASSESSING' : 'REVIEWING';
     badge.classList.add('show');
   }
 }
@@ -772,7 +759,7 @@ async function runDebrief(gen) {
     if (!live()) break;
     const clip = App.clips[i];
     setStage('a');
-    await typeInto($('#caption'), '🗣 ' + clip.text, 18);
+    await typeInto($('#caption'), clip.text, 18);
     if (!live()) break;
 
     let cutTimer = null;
@@ -807,7 +794,8 @@ async function finaleDebrief(gen) {
   const bubble = $('#cmdr-bubble');
   if (bubble) {
     bubble.hidden = false;
-    const line = CMDR_LINES[App.briefingTier || 'medium'](agentName());
+    const key = App.briefing && !App.briefing.rank ? 'unverified' : (App.briefingTier || 'medium');
+    const line = CMDR_LINES[key](agentName());
     await typeInto(bubble, line, 32, false);
   }
   await sleep(350);
@@ -840,32 +828,50 @@ function showScorePanel(ov) {
   persist();
   const newRank = rankFor(App.save.points);
   const evidencePts = App.clips.length * DATA.POINTS_PER_CLIP;
-  const tier = App.briefingTier || 'medium';
-  const clarityLabel = { high: 'CRYSTAL CLEAR', medium: 'MOSTLY CLEAR', low: 'PARTIALLY RECEIVED' }[tier];
-  const understandLabel = { high: 'FULL UNDERSTANDING', medium: 'GENERAL UNDERSTANDING', low: 'BASIC UNDERSTANDING' }[tier];
-  const missionRank = rankLetter(App.briefingQuality != null ? App.briefingQuality : 0.75);
+  const b = App.briefing || Evaluate.evaluateMission(App.clips.map(c => c.eval));
+
+  /* No grade is invented when nothing could be verified — the report
+     says so instead of guessing. */
+  const rankBlock = b.rank
+    ? `<div class="aar-rank-letter rank-${b.rank}">${b.rank}</div>`
+    : `<div class="aar-rank-none">SIGNAL<br>UNVERIFIED</div>`;
+  const allUnverified = !b.rank;
 
   ov.innerHTML = `
-    <div class="panel score-panel">
-      <h2>📋 MISSION REPORT</h2>
-      <div class="eval-grid">
-        <div class="eval-row"><span>🗂 Information Collected</span><b>${App.clips.length} / ${App.pack.steps.length}</b></div>
-        <div class="eval-row"><span>📡 Communication Clarity</span><b>${clarityLabel}</b></div>
-        <div class="eval-row"><span>🏢 HQ Understanding</span><b>${understandLabel}</b></div>
-        <div class="eval-row rank"><span>🎖 Mission Rank</span><b class="rank-letter rank-${missionRank}">${missionRank}</b></div>
+    <div class="aar">
+      <div class="aar-head">
+        <span class="aar-kicker">CLASSIFIED // AGENT${esc(agentName())}</span>
+        <h2 class="aar-title">AFTER-ACTION REPORT</h2>
       </div>
-      <div class="score-row"><span>🎙 Evidence recorded</span><b>${App.clips.length} × ${DATA.POINTS_PER_CLIP} = ${evidencePts}</b></div>
-      <div class="score-row"><span>🏆 Mission bonus</span><b>+${DATA.MISSION_BONUS}</b></div>
-      <div class="score-row total"><span>🏅 Total points</span><b>${App.save.points}</b></div>
-      <div class="score-rank">${newRank.icon} RANK: <b>${newRank.name}</b></div>
-      <div class="score-stars">⭐⭐⭐</div>
-      <div class="dl-row">
-        <span class="dl-hint">💾 save voice clips:</span>
-        ${App.clips.map((cl, i) => `<button class="btn subtle dl-clip" data-i="${i}">clip ${i + 1}</button>`).join('')}
+
+      <div class="aar-rank">
+        <span class="aar-rank-label">MISSION RANK</span>
+        ${rankBlock}
       </div>
-      <div class="score-btns">
-        <button class="btn" id="btn-again">▶ WATCH AGAIN</button>
-        <button class="btn big primary" id="btn-new-mission">🗄 NEW MISSION</button>
+
+      <div class="aar-rows">
+        <div class="aar-row"><span>INTELLIGENCE</span><b>${App.clips.length} / ${App.pack.steps.length}</b></div>
+        <div class="aar-row"><span>CONTENT</span><b>${allUnverified ? '—' : esc(b.contentLabel)}</b></div>
+        <div class="aar-row"><span>TRANSMISSION</span><b>${allUnverified ? 'HQ received the clips; words could not be checked.' : esc(b.transmissionLabel)}</b></div>
+      </div>
+
+      <div class="aar-points">
+        <div class="aar-row"><span>EVIDENCE RECORDED</span><b>${App.clips.length} × ${DATA.POINTS_PER_CLIP} = ${evidencePts}</b></div>
+        <div class="aar-row"><span>MISSION BONUS</span><b>+${DATA.MISSION_BONUS}</b></div>
+        <div class="aar-row total"><span>TOTAL POINTS</span><b>${App.save.points}</b></div>
+        <div class="aar-row"><span>AGENT RANK</span><b>${esc(newRank.name)}</b></div>
+      </div>
+
+      <div class="aar-seal"><span class="aar-seal-mark"></span><span class="aar-seal-txt">HQ COMMANDER</span></div>
+
+      <div class="aar-dl">
+        <span class="aar-dl-hint">SAVE VOICE CLIPS</span>
+        ${App.clips.map((cl, i) => `<button class="btn ghost dl-clip" data-i="${i}">${i + 1}</button>`).join('')}
+      </div>
+
+      <div class="aar-btns">
+        <button class="btn secondary" id="btn-again">${Icons.play(18)} WATCH AGAIN</button>
+        <button class="btn primary big" id="btn-new-mission">${Icons.folder(21)} NEW MISSION</button>
       </div>
     </div>`;
 
@@ -878,7 +884,7 @@ function showScorePanel(ov) {
       if (!$('#debrief')) return;
       const pr = document.createElement('div');
       pr.className = 'promo-ov';
-      pr.innerHTML = `<div class="promo-card">🎉 PROMOTION! 🎉<br>${newRank.icon} <b>${newRank.name}</b></div>`;
+      pr.innerHTML = `<div class="promo-card">PROMOTION<br>${newRank.icon} <b>${newRank.name}</b></div>`;
       document.body.appendChild(pr);
       Sfx.promo();
       setTimeout(() => pr.remove(), 2600);
@@ -902,7 +908,7 @@ function downloadClip(cl, i) {
 function confetti(n) {
   const host = $('.cinema');
   if (!host) return;
-  const colors = ['#ffb400', '#e5484d', '#3fb950', '#2980b9', '#ff6fa5', '#9b59b6'];
+  const colors = ['#ffbd3f', '#d94a52', '#37b7d8', '#f4ead5'];
   for (let i = 0; i < n; i++) {
     const s = document.createElement('span');
     s.className = 'confetti';

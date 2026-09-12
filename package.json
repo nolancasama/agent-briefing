@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "art:prepare": "node art/generate.js",
-    "art:review": "node art/review-server.js"
+    "art:review": "node art/review-server.js",
+    "test": "node test-eval.js",
+    "test:e2e": "node test-e2e.js"
   }
 }

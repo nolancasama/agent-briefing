@@ -23,7 +23,7 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
       '--autoplay-policy=no-user-gesture-required',
     ],
   });
-  const context = await browser.newContext();
+  const context = await browser.newContext({ viewport: { width: 1366, height: 768 } });
   await context.grantPermissions(['microphone']);
   const page = await context.newPage();
   page.on('pageerror', e => errors.push('PAGEERROR: ' + e.message));
@@ -31,6 +31,8 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
 
   console.log('open', PAGE_URL);
   await page.goto(PAGE_URL);
+  await page.evaluate(() => localStorage.removeItem('agent-briefing-v1'));
+  await page.reload();
   await page.click('#btn-start');
 
   // first run -> Agent ID screen
@@ -53,8 +55,16 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   for (let i = 0; i < 4; i++) {
     console.log('recording clip', i + 1);
     await page.waitForSelector('.mic-btn:not(.recording)', { timeout: 20000 });
+    if (i === 0) {
+      await page.waitForFunction(() =>
+        document.querySelector('#fact-value')?.textContent.trim() &&
+        document.querySelector('#prompt-big')?.textContent.trim());
+      await page.waitForTimeout(450);
+      await page.screenshot({ path: SHOT('3a-mission-idle') });
+    }
     await page.click('#btn-mic');
     await page.waitForSelector('.mic-btn.recording', { timeout: 20000 });
+    if (i === 0) await page.screenshot({ path: SHOT('3b-mission-recording') });
     await page.waitForTimeout(2200);
     await page.click('#btn-mic');
     await page.waitForSelector('#btn-send:not([disabled])', { timeout: 20000 });
