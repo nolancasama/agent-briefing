@@ -87,3 +87,10 @@ A useful rule:
   encouraging signal". It can now mark content as incorrect. The *gameplay* half of that decision
   still stands in full — auto-stop remains positive-only and now requires the fact to be present,
   not merely the frame.
+
+## 2026-10-25 — Automatic verified dispatch, two editable models and seated HQ reply
+- A correct live speech-recognition result ends recording automatically after a minimum duration and short trailing buffer. Once the completed clip is verified for both reported fact and sentence frame, it is automatically sent to headquarters after a short acknowledgement. Partial, mismatched, quiet or unverified results remain manually reviewable and sendable; speech recognition does not block children.
+- Normalize contracted and expanded negative forms such as "doesn't" and "does not" so correct Level 2 speech can trigger hands-free dispatch.
+- First-time agent creation visibly offers male/female procedural SVG models. Both retain full mouth animation and the same independently customizable skin, hair, clothes colors, sunglasses and outfit silhouette choices (suit, trench coat, skirt suit). These should eventually be replaced by art sets that preserve both customization and lip sync, not a single uneditable PNG.
+- HQ's last response comes from the seated center listener rather than a separate commander on the far right. The extra table wedge was removed because it conflicted with the painted seated characters and perspective.
+- Mic hardware is released on mission exit. Rewatching a debrief does not re-issue earned points.
