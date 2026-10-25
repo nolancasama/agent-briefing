@@ -14,6 +14,13 @@ never exercises a real rank letter. The verified and mismatch paths were checked
 stubbing `SpeechRecognition` with scripted transcripts; nothing in the committed suite covers them
 yet, and adding that would be a genuine improvement.
 
+## October 25, 2026 updates
+- Speaking: a confirmed fact plus sufficiently complete sentence pattern now auto-stops the recording and sends to HQ. Incomplete, mismatched, quiet or unverified reports retain the manual review/SEND flow; Chrome's speech recognition never blocks progress. Expanded vs contracted "does not/doesn't" forms are normalized.
+- HQ: removed the isolated right-hand commander and his backdrop. The center seated listener is now the lead analyst, who delivers the same final feedback. Removed the extra perspective table overlay that made the seated team appear embedded in a ramp, and redistributed listeners across the room.
+- Agent ID: initial creation and subsequent editing now support male/female SVG agent models and live skin, hair, clothes color, neckwear, sunglasses and suit/trench-coat/skirt-suit customizations, all visible on the briefing avatar. Painted gender-specific lip-sync sprite sets are still future art work.
+- Safety and rewards: exiting a mission releases the microphone, and replaying a debrief cannot award the mission bonus again.
+- Tests: 50 pure-Node evaluation checks pass; the Chromium smoke test now also asserts female model/outfit persistence and absence of the old commander/table elements, but it has not been rerun in an actual browser as part of this update.
+
 ## What Exists
 - Game: `index.html`, `styles.css`, `js/` (data, evaluate, art, sfx, recorder, icons, game).
 - Speech evaluation lives in `js/evaluate.js`, separate from `game.js` and loadable under Node so it
