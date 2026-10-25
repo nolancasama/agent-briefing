@@ -550,11 +550,13 @@ function startRec() {
   let autoStopArmed = false;
   Recorder.startRecognition(transcript => {
     if (autoStopArmed || App.recState !== 'rec') return;
-    if (performance.now() - recStartedAt < 900) return; // let a few words out first
     if (!Evaluate.looksComplete(targetFor(step, App.char), transcript)) return;
     autoStopArmed = true;
     clearTimeout(App.recTimeout);
-    App.recTimeout = setTimeout(stopRec, 500); // brief grace period so the last word isn't cut off
+    // Very fast children may finish before 900ms. Remember recognition
+    // rather than throwing it away and waiting for an unnecessary 8s.
+    const minimumSpeechMs = Math.max(0, 900 - (performance.now() - recStartedAt));
+    App.recTimeout = setTimeout(stopRec, minimumSpeechMs + 500);
   });
   App.recTimeout = setTimeout(stopRec, 8000);
 }
