@@ -30,6 +30,7 @@ const App = {
   pendingClip: null, quietTries: 0, recState: 'idle',
   recTimeout: 0, recClock: 0, missionStartPoints: 0,
   debriefGen: 0, debriefSkip: false,
+  autoSendTimeout: 0, missionRewarded: false,
 };
 
 function persist() { localStorage.setItem(SAVE_KEY, JSON.stringify(App.save)); }
@@ -96,8 +97,9 @@ function hqToast(msg) {
 
 function setScreen(html, cls) {
   Recorder.stopPlayback();
-  Recorder.abortRecognition();
+  Recorder.release();
   clearTimeout(App.recTimeout);
+  clearTimeout(App.autoSendTimeout);
   clearInterval(App.recClock);
   const app = $('#app');
   app.className = 'screen-' + cls;
@@ -189,6 +191,15 @@ function showAgentId(goArchiveAfter) {
     ${hudHTML()}
     <div class="panel agentid-wrap">
       <h2 class="panel-title">AGENT ID CARD</h2>
+      <div class="agent-gender-picker">
+        <span class="opt-label">CHOOSE YOUR AGENT</span>
+        <div class="agent-gender-options">
+          ${[{gender:'m', label:'MALE AGENT'},{gender:'f',label:'FEMALE AGENT'}].map(p => `<button class="agent-gender-choice ${av.gender === p.gender ? 'sel' : ''}" data-gender="${p.gender}" aria-pressed="${av.gender === p.gender}">
+            ${Art.agentFull(Object.assign({}, av, {gender:p.gender,hair:p.gender==='f' && av.hair==='short' ? 'bob' : av.hair}), 78)}
+            <span>${p.label}</span>
+          </button>`).join('')}
+        </div>
+      </div>
       <div class="agentid-cols">
         <div class="agentid-preview" id="av-preview">${Art.agentFull(av, 150)}</div>
         <div class="agentid-opts">
@@ -200,8 +211,12 @@ function showAgentId(goArchiveAfter) {
             <div class="opt-vals">
               ${DATA.AVATAR_OPTIONS.hairs.map(hs => `<button class="pill ${av.hair === hs ? 'sel' : ''}" data-key="hair" data-val="${hs}">${hs.toUpperCase()}</button>`).join('')}
             </div></div>
-          ${swatchRow('SUIT', 'suit', DATA.AVATAR_OPTIONS.suits)}
-          ${swatchRow('TIE', 'tie', DATA.AVATAR_OPTIONS.ties)}
+          <div class="opt-row"><span class="opt-label">OUTFIT</span>
+            <div class="opt-vals">
+              ${DATA.AVATAR_OPTIONS.outfits.map((opt, i) => `<button class="pill ${av.outfit === opt ? 'sel' : ''}" data-key="outfit" data-val="${opt}">${['SUIT','TRENCH COAT','SKIRT SUIT'][i]}</button>`).join('')}
+            </div></div>
+          ${swatchRow('CLOTHES COLOR', 'suit', DATA.AVATAR_OPTIONS.suits)}
+          ${swatchRow('TIE / DETAIL', 'tie', DATA.AVATAR_OPTIONS.ties)}
           <div class="opt-row"><span class="opt-label">SUNGLASSES</span>
             <div class="opt-vals">
               <button class="pill ${av.shades ? 'sel' : ''}" data-key="shades" data-val="1">ON</button>
@@ -217,7 +232,24 @@ function showAgentId(goArchiveAfter) {
   wireHud();
 
   const state = Object.assign({}, av);
-  $$('.swatch, .pill').forEach(b => {
+  $('.agent-gender-choice').forEach(b => b.onclick = () => {
+    const next = b.dataset.gender;
+    if (state.gender === next) return;
+    if (next === 'f' && state.hair === 'short') state.hair = 'bob';
+    if (next === 'm' && state.hair === 'bob') state.hair = 'short';
+    state.gender = next;
+    $('.agent-gender-choice').forEach(card => {
+      const selected = card.dataset.gender === next;
+      card.classList.toggle('sel', selected);
+      card.setAttribute('aria-pressed', String(selected));
+    });
+    $('[data-key="hair"]').forEach(x => {
+      if (x.dataset.val) x.classList.toggle('sel', x.dataset.val === state.hair);
+    });
+    $('#av-preview').innerHTML = Art.agentFull(state, 150);
+    Sfx.click();
+  });
+  $('.swatch, .pill').forEach(b => {
     if (!b.dataset.key) return;
     b.onclick = () => {
       const k = b.dataset.key;
@@ -361,6 +393,7 @@ function startMission() {
   App.missionStartPoints = App.save.points;
   App.briefing = null;
   App.briefingTier = 'medium';
+  App.missionRewarded = false;
   Sfx.bgmStop();
 
   setScreen(`
@@ -387,7 +420,7 @@ function startMission() {
       <button class="btn danger" id="btn-abort">${Icons.close(18)} ABORT MISSION</button>
     </div>`, 'mission');
   wireHud();
-  $('#btn-abort').onclick = () => { Recorder.stopPlayback(); clearTimeout(App.recTimeout); showArchive(); };
+  $('#btn-abort').onclick = () => { Recorder.stopPlayback(); Recorder.release(); clearTimeout(App.recTimeout); showArchive(); };
   runStep();
 }
 
@@ -450,10 +483,11 @@ function renderRecZone(state, data) {
     const duration = App.pendingClip ? App.pendingClip.dur.toFixed(1) + 's' : '0.0s';
     z.innerHTML = `
       ${data.quiet ? '<div class="quiet-note">HQ could not hear the signal. Please speak louder.</div>' : ''}
+      ${data.autoSend ? '<div class="auto-send-note">INTELLIGENCE VERIFIED — SENDING TO HQ...</div>' : ''}
       <div class="review-row">
         <button class="btn ghost review-play" id="btn-play" aria-label="Play recording">${Icons.play(22)} <span>${duration}</span></button>
         <button class="btn secondary" id="btn-retry">${Icons.retry(19)} AGAIN</button>
-        <button class="btn primary big" id="btn-send" ${forceRetry ? 'disabled' : ''}>${Icons.send(21)} SEND TO HQ</button>
+        <button class="btn primary big" id="btn-send" ${forceRetry || data.autoSend ? 'disabled' : ''}>${Icons.send(21)} SEND TO HQ</button>
       </div>`;
     $('#btn-play').onclick = () => { if (App.pendingClip) Recorder.play(App.pendingClip.blob); };
     $('#btn-retry').onclick = () => { Recorder.stopPlayback(); beginCountdown(); };
@@ -462,6 +496,7 @@ function renderRecZone(state, data) {
 }
 
 async function beginCountdown() {
+  clearTimeout(App.autoSendTimeout);
   if (!Recorder.supported()) {
     hqToast('This browser cannot record audio — please use Chrome or Edge.');
     return;
@@ -536,11 +571,24 @@ async function stopRec() {
   const quiet = clip.peak < 0.035 || clip.dur < 0.35;
   if (quiet) App.quietTries++; else App.quietTries = 0;
   Sfx.paper();
-  renderRecZone('review', { quiet });
+  // Only auto-send when HQ has actually heard the target FACT *and*
+  // its sentence frame. A merely plausible/interim/partial recognizer
+  // result still gets a manual SEND button, never an automatic rejection.
+  const target = targetFor(App.pack.steps[App.step], App.char);
+  const verified = !quiet &&
+    Evaluate.evaluateClip(target, stt).verification === 'confirmed' &&
+    Evaluate.looksComplete(target, stt && stt.transcript);
+  renderRecZone('review', { quiet, autoSend: verified });
+  if (verified) {
+    App.autoSendTimeout = setTimeout(() => {
+      if (App.recState === 'review' && App.pendingClip === clip) sendClip();
+    }, 550);
+  }
 }
 
 async function sendClip() {
   if (App.recState !== 'review' || !App.pendingClip) return;
+  clearTimeout(App.autoSendTimeout);
   App.recState = 'sending';
   Recorder.stopPlayback();
 
@@ -578,6 +626,7 @@ async function sendClip() {
 }
 
 function missionEvidenceDone() {
+  Recorder.release(); // finished speaking: turn off the browser's live microphone
   App.briefing = Evaluate.evaluateMission(App.clips.map(c => c.eval));
   App.briefingTier = App.briefing.tier;
 
@@ -622,15 +671,13 @@ function showDebrief() {
           <div class="npc-backs">
             ${[0, 1, 2, 3].map(i => `<div class="npcback-slot" style="animation-delay:${i * 0.6}s">${Art.npcBack(i)}</div>`).join('')}
           </div>
-          <div class="cmdr-slot" id="cmdr-slot">${Art.commander()}<div class="cmdr-mood" id="cmdr-mood"></div></div>
-          <div class="cmdr-bubble" id="cmdr-bubble" hidden></div>
         </div>
         <div class="stage stage-b offstage" id="stage-b">
           <div class="room-wall dark"></div>
           <div class="npc-fronts">
-            ${[0, 1, 2].map(i => `<div class="npcfront-slot">${Art.npcFront(i)}</div>`).join('')}
+            ${[0, 1, 2].map(i => `<div class="npcfront-slot ${i === 1 ? 'lead-official' : ''}" ${i === 1 ? 'id="lead-official"' : ''}>${Art.npcFront(i)}</div>`).join('')}
           </div>
-          <div class="table-edge"></div>
+          <div class="official-reply" id="official-reply" hidden></div>
         </div>
         <div class="cut-flash" id="cut-flash"></div>
         <div class="caption-bar" id="caption"></div>
@@ -678,7 +725,7 @@ const REACTION_INTERVAL = { high: 820, medium: 980, low: 1180 };
 /* The commander never claims HQ understood more than it did. When
    nothing could be verified he thanks the agent for the report itself
    rather than praising content he cannot vouch for. */
-const CMDR_LINES = {
+const OFFICIAL_LINES = {
   high:   name => `“Excellent work, Agent${name}!”`,
   medium: name => `“Good report, Agent${name}. We have what we need.”`,
   low:    name => `“We gathered useful information, Agent${name}. Let's make the next report even clearer.”`,
@@ -700,15 +747,9 @@ function scheduleReactions(tier) {
   return t;
 }
 
-function setCommanderMood(tier) {
-  const cm = $('#cmdr-slot'), badge = $('#cmdr-mood');
-  if (!cm) return;
-  cm.classList.remove('mood-impressed', 'mood-thinking', 'mood-neutral');
-  cm.classList.add(tier === 'high' ? 'mood-impressed' : tier === 'low' ? 'mood-thinking' : 'mood-neutral');
-  if (badge) {
-    badge.textContent = tier === 'high' ? 'APPROVED' : tier === 'low' ? 'ASSESSING' : 'REVIEWING';
-    badge.classList.add('show');
-  }
+function setLeadOfficialMood(tier) {
+  const lead = $('#lead-official');
+  if (lead) lead.dataset.mood = tier;
 }
 
 function playClipAwait(clip, agentEl, live) {
@@ -751,7 +792,7 @@ async function runDebrief(gen) {
   if (live()) await sleep(450);
 
   const tier = App.briefingTier || 'medium';
-  setCommanderMood(tier);
+  setLeadOfficialMood(tier);
   const reactTimer = scheduleReactions(tier);
 
   // play each recorded sentence — the student IS the presenter
@@ -784,18 +825,21 @@ async function finaleDebrief(gen) {
   const skipBtn = $('#btn-skip');
   if (skipBtn) skipBtn.remove();
 
-  // the commander stands
-  const cm = $('#cmdr-slot');
-  if (cm) cm.classList.add('standing');
+  // The center listener is HQ's lead analyst and delivers the reply.
+  // Keep the room in the listener's camera view so the voice has an
+  // obvious source, rather than inventing a separate commander.
+  setStage('b');
+  const lead = $('#lead-official');
+  if (lead) lead.classList.add('replying');
   Sfx.blip();
   await sleep(550);
-  if (gen !== App.debriefGen) return;
+  if (gen !== App.debriefGen || !$('#debrief')) return;
 
-  const bubble = $('#cmdr-bubble');
+  const bubble = $('#official-reply');
   if (bubble) {
     bubble.hidden = false;
     const key = App.briefing && !App.briefing.rank ? 'unverified' : (App.briefingTier || 'medium');
-    const line = CMDR_LINES[key](agentName());
+    const line = OFFICIAL_LINES[key](agentName());
     await typeInto(bubble, line, 32, false);
   }
   await sleep(350);
@@ -805,8 +849,7 @@ async function finaleDebrief(gen) {
   Sfx.applause(3.4);
   Sfx.fanfare();
   confetti(90);
-  $$('.npcback-slot').forEach(el => el.classList.add('clap'));
-  if (cm) cm.classList.add('clap');
+  $('.npcback-slot, .npcfront-slot').forEach(el => el.classList.add('clap'));
 
   await sleep(1250);
   if (gen !== App.debriefGen || !$('#debrief')) return;
@@ -822,10 +865,15 @@ async function finaleDebrief(gen) {
 
 function showScorePanel(ov) {
   const oldRank = rankFor(App.missionStartPoints);
-  App.save.points += DATA.MISSION_BONUS;
-  const closed = App.save.closed[App.char.id] || (App.save.closed[App.char.id] = {});
-  closed[App.pack.id] = true;
-  persist();
+  // Replaying a briefing is free; it must never issue another mission bonus.
+  const firstReport = !App.missionRewarded;
+  if (firstReport) {
+    App.save.points += DATA.MISSION_BONUS;
+    const closed = App.save.closed[App.char.id] || (App.save.closed[App.char.id] = {});
+    closed[App.pack.id] = true;
+    App.missionRewarded = true;
+    persist();
+  }
   const newRank = rankFor(App.save.points);
   const evidencePts = App.clips.length * DATA.POINTS_PER_CLIP;
   const b = App.briefing || Evaluate.evaluateMission(App.clips.map(c => c.eval));
@@ -862,7 +910,7 @@ function showScorePanel(ov) {
         <div class="aar-row"><span>AGENT RANK</span><b>${esc(newRank.name)}</b></div>
       </div>
 
-      <div class="aar-seal"><span class="aar-seal-mark"></span><span class="aar-seal-txt">HQ COMMANDER</span></div>
+      <div class="aar-seal"><span class="aar-seal-mark"></span><span class="aar-seal-txt">HQ LEAD ANALYST</span></div>
 
       <div class="aar-dl">
         <span class="aar-dl-hint">SAVE VOICE CLIPS</span>
@@ -879,7 +927,7 @@ function showScorePanel(ov) {
   $('#btn-again').onclick = showDebrief;
   $$('.dl-clip').forEach(b => b.onclick = () => downloadClip(App.clips[+b.dataset.i], +b.dataset.i));
 
-  if (newRank !== oldRank) {
+  if (firstReport && newRank !== oldRank) {
     setTimeout(() => {
       if (!$('#debrief')) return;
       const pr = document.createElement('div');
