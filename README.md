@@ -25,8 +25,9 @@ python -m http.server 8000
 
 ## 🎮 Game flow
 
-1. **Title → Agent ID** — the student customizes their agent avatar (skin, hair,
-   suit, tie, sunglasses, codename). Saved in the browser.
+1. **Title → Agent ID** — the student first chooses a male or female agent model,
+   then customizes hair, skin, suit/trench coat/skirt suit, clothing colors, tie,
+   sunglasses, and codename. Saved in the browser.
 2. **Intelligence Archive** — a wall of six confidential dossiers. Pick a level:
    - **LEVEL 1 · FIRST REPORT**: *This is… / He–She is… / He–She likes… / He–She can…*
    - **LEVEL 2 · DEEP COVER**: *This is… / He–She has… / He–She wants… / He–She doesn't like…*
@@ -34,15 +35,18 @@ python -m http.server 8000
    reveals the character's facts.
 4. **Speaking Mission** — one prompt at a time. HQ asks a question over the
    radio, the fact card appears, and the student records the full sentence.
-   Each clip gets a **VERIFIED** stamp, +25 points, and progress. A quiet
-   recording gets a friendly "HQ couldn't hear you!" retry. The 🔊 EXAMPLE
-   button speaks a model sentence (browser text-to-speech).
+   When speech recognition confirms the right fact and sentence pattern, the
+   recording automatically stops and sends to HQ. Other clips still offer a
+   manual SEND button. Each accepted clip gets +25 points and a **VERIFIED**
+   stamp only if the fact was confirmed; otherwise it says **RECEIVED**.
+   A quiet recording gets a friendly retry. The EXAMPLE button speaks a model
+   sentence (browser text-to-speech).
 5. **Headquarters Debriefing** — the reward. The avatar walks into the briefing
    room, the character's photo is on the projector, and the student's recorded
    clips play one by one while the avatar lip-syncs. The camera cuts to agents
-   reacting (nodding, taking notes, whispering). At the end the commander
-   stands: *"Excellent work, Agent!"* — applause, confetti, MISSION COMPLETE,
-   score, rank progress.
+   reacting (nodding, taking notes, whispering). At the end the seated lead analyst
+   addresses the agent: *"Excellent work, Agent!"* — applause, confetti, MISSION
+   COMPLETE, score, rank progress.
 
 Points and ranks (🔰 Rookie → 👑 Master Spy), completed cases, and the avatar
 persist in `localStorage`. Recordings stay **in memory only** (privacy) — they
@@ -102,3 +106,7 @@ candidate review, approval, apply, rollback, or runtime override workflow.
 Chrome and Edge are best (MediaRecorder + mic on `file://`). Firefox works.
 Safari/iPad works over `http(s)` (records as `.m4a`). The recorded voice is the
 only spoken dialogue in the debriefing — by design.
+
+The reviewed painted portraits, headquarters audience and room backgrounds are applied.
+The player avatar remains an editable, lip-sync-ready SVG model until matching painted
+male/female character parts (including mouth overlays) can be prepared.
