@@ -53,7 +53,17 @@ const Evaluate = (() => {
     return w;
   }
 
-  const normalize = s => words(s).map(stem);
+  // Chrome may return expanded contractions ("does not") for a model
+  // sentence written "doesn't". Treat them as the same English pattern.
+  function normalize(s) {
+    const expanded = String(s == null ? '' : s)
+      .replace(/\bdoesn't\b/gi, 'does not')
+      .replace(/\bdon't\b/gi, 'do not')
+      .replace(/\bcan't\b/gi, 'cannot')
+      .replace(/\bisn't\b/gi, 'is not')
+      .replace(/\baren't\b/gi, 'are not');
+    return words(expanded).map(stem);
+  }
   const contentOf = list => list.filter(w => !STOPWORDS.has(w) && !FILLERS.has(w));
 
   /* How much of targetWords appears in heardWords (multiset-safe). */
