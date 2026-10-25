@@ -81,7 +81,10 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   await page.waitForTimeout(3300);
   const avatarModel = await page.locator('#agent-slot svg.agent-svg').getAttribute('aria-label');
   if (avatarModel !== 'Female agent wearing coat') throw new Error('Player model did not retain customization: ' + avatarModel);
-  if (await page.locator('#cmdr-slot, .table-edge').count()) throw new Error('Legacy commander or table wedge still rendered');
+  if (await page.locator('#cmdr-slot, .table-edge, .conf-table').count()) throw new Error('Legacy commander or fake table still rendered');
+  if (await page.locator('#stage-a .npcback-slot').count() !== 4) throw new Error('Four seated HQ listeners must remain visible');
+  const audienceBottom = await page.locator('#stage-a .npc-backs').evaluate(el => getComputedStyle(el).bottom);
+  if (parseFloat(audienceBottom) <= 0) throw new Error('HQ seated audience position invalid');
   if (await page.locator('#lead-official').count() !== 1) throw new Error('Seated HQ lead analyst missing');
   await page.screenshot({ path: SHOT('4a-debrief-avatar') });
   await page.waitForTimeout(4200);
