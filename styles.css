@@ -795,25 +795,19 @@ button:focus-visible, input:focus-visible {
 .podium-agent.walk-in .agent-svg { animation: bob 0.24s 5; }
 @keyframes bob { 50% { transform: translateY(-6px); } }
 
-.conf-table {
-  position: absolute;
-  left: 6%; right: 6%;
-  bottom: -4%;
-  height: 34%;
-  background:
-    linear-gradient(180deg, #5a4632 0 12%, #3b2f22 12% 100%);
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
-  z-index: 4;
-  box-shadow: var(--shadow-low);
-}
+/* The photographed HQ room already contains its own floor and perspective.
+   Treat these seated listeners as near-camera silhouettes. Their lower
+   edges disappear into the cinematic crop, never behind a second table. */
 .npc-backs {
   position: absolute;
   left: 12%;
   width: 76%;
-  bottom: 6%;
+  bottom: 1%;
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
   z-index: 5;
+  pointer-events: none;
 }
 .npcback-slot { position: relative; width: 20%; min-width: 88px; animation: sway 3.8s ease-in-out infinite alternate; }
 .npcback-slot svg, .npcback-slot .npcback-art { width: 100%; height: auto; }
