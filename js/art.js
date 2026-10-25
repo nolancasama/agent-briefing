@@ -137,6 +137,11 @@ const Art = (() => {
               <circle cx="14" cy="-1" r="9.5" fill="none" stroke="#33302c" stroke-width="2.6"/>
               <rect x="-5" y="-3" width="10" height="2.6" fill="#33302c"/>`);
     }
+    // A little extra expression distinguishes the two selectable player models.
+    // Hairstyles and outfits remain available to either model.
+    if (o.gender === 'f' && !o.shades) {
+      p.push(`<path d="M -21 -5 l-5 -4 M 21 -5 l5 -4" fill="none" stroke="#34282d" stroke-width="2.4" stroke-linecap="round"/>`);
+    }
     // nose + blush
     p.push(`<ellipse cx="0" cy="9" rx="4" ry="3" fill="rgba(0,0,0,0.13)"/>`);
     if (o.blush) {
@@ -198,27 +203,45 @@ const Art = (() => {
   /* ---------- the player's full-body agent avatar ---------- */
   function agentFull(av, w = 130) {
     const h = Math.round(w * 260 / 140);
+    // Keep models procedural until the full, lip-sync-ready raster avatar set
+    // exists. Unlike a static PNG, every outfit/hair/skin choice appears in
+    // both the ID preview and the headquarters presentation.
     const image = imageHTML('player_avatar', 'agent-svg agent-art', w, h, 'Player agent');
     if (image) return image;
-    return `<svg viewBox="-70 -130 140 260" width="${w}" height="${h}" class="agent-svg">
+    const feminine = av.gender === 'f';
+    const outfit = av.outfit || 'suit';
+    const shoulder = feminine ? 32 : 40;
+    const waist = feminine ? 25 : 32;
+    const jacket = av.suit || '#22314a';
+    const tie = av.tie || '#e0b23a';
+    const trousers = `<rect x="-24" y="70" width="20" height="46" rx="7" fill="#1c2733"/>
+      <rect x="4" y="70" width="20" height="46" rx="7" fill="#1c2733"/>`;
+    const shoes = `<ellipse cx="-14" cy="116" rx="15" ry="7" fill="#0d1218"/>
+      <ellipse cx="14" cy="116" rx="15" ry="7" fill="#0d1218"/>`;
+    const torso = `<path d="M -${shoulder} -14 Q -${shoulder + 7} 28 -${waist} 68 L ${waist} 68 Q ${shoulder + 7} 28 ${shoulder} -14 Q 20 -27 0 -27 Q -20 -27 -${shoulder} -14 Z" fill="${jacket}"/>`;
+    const lapels = `<path d="M -14 -25 L 0 12 L 14 -25 L 7 -26 L 0 -11 L -7 -26 Z" fill="#f4f3ed"/>
+      <path d="M -14 -25 L -22 -12 L -7 8 L 0 12 Z M 14 -25 L 22 -12 L 7 8 L 0 12 Z" fill="${jacket}" stroke="rgba(0,0,0,.3)" stroke-width="1"/>`;
+    const neckwear = `<path d="M -5 -22 L 5 -22 L 3 10 L 0 19 L -3 10 Z" fill="${tie}"/>`;
+    const skirt = outfit === 'skirt'
+      ? `<path d="M -${waist} 53 L ${waist} 53 L 36 93 Q 0 98 -36 93 Z" fill="${jacket}" stroke="#101725" stroke-width="2"/>`
+      : '';
+    const coat = outfit === 'coat'
+      ? `<path d="M -${shoulder} -12 L -${shoulder + 5} 48 L -37 96 L -4 89 L 0 0 L 4 89 L 37 96 L ${shoulder + 5} 48 L ${shoulder} -12 L 12 -22 L 0 22 L -12 -22 Z"
+          fill="${jacket}" stroke="#152237" stroke-width="2"/>
+        <path d="M -${shoulder} 41 Q 0 51 ${shoulder} 41" fill="none" stroke="${tie}" stroke-width="4"/>
+        <circle cx="-9" cy="34" r="2.3" fill="#e5c780"/><circle cx="9" cy="34" r="2.3" fill="#e5c780"/>`
+      : '';
+    return `<svg viewBox="-70 -130 140 260" width="${w}" height="${h}" class="agent-svg" role="img" aria-label="${feminine ? 'Female' : 'Male'} agent wearing ${outfit}">
       <g class="agent-body">
-        <rect x="-24" y="66" width="20" height="46" rx="8" fill="#1c2733"/>
-        <rect x="4" y="66" width="20" height="46" rx="8" fill="#1c2733"/>
-        <ellipse cx="-14" cy="116" rx="15" ry="7" fill="#0d1218"/>
-        <ellipse cx="14" cy="116" rx="15" ry="7" fill="#0d1218"/>
-        <path d="M -38 -14 Q -44 58 -30 72 L 30 72 Q 44 58 38 -14 Q 20 -27 0 -27 Q -20 -27 -38 -14 Z" fill="${av.suit}"/>
-        <polygon points="-13,-25 13,-25 0,8" fill="#ffffff"/>
-        <polygon points="-13,-25 -2,-25 -16,-6" fill="${av.suit}" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
-        <polygon points="13,-25 2,-25 16,-6" fill="${av.suit}" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
-        <polygon points="-5,-22 5,-22 3,12 0,20 -3,12" fill="${av.tie}"/>
-        <rect x="-54" y="-14" width="17" height="66" rx="8.5" fill="${av.suit}"/>
-        <rect x="37" y="-14" width="17" height="66" rx="8.5" fill="${av.suit}"/>
-        <circle cx="-45" cy="58" r="8" fill="${av.skin}"/>
-        <circle cx="45" cy="58" r="8" fill="${av.skin}"/>
+        ${trousers}${shoes}${torso}${lapels}${neckwear}${skirt}${coat}
+        <rect x="-${shoulder + 16}" y="-14" width="17" height="66" rx="8.5" fill="${jacket}"/>
+        <rect x="${shoulder - 1}" y="-14" width="17" height="66" rx="8.5" fill="${jacket}"/>
+        <circle cx="-${shoulder + 7}" cy="58" r="8" fill="${av.skin}"/>
+        <circle cx="${shoulder + 7}" cy="58" r="8" fill="${av.skin}"/>
         <circle cx="-24" cy="-4" r="5.5" fill="#ffd24a" stroke="#b8860b" stroke-width="1.5"/>
       </g>
-      <g class="agent-head" transform="translate(0 -74) scale(0.92)">
-        ${faceSVG({ skin: av.skin, hairColor: av.hairColor, hair: av.hair, shades: av.shades })}
+      <g class="agent-head" transform="translate(0 -74) scale(${feminine ? 0.88 : 0.92})">
+        ${faceSVG({ skin: av.skin, hairColor: av.hairColor, hair: av.hair, shades: av.shades, gender: av.gender })}
       </g>
     </svg>`;
   }
