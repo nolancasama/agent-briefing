@@ -676,7 +676,8 @@ function showDebrief() {
             <div class="screen-inner">${Art.portrait(c, 150, 168)}</div>
           </div>
           <div class="podium-agent" id="agent-slot">${Art.agentFull(av, 118)}</div>
-          <div class="conf-table"></div>
+          <!-- The painted room supplies the furniture and perspective.
+               Audience backs are foreground silhouettes, not embedded in an overlaid table. -->
           <div class="npc-backs">
             ${[0, 1, 2, 3].map(i => `<div class="npcback-slot" style="animation-delay:${i * 0.6}s">${Art.npcBack(i)}</div>`).join('')}
           </div>
