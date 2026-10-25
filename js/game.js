@@ -195,7 +195,7 @@ function showAgentId(goArchiveAfter) {
         <span class="opt-label">CHOOSE YOUR AGENT</span>
         <div class="agent-gender-options">
           ${[{gender:'m', label:'MALE AGENT'},{gender:'f',label:'FEMALE AGENT'}].map(p => `<button class="agent-gender-choice ${av.gender === p.gender ? 'sel' : ''}" data-gender="${p.gender}" aria-pressed="${av.gender === p.gender}">
-            ${Art.agentFull(Object.assign({}, av, {gender:p.gender,hair:p.gender==='f' && av.hair==='short' ? 'bob' : av.hair}), 78)}
+            <span class="agent-gender-model">${Art.agentFull(Object.assign({}, av, {gender:p.gender,hair:p.gender==='f' && av.hair==='short' ? 'bob' : av.hair}), 78)}</span>
             <span>${p.label}</span>
           </button>`).join('')}
         </div>
@@ -232,24 +232,31 @@ function showAgentId(goArchiveAfter) {
   wireHud();
 
   const state = Object.assign({}, av);
-  $('.agent-gender-choice').forEach(b => b.onclick = () => {
+  const refreshAgentPreview = () => {
+    $('#av-preview').innerHTML = Art.agentFull(state, 150);
+    $$('.agent-gender-choice').forEach(card => {
+      const model = card.querySelector('.agent-gender-model');
+      if (model) model.innerHTML = Art.agentFull(Object.assign({}, state, {gender: card.dataset.gender}), 78);
+    });
+  };
+  $$('.agent-gender-choice').forEach(b => b.onclick = () => {
     const next = b.dataset.gender;
     if (state.gender === next) return;
     if (next === 'f' && state.hair === 'short') state.hair = 'bob';
     if (next === 'm' && state.hair === 'bob') state.hair = 'short';
     state.gender = next;
-    $('.agent-gender-choice').forEach(card => {
+    $$('.agent-gender-choice').forEach(card => {
       const selected = card.dataset.gender === next;
       card.classList.toggle('sel', selected);
       card.setAttribute('aria-pressed', String(selected));
     });
-    $('[data-key="hair"]').forEach(x => {
+    $$('[data-key="hair"]').forEach(x => {
       if (x.dataset.val) x.classList.toggle('sel', x.dataset.val === state.hair);
     });
-    $('#av-preview').innerHTML = Art.agentFull(state, 150);
+    refreshAgentPreview();
     Sfx.click();
   });
-  $('.swatch, .pill').forEach(b => {
+  $$('.swatch, .pill').forEach(b => {
     if (!b.dataset.key) return;
     b.onclick = () => {
       const k = b.dataset.key;
@@ -257,7 +264,7 @@ function showAgentId(goArchiveAfter) {
       Sfx.click();
       $$(`[data-key="${k}"]`).forEach(x => x.classList.toggle('sel',
         k === 'shades' ? (!!x.dataset.val === !!state[k]) : x.dataset.val === String(state[k])));
-      $('#av-preview').innerHTML = Art.agentFull(state, 150);
+      refreshAgentPreview();
     };
   });
   $('#btn-agent-back').onclick = showTitle;
@@ -851,7 +858,7 @@ async function finaleDebrief(gen) {
   Sfx.applause(3.4);
   Sfx.fanfare();
   confetti(90);
-  $('.npcback-slot, .npcfront-slot').forEach(el => el.classList.add('clap'));
+  $$('.npcback-slot, .npcfront-slot').forEach(el => el.classList.add('clap'));
 
   await sleep(1250);
   if (gen !== App.debriefGen || !$('#debrief')) return;
