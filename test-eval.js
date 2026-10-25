@@ -137,6 +137,10 @@ check('a complete correct sentence looks complete while recording',
   E.looksComplete(KIND, 'He is kind.'), true);
 check('a complete frame without the fact does not look complete while recording',
   E.looksComplete(KIND, 'He is very.'), false);
+check('an expanded does-not recording auto-completes a doesn\'t-like sentence',
+  E.looksComplete({ fact: 'carrots', frame: "He doesn't like ______." }, 'He does not like carrots.'), true);
+check('a contracted recording auto-completes a doesn\'t-like sentence',
+  E.looksComplete({ fact: 'carrots', frame: "He doesn't like ______." }, "He doesn't like carrots."), true);
 check('a clear full-frame answer reports a clear transmission',
   E.transmissionLabel([good]), 'CLEAR TRANSMISSION');
 check('a fact-only answer reports a weak transmission',
