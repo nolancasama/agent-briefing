@@ -280,7 +280,20 @@ button:focus-visible, input:focus-visible {
 /* ============================================================
    AGENT ID
    ============================================================ */
-.agentid-wrap { width: min(94vw, 760px); margin-top: var(--space-3); }
+.agentid-wrap { width: min(96vw, 900px); margin-top: var(--space-3); }
+.agent-gender-picker { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); margin-bottom: var(--space-5); }
+.agent-gender-picker > .opt-label { width: auto; font-weight: 800; text-align: center; color: var(--amber); }
+.agent-gender-options { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); width: 100%; }
+.agent-gender-choice {
+  display: flex; flex: 1 1 150px; align-items: center; justify-content: center; flex-direction: column;
+  gap: var(--space-1); max-width: 230px; min-height: 125px; padding: var(--space-2);
+  background: var(--bg2); border: 2px solid var(--line); border-radius: var(--radius-md);
+  color: var(--ink); font-weight: 800; font-size: var(--type-tech); letter-spacing: .06em;
+}
+.agent-gender-choice.sel { background: var(--panel2); border-color: var(--amber); box-shadow: 0 0 0 2px rgba(255,189,63,.14); }
+.agent-gender-choice:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.agent-gender-choice .agent-svg { width: 52px; height: 90px; }
+.agent-gender-choice:hover { background: var(--panel2); }
 .agentid-cols { display: flex; gap: 26px; flex-wrap: wrap; }
 .agentid-preview {
   flex: 0 0 190px;
@@ -627,6 +640,10 @@ button:focus-visible, input:focus-visible {
 .rec-zone .review-row, .rec-zone .quiet-note { grid-column: 1 / -1; }
 .rec-side { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
 .rec-hint { color: var(--ink-dim); font-size: var(--type-instruction); }
+.auto-send-note {
+  color: var(--green); font-family: var(--font-type); font-size: var(--type-instruction);
+  font-weight: 800; letter-spacing: .025em; text-align: center;
+}
 
 .mic-btn {
   width: 132px; height: 132px;
@@ -876,23 +893,40 @@ button:focus-visible, input:focus-visible {
 
 .npc-fronts {
   position: absolute;
-  left: 0; right: 0;
-  bottom: 8%;
+  left: 9%; right: 9%;
+  bottom: 6%;
   display: flex;
-  justify-content: center;
-  gap: 5%;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 3%;
   z-index: 5;
 }
-.npcfront-slot { width: 24%; min-width: 130px; }
+.npcfront-slot { width: 29%; min-width: 0; transform-origin: bottom center; }
 .npcfront-slot svg, .npcfront-slot .npc-art { width: 100%; height: auto; }
 .npcfront-slot .npc-art { aspect-ratio: 7 / 10; object-fit: contain; }
-.table-edge {
+/* The approved PNGs depict officials already seated at a desk.
+   Never overlay an additional faux-perspective table: it becomes a
+   wedge across their bodies and makes them appear inside the table. */
+.lead-official.replying { transform: translateY(-2%) scale(1.06); filter: drop-shadow(0 0 12px rgba(255, 189, 63, .3)); }
+.npcfront-slot.clap { animation: audienceApplause .36s ease-in-out infinite alternate; }
+@keyframes audienceApplause { from { transform: translateY(0); } to { transform: translateY(-3px); } }
+.official-reply {
   position: absolute;
-  left: 0; right: 0;
-  bottom: 0;
-  height: 15%;
-  background: linear-gradient(180deg, rgba(90, 70, 50, 0.18), rgba(59, 47, 34, 0.42));
-  z-index: 6;
+  top: 12%; left: 50%; transform: translateX(-50%);
+  width: max-content; max-width: 84%; z-index: 10;
+  background: #fdfdf6; color: #23324a; font-weight: 800;
+  font-size: var(--type-instruction); text-align: center;
+  border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-low);
+}
+.official-reply::before {
+  content: 'HQ LEAD ANALYST'; display: block; color: #50617b;
+  font-family: var(--font-type); font-size: var(--type-tech);
+  margin-bottom: var(--space-2); letter-spacing: .09em;
+}
+.official-reply::after {
+  content: ''; position: absolute; bottom: -14px; left: calc(50% - 9px);
+  border: 9px solid transparent; border-top-color: #fdfdf6;
 }
 .npcfront-slot.nod .npc-head { animation: nod 0.85s ease; }
 .npcfront-slot.write .npc-pen { animation: scribble 0.16s 6 alternate; }
@@ -1083,4 +1117,8 @@ button:focus-visible, input:focus-visible {
   .mission-photo { flex-direction: row; align-items: center; }
   .progress-row { gap: 22px; }
   .cinema { aspect-ratio: 4 / 3; }
+  .agent-gender-choice { flex-basis: 120px; }
+  .agent-gender-choice .agent-svg { width: 43px; height: 80px; }
+  .npc-fronts { left: 2%; right: 2%; gap: 1%; }
+  .official-reply { top: 13%; width: 90%; max-width: 90%; }
 }
