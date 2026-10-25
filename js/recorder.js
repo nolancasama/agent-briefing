@@ -203,8 +203,31 @@ const Recorder = (() => {
     }
   }
 
+  /* Release hardware when a student aborts or finishes the mission.
+     stop() is for preserving a clip; release() intentionally discards
+     any active recording and disables the microphone indicator. */
+  function release() {
+    cancelAnimationFrame(raf);
+    abortRecognition();
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      try {
+        mediaRecorder.ondataavailable = null;
+        mediaRecorder.onstop = null;
+        mediaRecorder.stop();
+      } catch (e) { /* recorder was already shutting down */ }
+    }
+    mediaRecorder = null;
+    chunks = [];
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      stream = null;
+    }
+    analyser = null;
+    timeBuf = null;
+  }
+
   return {
     supported, init, start, stop, play, stopPlayback, hasStream: () => !!stream,
-    recognitionSupported, startRecognition, stopRecognition, abortRecognition,
+    recognitionSupported, startRecognition, stopRecognition, abortRecognition, release,
   };
 })();
