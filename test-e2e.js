@@ -38,6 +38,8 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   // first run -> Agent ID screen
   await page.waitForSelector('#btn-agent-save');
   await page.fill('#av-name', 'NOVA');
+  await page.click('.agent-gender-choice[data-gender="f"]');
+  await page.click('[data-key="outfit"][data-val="coat"]');
   await page.click('#btn-agent-save');
 
   // archive
@@ -77,6 +79,10 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   await page.waitForSelector('#btn-to-debrief', { timeout: 20000 });
   await page.click('#btn-to-debrief');
   await page.waitForTimeout(3300);
+  const avatarModel = await page.locator('#agent-slot svg.agent-svg').getAttribute('aria-label');
+  if (avatarModel !== 'Female agent wearing coat') throw new Error('Player model did not retain customization: ' + avatarModel);
+  if (await page.locator('#cmdr-slot, .table-edge').count()) throw new Error('Legacy commander or table wedge still rendered');
+  if (await page.locator('#lead-official').count() !== 1) throw new Error('Seated HQ lead analyst missing');
   await page.screenshot({ path: SHOT('4a-debrief-avatar') });
   await page.waitForTimeout(4200);
   await page.screenshot({ path: SHOT('4b-debrief-audience') });
@@ -93,8 +99,8 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
     console.error('ERRORS:\n' + errors.join('\n'));
     process.exit(2);
   }
-  if (!save || save.points < 120) {
-    console.error('unexpected save state');
+  if (!save || save.points < 120 || save.avatar.gender !== 'f' || save.avatar.outfit !== 'coat') {
+    console.error('unexpected save state or agent customization');
     process.exit(3);
   }
   console.log('E2E OK — full mission completed, ' + save.points + ' points.');
