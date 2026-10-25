@@ -808,8 +808,8 @@ button:focus-visible, input:focus-visible {
 }
 .npc-backs {
   position: absolute;
-  left: 13%;
-  width: 60%;
+  left: 12%;
+  width: 76%;
   bottom: 6%;
   display: flex;
   justify-content: space-between;
@@ -828,69 +828,7 @@ button:focus-visible, input:focus-visible {
   to   { transform: translate(-50%, -12px) rotate(8deg); }
 }
 
-.cmdr-slot {
-  position: absolute;
-  right: 5%;
-  bottom: 4%;
-  width: 13%;
-  min-width: 84px;
-  z-index: 6;
-  transition: transform 0.55s cubic-bezier(0.3, 1.4, 0.5, 1);
-}
-.cmdr-slot svg, .cmdr-slot .commander-art { width: 100%; height: auto; }
-.cmdr-slot .commander-art { aspect-ratio: 140 / 225; object-fit: contain; }
-.cmdr-slot.standing { transform: translateY(-13%) scale(1.07); }
-.cmdr-slot.mood-impressed .commander { animation: nod 2.2s ease-in-out infinite; }
-.cmdr-slot.mood-thinking .commander { animation: chinTilt 2.6s ease-in-out infinite; }
-@keyframes chinTilt {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(-4deg); }
-}
-.cmdr-mood {
-  position: absolute;
-  top: -6%;
-  right: -8%;
-  font-family: var(--font-type);
-  font-size: var(--type-tech);
-  letter-spacing: 0.08em;
-  color: var(--cyan);
-  background: var(--glass);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-2);
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 2;
-}
-.cmdr-mood.show { opacity: 1; transform: scale(1); }
-.cmdr-slot.clap::after {
-  content: '';
-}
-.cmdr-bubble {
-  position: absolute;
-  right: 17%;
-  bottom: 44%;
-  z-index: 8;
-  background: #fdfdf6;
-  color: #23324a;
-  font-weight: 800;
-  font-size: var(--type-instruction);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
-  max-width: 40%;
-  box-shadow: var(--shadow-low);
-}
-.cmdr-bubble::after {
-  content: '';
-  position: absolute;
-  right: 18px;
-  bottom: -12px;
-  border: 8px solid transparent;
-  border-top-color: #fdfdf6;
-  border-right-color: #fdfdf6;
-}
-
+/* HQ replies come from the seated lead analyst, not an extra commander. */
 .npc-fronts {
   position: absolute;
   left: 9%; right: 9%;
