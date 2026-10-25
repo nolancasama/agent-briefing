@@ -21,6 +21,11 @@ yet, and adding that would be a genuine improvement.
 - Safety and rewards: exiting a mission releases the microphone, and replaying a debrief cannot award the mission bonus again.
 - Tests: 50 pure-Node evaluation checks pass; the Chromium smoke test now also asserts female model/outfit persistence and absence of the old commander/table elements, but it has not been rerun in an actual browser as part of this update.
 
+## October 25, 2026 — HQ furniture composition fix
+- Removed the remaining brown `conf-table` from the player-facing presentation shot. The approved room background supplies the perspective; no CSS-generated table should be layered over the seated officials.
+- Shifted the four rear-view listeners toward the bottom cinematic crop, so they read as seated foreground silhouettes instead of emerging through a desk.
+- Extended the end-to-end smoke test to reject both artificial table overlays (`.conf-table` and `.table-edge`) and require four rear-view listeners. These visual changes still need an actual browser screenshot review.
+
 ## What Exists
 - Game: `index.html`, `styles.css`, `js/` (data, evaluate, art, sfx, recorder, icons, game).
 - Speech evaluation lives in `js/evaluate.js`, separate from `game.js` and loadable under Node so it
