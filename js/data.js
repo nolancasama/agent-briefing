@@ -180,11 +180,12 @@ const DATA = (() => {
     hairColors: ['#3c2a20', '#5b3a1e', '#141414', '#d9a441', '#a33b2e', '#5d6d7e'],
     hairs:      ['short', 'spiky', 'bob', 'long', 'curly'],
     suits:      ['#22314a', '#20232a', '#5b2d5e', '#7b1f2b', '#1d5c4a'],
+    outfits:    ['suit', 'coat', 'skirt'],
     ties:       ['#e0b23a', '#c0392b', '#2980b9', '#27ae60', '#ff6fa5'],
   };
 
   const DEFAULT_AVATAR = {
-    name: '', skin: '#f6c9a0', hairColor: '#3c2a20', hair: 'short',
+    name: '', gender: 'm', outfit: 'suit', skin: '#f6c9a0', hairColor: '#3c2a20', hair: 'short',
     suit: '#22314a', tie: '#e0b23a', shades: true,
   };
 
