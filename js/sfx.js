@@ -80,6 +80,7 @@ const Sfx = (() => {
   /* ---------- one-shot effects ---------- */
   const api = {
     getCtx,
+    tone, noise, // shared synthesis for the scoped minigame kit
     click()   { tone({ f: 850, t: 0.05, type: 'square', v: 0.045 }); },
     type()    { noise({ bp: 3200, t: 0.03, v: 0.1, q: 2 }); tone({ f: 1900 + Math.random() * 500, t: 0.02, type: 'square', v: 0.03 }); },
     swoosh()  { noise({ bp: 500, f2: 2600, t: 0.35, v: 0.16, q: 1.4 }); },

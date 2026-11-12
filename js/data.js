@@ -189,10 +189,82 @@ const DATA = (() => {
     suit: '#22314a', tie: '#e0b23a', shades: true,
   };
 
+  /* Visual facts are shared by the solution-first minigame generators. */
+  const FACT_VISUALS = {};
+  CHARACTERS.forEach(c => Object.values(c.facts).forEach(f => {
+    FACT_VISUALS[f.value] = { emoji: f.icon, carry: false };
+  }));
+  const places = [
+    ['soccer', '⚽', true, '🥅', 'SOCCER FIELD'],
+    ['drawing', '🎨', true, '🖼️', 'ART MUSEUM'],
+    ['robots', '🤖', true, '🔧', 'ROBOT SHOP'],
+    ['books', '📚', true, '📖', 'LIBRARY'],
+    ['music', '🎧', true, '🎵', 'MUSIC SHOP'],
+    ['flowers', '🌸', true, '🌷', 'FLOWER SHOP'],
+    ['swim', '🏊', false, '🏊', 'POOL'],
+    ['sing', '🎤', true, '🎤', 'KARAOKE'],
+    ['run fast', '🏃', false, '🏟️', 'STADIUM'],
+    ['dance', '💃', false, '🪩', 'DANCE STUDIO'],
+    ['play the piano', '🎹', false, '🎹', 'PIANO SCHOOL'],
+    ['ride a bike', '🚲', true, '🚲', 'BIKE PATH'],
+  ];
+  places.forEach(([value, emoji, carry, placeEmoji, word]) => {
+    FACT_VISUALS[value] = { emoji, carry, place: { emoji: placeEmoji, word } };
+  });
+  CHARACTERS.forEach(c => { FACT_VISUALS[c.facts.has.value].carry = true; });
+
+  const INTEL_VOCAB = {
+    1: ['cat', 'dog', 'sun', 'hat', 'pen', 'book', 'fish', 'ball', 'bird', 'happy'],
+    2: ['apple', 'school', 'friend', 'garden', 'rabbit', 'yellow', 'window', 'flower'],
+    3: ['elephant', 'butterfly', 'playground', 'classroom', 'red shirt', 'blue sky', 'good friend', 'school bus'],
+  };
+  // General → specific. Final clues distinguish even DOG/PUPPY and BIKE/SKATEBOARD.
+  const PASSWORD_BANK = [
+    ['DOG', 'a dog', 'It is an animal.', 'It likes walks.', 'It is a grown animal that says woof.'],
+    ['CAT', 'a cat', 'It is an animal.', 'It has soft fur.', 'It says meow.'],
+    ['SKATEBOARD', 'a skateboard', 'It can move.', 'You stand on it.', 'It is a board with four small wheels.'],
+    ['RABBIT', 'a rabbit', 'It is an animal.', 'It can hop.', 'It has long ears and a short fluffy tail.'],
+    ['BIRD', 'a bird', 'It is an animal.', 'It can fly.', 'It has feathers and a beak.'],
+    ['HAMSTER', 'a hamster', 'It is a small animal.', 'It lives in a little home.', 'It keeps food in its cheeks and runs in a wheel.'],
+    ['SOCCER', 'soccer', 'It is a game.', 'You play on a field.', 'You kick a ball into a goal with your feet.'],
+    ['DRAWING', 'drawing', 'It is something you do.', 'You use paper.', 'You make a picture with a pencil.'],
+    ['ROBOTS', 'robots', 'They are things we make.', 'They can move.', 'They are machines that can do jobs like people.'],
+    ['BOOKS', 'books', 'They are things at school.', 'They have pages.', 'You read their pages to enjoy stories.'],
+    ['MUSIC', 'music', 'You can enjoy it.', 'You listen to it.', 'It is the sound of songs and instruments.'],
+    ['FLOWERS', 'flowers', 'They grow.', 'They have many colors.', 'They are the pretty parts of plants with petals.'],
+    ['BALL', 'a new ball', 'It is a toy.', 'It can roll.', 'It is round and you can bounce it.'],
+    ['BIKE', 'a red bike', 'You can ride it.', 'It has two wheels.', 'You push its pedals with your feet.'],
+    ['PUPPY', 'a puppy', 'It is an animal.', 'It has soft fur.', 'It is a baby dog.'],
+    ['TELESCOPE', 'a telescope', 'It is a tool.', 'You look through it.', 'It helps you see stars far away.'],
+    ['DRUM', 'a big drum', 'It makes a sound.', 'It is an instrument.', 'You hit its round top with sticks.'],
+    ['CAMERA', 'a camera', 'It is a tool.', 'It has a lens.', 'You press its button to take a photo.'],
+    ['CARROTS', 'carrots', 'They are food.', 'They grow in the ground.', 'They are long orange vegetables.'],
+    ['RAIN', 'rain', 'It is weather.', 'You may need an umbrella.', 'It is water falling from clouds.'],
+    ['SPIDERS', 'spiders', 'They are small animals.', 'They make webs.', 'They have eight legs.'],
+    ['TOMATOES', 'tomatoes', 'They are food.', 'They grow on plants.', 'They are red and round and make ketchup.'],
+    ['HOMEWORK', 'homework', 'It is work.', 'Your teacher gives it to you.', 'It is school work you do at home.'],
+    ['SNAKES', 'snakes', 'They are animals.', 'They can be long.', 'They have no legs and slide on the ground.'],
+    ['APPLE', 'an apple', 'It is food.', 'It grows on a tree.', 'It is a red or green fruit with a core.'],
+    ['BANANA', 'a banana', 'It is food.', 'It is a fruit.', 'It is long and yellow and you peel it.'],
+    ['FISH', 'a fish', 'It is an animal.', 'It lives in water.', 'It swims with fins and breathes with gills.'],
+    ['SUN', 'the sun', 'It is in the sky.', 'It gives us light.', 'It is the star that warms our world.'],
+    ['MOON', 'the moon', 'It is in the sky.', 'We see it at night.', 'It goes around Earth and can look like a crescent.'],
+    ['HAT', 'a hat', 'You wear it.', 'It can keep you cool.', 'You wear it on top of your head.'],
+    ['SHOES', 'shoes', 'You wear them.', 'They help you walk.', 'You wear them on your feet over socks.'],
+    ['PENCIL', 'a pencil', 'It is for school.', 'You hold it in your hand.', 'You write with it and can erase its gray lines.'],
+    ['CHAIR', 'a chair', 'It is in a room.', 'It has legs.', 'It is a seat for one person with a back.'],
+    ['CLOCK', 'a clock', 'It is a useful thing.', 'It has numbers.', 'It tells you the time.'],
+    ['BUS', 'a bus', 'It can move.', 'It goes on a road.', 'It is a large vehicle that carries many people at stops.'],
+    ['TREE', 'a tree', 'It grows.', 'It has leaves.', 'It is a tall plant with a wooden trunk.'],
+  ].map(([answer, factValue, ...clues]) => ({ answer, factValue, clues }));
+
   return {
     CHARACTERS, GRAMMAR_PACKS, RANKS, AVATAR_OPTIONS, DEFAULT_AVATAR,
+    FACT_VISUALS, INTEL_VOCAB, PASSWORD_BANK,
     pro, Pro,
     POINTS_PER_CLIP: 25,
     MISSION_BONUS: 20,
+    INTERCEPT_BONUS: 30,
   };
 })();
+if (typeof module !== 'undefined' && module.exports) module.exports = DATA;

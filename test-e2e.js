@@ -7,7 +7,8 @@
 
 const path = require('path');
 const fs = require('fs');
-const { chromium } = require('playwright');
+const assert = require('assert/strict');
+const { chromium } = require(require.resolve('playwright', { paths: [__dirname, path.join(__dirname, '..', 'recipe-tester')] }));
 
 const OUT = process.env.AB_SHOTS || path.join(__dirname, '.shots');
 fs.mkdirSync(OUT, { recursive: true });
@@ -44,6 +45,7 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
 
   // archive
   await page.waitForSelector('.dossier-card');
+  await page.click('[data-mode="briefing"]');
   await page.screenshot({ path: SHOT('1-archive') });
   await page.click('.dossier-card');
 
@@ -53,8 +55,9 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   await page.screenshot({ path: SHOT('2-dossier') });
   await page.click('#btn-accept');
 
-  // speaking mission: 4 record/send rounds
-  for (let i = 0; i < 4; i++) {
+  // Speaking remains the real recording path, including review and playback.
+  async function recordFour(prefix = '') {
+   for (let i = 0; i < 4; i++) {
     console.log('recording clip', i + 1);
     await page.waitForSelector('.mic-btn:not(.recording)', { timeout: 20000 });
     if (i === 0) {
@@ -62,18 +65,20 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
         document.querySelector('#fact-value')?.textContent.trim() &&
         document.querySelector('#prompt-big')?.textContent.trim());
       await page.waitForTimeout(450);
-      await page.screenshot({ path: SHOT('3a-mission-idle') });
+      await page.screenshot({ path: SHOT(prefix + '3a-mission-idle') });
     }
     await page.click('#btn-mic');
     await page.waitForSelector('.mic-btn.recording', { timeout: 20000 });
-    if (i === 0) await page.screenshot({ path: SHOT('3b-mission-recording') });
+    if (i === 0) await page.screenshot({ path: SHOT(prefix + '3b-mission-recording') });
     await page.waitForTimeout(2200);
     await page.click('#btn-mic');
     await page.waitForSelector('#btn-send:not([disabled])', { timeout: 20000 });
-    if (i === 0) await page.screenshot({ path: SHOT('3-mission-review') });
+    if (i === 0) await page.screenshot({ path: SHOT(prefix + '3-mission-review') });
     await page.click('#btn-send');
     await page.waitForTimeout(1300);
   }
+  }
+  await recordFour();
 
   // to headquarters
   await page.waitForSelector('#btn-to-debrief', { timeout: 20000 });
@@ -94,8 +99,122 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   await page.waitForSelector('#btn-new-mission', { timeout: 120000 });
   await page.screenshot({ path: SHOT('5-mission-report') });
 
+  const briefingSave = await page.evaluate(() => JSON.parse(localStorage.getItem('agent-briefing-v1')));
+  assert.equal(briefingSave.points,120);
+  assert.equal(briefingSave.ops.completed,0);
+  await page.click('#btn-again');
+  await page.click('#btn-skip');
+  await page.waitForSelector('#btn-new-mission', {timeout:30000});
+  assert.equal(await page.evaluate(() => App.save.points),120,'briefing replay cannot re-award the bonus');
+
+  async function capture(name) {
+    for (const [width,height] of [[1366,768],[1280,800],[1024,600]]) {
+      await page.setViewportSize({width,height});
+      // Let finite entrance animations (pop-in overshoot) settle before measuring layout.
+      await page.evaluate(() => Promise.race([new Promise(r => setTimeout(r, 1500)), Promise.all(document.getAnimations()
+        .filter(a => isFinite(a.effect && a.effect.getComputedTiming().endTime)).map(a => a.finished.catch(() => {})))]));
+      const overflow = await page.evaluate(() => ({width:document.documentElement.scrollWidth,height:document.documentElement.scrollHeight,
+        offenders:Array.from(document.querySelectorAll('body *')).filter(e => { const r = e.getBoundingClientRect(); return r.right > innerWidth + 0.5 || r.bottom > innerHeight + 0.5; }).slice(0,4).map(e => e.tagName + '.' + e.className)}));
+      assert.ok(overflow.width <= width && overflow.height <= height,`${name} overflows ${width}x${height}: ${JSON.stringify(overflow)}`);
+      for (const button of await page.locator('#app button:visible').all()) {
+        const rect = await button.boundingBox();
+        assert.ok(rect && rect.x >= 0 && rect.y >= 0 && rect.x + rect.width <= width + 1 && rect.y + rect.height <= height + 1, `${name}: control outside viewport`);
+      }
+      await page.screenshot({path:SHOT(`${name}-${width}x${height}`)});
+    }
+    await page.setViewportSize({width:1366,height:768});
+  }
+  async function fullOperation(number, firstReveal) {
+    await page.click('#btn-new-mission');
+    await page.click('[data-mode="full"]');
+    await page.selectOption('#ops-intel','photo');
+    await page.selectOption('#ops-intercept','cctv');
+    await page.check('#ops-relaxed');
+    await capture(`ops${number}-archive`);
+    await page.click('.dossier-card[data-id="ben"]');
+    assert.match(await page.locator('#assignment-card').innerText(),firstReveal ? /Locate the subject/ : /New training challenge: find Agent FOX CUB/);
+    await capture(`ops${number}-assignment`);
+    await page.click('#btn-assignment');
+    await capture(`ops${number}-intel-intro`);
+    await page.click('#btn-mg-start');
+    await page.waitForSelector('[data-stub="continue"]');
+    await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+    await page.waitForSelector('.mg-pause');
+    await capture(`ops${number}-paused`);
+    await page.getByRole('button',{name:'RESUME',exact:true}).click();
+    await page.click('[data-stub="continue"]');
+    await capture(`ops${number}-intel-result`);
+    await page.click('#btn-open-file');
+    await page.waitForFunction(() => document.querySelectorAll('.new-intel').length === 3);
+    await capture(`ops${number}-new-intel`);
+    await page.click('#btn-accept');
+    await recordFour(`ops${number}-`);
+    await page.click('#btn-to-debrief');
+    await page.click('#btn-skip');
+    await page.waitForSelector('#btn-intercept',{timeout:30000});
+    await capture(`ops${number}-subject-spotted`);
+    const beforeReplay = await page.evaluate(() => App.save.points);
+    await page.click('#btn-watch-debrief');
+    await page.click('#btn-skip');
+    await page.waitForSelector('#btn-intercept',{timeout:30000});
+    assert.equal(await page.evaluate(() => App.save.points),beforeReplay);
+    await page.click('#btn-intercept');
+    await capture(`ops${number}-intercept-intro`);
+    await page.click('#btn-mg-start');
+    const initialSeed = await page.evaluate(() => (App.operation.seed + 0x9e3779b9 + App.operation.attempt) >>> 0);
+    if (firstReveal) {
+      await page.click('[data-stub="escaped"]');
+      await capture('ops-escape');
+      const clipsBefore = await page.evaluate(() => App.clips.map(c => c.text));
+      assert.equal(await page.evaluate(() => App.save.ops.badges.ESCAPE_SPECIALIST),1);
+      await page.click('#btn-retry-intercept');
+      await page.click('#btn-mg-start');
+      assert.notEqual(await page.evaluate(() => (App.operation.seed + 0x9e3779b9 + App.operation.attempt) >>> 0),initialSeed);
+      assert.deepEqual(await page.evaluate(() => App.clips.map(c => c.text)),clipsBefore);
+    }
+    await page.click('[data-stub="caught"]');
+    await capture(`ops${number}-caught`);
+    await page.click('#btn-ending');
+    await page.waitForSelector('#operation-ending');
+    assert.equal(await page.locator('#operation-ending').getAttribute('data-reveal'),String(firstReveal));
+    if (firstReveal) {
+      await page.waitForTimeout(2300);
+      await capture('ops-first-reveal');
+      await page.click('#btn-skip-ending');
+    } else {
+      assert.match(await page.locator('#operation-ending').innerText(),/TRAINING CASE CLOSED/);
+      await page.screenshot({path:SHOT('ops-short-ending')});
+      await page.click('#btn-skip-ending');
+    }
+    await page.waitForSelector('#badge-ceremony');
+    await capture(`ops${number}-ceremony`);
+    for (let i = 0; i < 14 && await page.locator('#btn-next-badge').count(); i++) await page.click('#btn-next-badge');
+    await page.waitForSelector('#btn-new-mission');
+    await capture(`ops${number}-report`);
+    assert.equal(await page.evaluate(() => App.save.ops.revealSeen),true);
+    assert.equal(await page.evaluate(() => App.save.ops.completed),number);
+    assert.equal(await page.evaluate(() => App.save.ops.intercepts),number);
+    assert.equal(await page.evaluate(() => App.save.ops.badges.INTEL_AGENT),number);
+    const afterReport = await page.evaluate(() => JSON.stringify(App.save));
+    await page.click('#btn-again');
+    await page.click('#btn-skip');
+    await page.waitForSelector('#btn-new-mission',{timeout:30000});
+    assert.equal(await page.evaluate(() => JSON.stringify(App.save)),afterReport,'operation rewatch cannot repeat rewards');
+  }
+  await fullOperation(1,true);
+  await fullOperation(2,false);
+  await page.click('#btn-new-mission');
+  await page.click('#btn-badges');
+  await capture('ops-badge-collection');
+  await page.click('#btn-badges-back');
+  await page.click('#btn-back-title');
+  await page.click('#btn-badges');
+  await page.waitForSelector('.badge-collection');
+
   const save = await page.evaluate(() => JSON.parse(localStorage.getItem('agent-briefing-v1')));
-  console.log('save after mission:', JSON.stringify(save));
+  assert.equal(save.points,420);
+  assert.equal(save.ops.byMark.ben,2);
+  assert.equal(save.ops.best.photo,100); assert.equal(save.ops.best.cctv,100);
   await browser.close();
 
   if (errors.length) {
@@ -106,7 +225,7 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
     console.error('unexpected save state or agent customization');
     process.exit(3);
   }
-  console.log('E2E OK — full mission completed, ' + save.points + ' points.');
+  console.log('E2E OK — briefing, escape/retry, first reveal, short ending, badges and replay guards; ' + save.points + ' points.');
 })().catch(e => {
   console.error('E2E FAILED:', e);
   process.exit(1);

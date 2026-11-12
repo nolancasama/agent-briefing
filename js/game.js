@@ -16,11 +16,10 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const SAVE_KEY = 'agent-briefing-v1';
 
 function loadSave() {
-  const base = { points: 0, closed: {}, avatar: null, muted: false, packId: 'L1' };
   try {
-    return Object.assign(base, JSON.parse(localStorage.getItem(SAVE_KEY) || '{}'));
+    return Missions.migrateSave(JSON.parse(localStorage.getItem(SAVE_KEY) || '{}'));
   } catch (e) {
-    return base;
+    return Missions.migrateSave({});
   }
 }
 
@@ -31,6 +30,7 @@ const App = {
   recTimeout: 0, recClock: 0, missionStartPoints: 0,
   debriefGen: 0, debriefSkip: false,
   autoSendTimeout: 0, missionRewarded: false,
+  operation: null, mountedGame: null, endingGen: 0,
 };
 
 function persist() { localStorage.setItem(SAVE_KEY, JSON.stringify(App.save)); }
@@ -96,6 +96,9 @@ function hqToast(msg) {
 }
 
 function setScreen(html, cls) {
+  App.debriefGen++;
+  App.endingGen++;
+  destroyMinigame();
   Recorder.stopPlayback();
   Recorder.release();
   clearTimeout(App.recTimeout);
@@ -163,6 +166,7 @@ function showTitle() {
       <div class="title-btns">
         <button class="btn primary big" id="btn-start">${Icons.play(22)} START MISSION</button>
         <button class="btn ghost" id="btn-agent-id">${Icons.id(20)} AGENT ID</button>
+        <button class="btn ghost" id="btn-badges">🏅 BADGES</button>
       </div>
       <p class="radio-line" id="title-radio"></p>
     </div>`, 'title');
@@ -172,6 +176,7 @@ function showTitle() {
     if (App.save.avatar) showArchive(); else showAgentId(true);
   };
   $('#btn-agent-id').onclick = () => showAgentId(false);
+  $('#btn-badges').onclick = () => showBadges(showTitle);
   typeInto($('#title-radio'), 'HQ // Welcome, Agent. Headquarters needs your report…', 30, false);
 }
 
@@ -281,6 +286,7 @@ function showAgentId(goArchiveAfter) {
    SCREEN 3 — INTELLIGENCE ARCHIVE (mission select)
    ============================================================ */
 function showArchive() {
+  App.operation = null;
   Sfx.bgmStart();
   const packs = DATA.GRAMMAR_PACKS;
   const curPack = packs.find(p => p.id === App.save.packId) || packs[0];
@@ -293,6 +299,15 @@ function showArchive() {
       <p class="archive-sub">Choose a Person of Interest to investigate</p>
       <div class="pack-toggle">
         ${packs.map((p, i) => `<button class="pack-btn ${p.id === curPack.id ? 'sel' : ''}" data-pack="${p.id}" aria-pressed="${p.id === curPack.id}">${i === 0 ? 'FIRST REPORT' : 'DEEP COVER'}</button>`).join('')}
+      </div>
+      <div class="ops-setup" aria-label="Operation setup">
+        <div class="pack-toggle ops-mode">
+          ${['full','briefing'].map(mode => `<button class="pack-btn ${App.save.ops.mode === mode ? 'sel' : ''}" data-mode="${mode}" aria-pressed="${App.save.ops.mode === mode}">${mode === 'full' ? 'FULL OPERATION' : 'BRIEFING ONLY'}</button>`).join('')}
+        </div>
+        <label>INTEL <select id="ops-intel">${['auto','photo','typing','password'].map(id => `<option value="${id}" ${App.save.ops.setup.intel === id ? 'selected' : ''}>${id.toUpperCase()}</option>`).join('')}</select></label>
+        <label>INTERCEPT <select id="ops-intercept">${['auto','chase','cctv','drone'].map(id => `<option value="${id}" ${App.save.ops.setup.intercept === id ? 'selected' : ''}>${id.toUpperCase()}</option>`).join('')}</select></label>
+        <label class="ops-relaxed"><input type="checkbox" id="ops-relaxed" ${App.save.ops.relaxed ? 'checked' : ''}> RELAXED MODE</label>
+        <button class="btn secondary" id="btn-badges">🏅 BADGES</button>
       </div>
       <div class="dossier-grid">
         ${DATA.CHARACTERS.map(c => {
@@ -319,9 +334,243 @@ function showArchive() {
   });
   $$('.dossier-card').forEach(b => b.onclick = () => {
     Sfx.swoosh();
-    openDossier(DATA.CHARACTERS.find(c => c.id === b.dataset.id));
+    const c = DATA.CHARACTERS.find(c => c.id === b.dataset.id);
+    if (App.save.ops.mode === 'full') beginOperation(c); else openDossier(c);
   });
+  $$('[data-mode]').forEach(b => b.onclick = () => { App.save.ops.mode = b.dataset.mode; persist(); showArchive(); });
+  ['intel','intercept'].forEach(kind => { $('#ops-' + kind).onchange = e => { App.save.ops.setup[kind] = e.target.value; persist(); }; });
+  $('#ops-relaxed').onchange = e => { App.save.ops.relaxed = e.target.checked; persist(); };
+  $('#btn-badges').onclick = () => showBadges(showArchive);
   $('#btn-back-title').onclick = showTitle;
+}
+
+/* ---------- operation framework ---------- */
+function destroyMinigame() {
+  const mounted = App.mountedGame;
+  App.mountedGame = null;
+  if (!mounted) return;
+  // Release the kit even if an independently implemented game's teardown throws.
+  try { if (mounted.instance) mounted.instance.destroy(); }
+  finally { mounted.kit.destroy(); }
+}
+
+function beginOperation(c) {
+  App.char = c;
+  App.pack = DATA.GRAMMAR_PACKS.find(p => p.id === App.save.packId) || DATA.GRAMMAR_PACKS[0];
+  const params = new URLSearchParams(window.location.search);
+  const requestedSeed = params.get('seed');
+  const seed = requestedSeed !== null && Number.isFinite(Number(requestedSeed)) ? Number(requestedSeed) >>> 0 : Math.floor(Math.random() * 4294967296);
+  const random = Missions.rng(seed);
+  const games = Missions.pickGames(App.save, { intel: params.get('intel'), intercept: params.get('intercept') }, random);
+  App.operation = {
+    games, seed, attempt: 0, tier: Missions.tierFor(App.save), relaxed: App.save.ops.relaxed,
+    intel: null, intercept: null, finished: false, awarded: [], badges: { player: [], mark: [] },
+  };
+  App.missionRewarded = false;
+  App.missionStartPoints = App.save.points;
+  App.clips = [];
+  setScreen(`${hudHTML()}<div class="panel ops-card" id="assignment-card">
+    <span class="tech-label">HQ // NEW ASSIGNMENT</span><h2>SUBJECT FILE LOCKED</h2>
+    <p>${App.save.ops.revealSeen ? `New training challenge: find Agent ${esc(c.codename)}.` : 'New assignment. Subject file is LOCKED. Locate the subject.'}</p>
+    <div class="ops-mark">${Art.portrait(c, 130, 146)}<b>${esc(c.codename)}</b></div>
+    <button class="btn primary big" id="btn-assignment">GET INTEL</button>
+    <button class="btn ghost" id="btn-assignment-back">BACK TO ARCHIVE</button>
+  </div>`, 'operation');
+  wireHud();
+  $('#btn-assignment').onclick = () => showGameIntro('intel');
+  $('#btn-assignment-back').onclick = showArchive;
+}
+
+function gameContext(kind, kit, done) {
+  const op = App.operation;
+  const profile = Missions.profile(App.char, App.pack);
+  // profile() has no tier parameter. The framework adds the extra observable clue.
+  if (op.tier === 3) profile.clues.push(`${profile.Pro} has ${profile.look.hair === 'bob' ? 'a bob haircut' : profile.look.hair + ' hair'}.`);
+  const seed = (op.seed + (kind === 'intercept' ? 0x9e3779b9 + op.attempt : 0)) >>> 0;
+  return { mark: App.char, pack: App.pack, profile, tier: op.tier, relaxed: op.relaxed, seed, rng: Missions.rng(seed), agent: avatar(), kit, done };
+}
+
+function showGameIntro(kind) {
+  const def = Minigames.get(App.operation.games[kind]);
+  const ctx = gameContext(kind, null, null);
+  setScreen(`${hudHTML()}<div class="panel ops-card" id="mg-intro">
+    <span class="tech-label">${kind.toUpperCase()} // TIER ${ctx.tier}${ctx.relaxed ? ' // RELAXED MODE' : ''}</span>
+    <h2>${esc(def.title)}</h2><p>${esc(def.brief(ctx))}</p>
+    <div class="ops-how"><b>HOW TO PLAY</b><p>${esc(gameHowTo(def.id))}</p><p>Keyboard, mouse or touch. The game pauses when you leave this window.</p></div>
+    <button class="btn primary big" id="btn-mg-start">START</button>
+    <button class="btn ghost" id="btn-mg-exit">${kind === 'intel' ? 'BACK TO ARCHIVE' : 'END OPERATION'}</button>
+  </div>`, 'operation');
+  wireHud();
+  $('#btn-mg-start').onclick = () => mountMinigame(kind);
+  $('#btn-mg-exit').onclick = kind === 'intel' ? showArchive : finishOperation;
+}
+
+function gameHowTo(id) {
+  return {
+    photo: 'Read the clue. Choose the matching picture. Try again after a mistake.',
+    typing: 'Type the word on the screen. Use your keyboard or the letter buttons.',
+    password: 'Read the clues. Choose letters, then check your password. Ask for another clue if you need it.',
+    chase: 'Use arrows or WASD to move. Up or Space: jump. Down: slide. E: search. Follow the HQ clues.',
+    cctv: 'Choose a camera. Look for the shirt and prop in the HQ clues. Select the mark, then send the team.',
+    drone: 'Use arrows or WASD to fly. Q/E or −/+: zoom. Hold Space to scan. Confirm the mark and send the team.',
+  }[id];
+}
+
+function mountMinigame(kind) {
+  const op = App.operation, id = op.games[kind], def = Minigames.get(id);
+  setScreen(`${hudHTML()}<div class="mg-toolbar"><b>${esc(def.title)}</b><button class="btn ghost" id="btn-mg-pause">PAUSE</button><button class="btn ghost" id="btn-mg-leave">EXIT</button></div><div class="mg-host" id="mg-host" tabindex="-1"></div>`, 'minigame');
+  wireHud(); Sfx.bgmStop();
+  const host = $('#mg-host'), kit = new Kit(host);
+  const mounted = { kit, instance: null };
+  App.mountedGame = mounted;
+  let done = false;
+  const context = gameContext(kind, kit, raw => {
+    if (done || App.mountedGame !== mounted || App.operation !== op) return;
+    done = true;
+    const result = { ...raw, score: Math.max(0, Math.min(100, Number(raw.score) || 0)) };
+    if (kind === 'intel') {
+      result.success = true;
+      const keys = context.profile.packFacts.map(f => f.key);
+      result.revealed = (Array.isArray(raw.revealed) ? raw.revealed : []).filter(key => keys.includes(key));
+    } else {
+      result.success = raw.success === true && raw.outcome === 'caught';
+      result.outcome = result.success ? 'caught' : 'escaped';
+    }
+    op[kind] = result;
+    App.save.ops.best[id] = Math.max(App.save.ops.best[id] || 0, result.score);
+    persist();
+    if (kind === 'intel') showIntelResult();
+    else if (result.success) showInterceptResult();
+    else showEscape();
+  });
+  // A monotonic stamp also gives reliable least-recently-played ordering within one ms.
+  App.save.ops.lastPlayed[id] = Math.max(Date.now(), ...Object.values(App.save.ops.lastPlayed).map(n => n + 1));
+  persist();
+  kit.on($('#btn-mg-pause'), 'click', () => kit.pause());
+  kit.on($('#btn-mg-leave'), 'click', () => {
+    if (kind === 'intel') showArchive(); else finishOperation();
+  });
+  host.focus({ preventScroll: true });
+  const instance = def.mount(host, context);
+  // Games may finish synchronously during mount.
+  if (App.mountedGame === mounted) mounted.instance = instance;
+  else if (instance) instance.destroy();
+}
+
+function showIntelResult() {
+  const result = App.operation.intel;
+  setScreen(`${hudHTML()}<div class="panel ops-card" id="intel-result"><span class="tech-label">HQ // INTEL RECEIVED</span><h2>FILE UNLOCKED</h2><p>INTEL SCORE ${result.score}</p><div class="mg-clues">${Missions.profile(App.char, App.pack).packFacts.filter(f => result.revealed.includes(f.key)).map(f => `<p>${esc(f.sentence)}</p>`).join('')}</div><button class="btn primary big" id="btn-open-file">OPEN DOSSIER</button></div>`, 'operation');
+  wireHud(); Sfx.chime();
+  $('#btn-open-file').onclick = () => openDossier(App.char);
+}
+
+function showInterceptResult() {
+  setScreen(`${hudHTML()}<div class="panel ops-card" id="intercept-result"><h2>INTERCEPTION SUCCESSFUL</h2><div class="ops-mark">${Art.portrait(App.char, 150, 168)}</div><p>“You caught me!”</p><button class="btn primary big" id="btn-ending">CONTINUE TO HQ</button></div>`, 'operation');
+  wireHud(); Sfx.fanfare();
+  $('#btn-ending').onclick = showEnding;
+}
+
+function operationBadges() {
+  const op = App.operation;
+  return Missions.badgesFor({ intel: op.intel, clips: App.clips, intercept: op.games.intercept, ...(op.intercept || { success: false }) });
+}
+
+function awardOperationBadges(badges) {
+  const op = App.operation;
+  ['player','mark'].forEach(who => badges[who].forEach(id => {
+    if (!op.badges[who].includes(id)) op.badges[who].push(id);
+    // A retry retains the earlier escape badge; each badge counts once per operation.
+    if (op.awarded.includes(id)) return;
+    op.awarded.push(id);
+    App.save.ops.badges[id] = (App.save.ops.badges[id] || 0) + 1;
+  }));
+  persist();
+}
+
+function showEscape() {
+  App.save.ops.escapes++;
+  awardOperationBadges(operationBadges());
+  setScreen(`${hudHTML()}<div class="panel ops-card" id="escape-screen"><h2>A FRIENDLY ESCAPE</h2><div class="ops-mark waving">${Art.portrait(App.char, 150, 168)}</div><p>“So close! Try again, Agent!”</p><p>💨 ${esc(App.char.name)} earns ESCAPE SPECIALIST</p><div class="ops-actions"><button class="btn primary big" id="btn-retry-intercept">RETRY INTERCEPTION</button><button class="btn secondary" id="btn-end-operation">END OPERATION</button></div></div>`, 'operation');
+  wireHud();
+  $('#btn-retry-intercept').onclick = () => { App.operation.attempt++; showGameIntro('intercept'); };
+  $('#btn-end-operation').onclick = finishOperation;
+}
+
+function showEnding() {
+  const first = !App.save.ops.revealSeen;
+  setScreen(`${hudHTML()}<div class="ops-scene" id="operation-ending" data-reveal="${first}"><div class="room-wall"></div><h2>${first ? 'BACK AT HEADQUARTERS' : 'TRAINING CASE CLOSED'}</h2><div class="ending-cast"><div class="ending-player">${Art.agentFull(avatar(), 120)}</div><div class="ending-mark waving">${Art.portrait(App.char, 165, 185)}</div><div class="ending-official">${Art.commander()}</div></div><p class="ending-dialogue" id="ending-line" aria-live="polite"></p><button class="btn primary" id="btn-skip-ending">${first ? 'SKIP REVEAL' : 'CONTINUE'}</button></div>`, 'ending');
+  wireHud();
+  const gen = App.endingGen;
+  const kit = new Kit($('#operation-ending'));
+  App.mountedGame = { kit, instance: null };
+  const live = () => gen === App.endingGen && !!$('#operation-ending');
+  const finish = () => {
+    if (!live()) return;
+    App.save.ops.revealSeen = true; persist(); showCeremony();
+  };
+  const lines = first ? [
+    'Excellent work, Agent!', 'You found the target!', `${App.char.name}: “You caught me!”`,
+    'Surprise! This was a training mission!', 'You are both secret agents!', `${App.char.name}: “That was fun!”`,
+  ] : ['Another great training mission, Agent!'];
+  lines.forEach((line, i) => {
+    const show = () => {
+      if (!live()) return;
+      $('#ending-line').textContent = line;
+      $('#operation-ending').dataset.beat = i;
+      if (i === 1) Sfx.chime();
+      if (i === 3) Sfx.fanfare();
+    };
+    if (i === 0) show(); else kit.after(i * 2000, show);
+  });
+  kit.on($('#btn-skip-ending'), 'click', finish);
+  kit.after(first ? 12000 : 2500, finish);
+}
+
+function showCeremony() {
+  awardOperationBadges(operationBadges());
+  const badges = App.operation.badges;
+  const queue = ['player','mark'].flatMap(who => badges[who].map(id => ({ who, id })));
+  setScreen(`${hudHTML()}<div class="ops-scene" id="badge-ceremony"><div class="room-wall"></div><h2>HQ BADGE CEREMONY</h2><div class="ceremony-cast"><div>${Art.agentFull(avatar(), 110)}<b>AGENT${esc(agentName())}</b></div><div>${Art.portrait(App.char, 150, 168)}<b>${esc(App.char.name)}</b></div></div><div id="ceremony-badge" aria-live="polite"></div><button class="btn primary" id="btn-next-badge">NEXT BADGE</button></div>`, 'ceremony');
+  wireHud();
+  const gen = App.endingGen;
+  let i = 0;
+  const next = () => {
+    if (gen !== App.endingGen || !$('#badge-ceremony')) return;
+    if (i >= queue.length) { finishOperation(); return; }
+    const { who, id } = queue[i++], badge = Missions.BADGES[id];
+    $('#ceremony-badge').innerHTML = `<span class="ceremony-icon">${badge.icon}</span><span class="tech-label">${who === 'player' ? 'PLAYER' : esc(App.char.name.toUpperCase())} AWARD ${i} / ${queue.length}</span><h3>${badge.name}</h3><p>${badge.desc}</p>`;
+    $('#btn-next-badge').textContent = i === queue.length ? 'AFTER-ACTION REPORT' : 'NEXT BADGE';
+    Sfx.fanfare();
+  };
+  $('#btn-next-badge').onclick = next;
+  next();
+}
+
+function finishOperation() {
+  const op = App.operation;
+  if (!op.finished) {
+    op.finished = true;
+    awardOperationBadges(operationBadges());
+    App.save.ops.completed++;
+    if (op.intercept && op.intercept.success) App.save.ops.intercepts++;
+    App.save.ops.byMark[App.char.id] = (App.save.ops.byMark[App.char.id] || 0) + 1;
+    persist();
+  }
+  setScreen(`${hudHTML()}<div class="operation-report" id="operation-report"></div>`, 'report');
+  wireHud();
+  showScorePanel($('#operation-report'));
+}
+
+function operationReportRows() {
+  const op = App.operation;
+  return `<div class="aar-row"><span>INTEL</span><b>${op.games.intel.toUpperCase()} · ${op.intel ? op.intel.score : 0}</b></div><div class="aar-row"><span>INTERCEPTION</span><b>${op.games.intercept.toUpperCase()} · ${op.intercept ? op.intercept.outcome.toUpperCase() : 'ENDED'}</b></div><div class="aar-row"><span>BADGES</span><b>${op.badges.player.map(id => Missions.BADGES[id].icon).join(' ')} / ${op.badges.mark.map(id => Missions.BADGES[id].icon).join(' ')}</b></div>`;
+}
+
+function showBadges(back) {
+  const ops = App.save.ops;
+  setScreen(`${hudHTML()}<div class="panel badge-collection"><h2>AGENCY BADGE COLLECTION</h2><p>${ops.completed} COMPLETED OPERATIONS · ${ops.intercepts} INTERCEPTS · ${ops.escapes} ESCAPES</p><div class="badge-grid">${Object.entries(Missions.BADGES).map(([id, b]) => `<div class="badge-tile ${ops.badges[id] ? 'earned' : ''}"><span>${b.icon}</span><b>${b.name}</b><small>${esc(b.desc)}</small><strong>${ops.badges[id] || 0} EARNED</strong></div>`).join('')}</div><div class="collection-stats"><p>MARK FILES: ${DATA.CHARACTERS.map(c => `${c.name} ${ops.byMark[c.id] || 0}`).join(' · ')}</p><p>BEST SCORES: ${Minigames.list().map(g => `${g.id.toUpperCase()} ${ops.best[g.id] === undefined ? '—' : ops.best[g.id]}`).join(' · ')}</p></div><button class="btn primary" id="btn-badges-back">BACK</button></div>`, 'badges');
+  wireHud();
+  $('#btn-badges-back').onclick = back;
 }
 
 /* ============================================================
@@ -372,7 +621,9 @@ async function openDossier(c) {
     if (s.factLabel === 'NAME') continue;
     const row = document.createElement('div');
     row.className = 'fact-row';
-    row.innerHTML = `<span class="fact-ico">${s.icon(c)}</span><span class="fact-label">${esc(s.factLabel)}:</span> <b>${esc(s.fact(c))}</b>`;
+    const key = s.factLabel === "DOESN'T LIKE" ? 'dislikes' : s.factLabel.toLowerCase();
+    const revealed = App.operation && App.operation.intel && App.operation.intel.revealed.includes(key);
+    row.innerHTML = `<span class="fact-ico">${s.icon(c)}</span><span class="fact-label">${esc(s.factLabel)}:</span> <b>${esc(s.fact(c))}</b>${revealed ? '<span class="new-intel">NEW INTEL</span>' : ''}`;
     facts.appendChild(row);
     Sfx.type();
     await sleep(170);
@@ -866,6 +1117,13 @@ async function finaleDebrief(gen) {
   const ov = $('#debrief-overlay');
   if (!ov) return;
   ov.hidden = false;
+  if (App.operation) {
+    if (App.operation.finished) { showScorePanel(ov); return; }
+    ov.innerHTML = '<div class="ops-finale"><h2>SUBJECT SPOTTED</h2><button class="btn primary big" id="btn-intercept">BEGIN INTERCEPTION</button><button class="btn secondary" id="btn-watch-debrief">WATCH AGAIN</button></div>';
+    $('#btn-intercept').onclick = () => showGameIntro('intercept');
+    $('#btn-watch-debrief').onclick = showDebrief;
+    return;
+  }
   ov.innerHTML = '<div class="stamp red giant">MISSION COMPLETE</div>';
   Sfx.stamp();
   await sleep(1150);
@@ -879,6 +1137,7 @@ function showScorePanel(ov) {
   const firstReport = !App.missionRewarded;
   if (firstReport) {
     App.save.points += DATA.MISSION_BONUS;
+    if (App.operation && App.operation.intercept && App.operation.intercept.success) App.save.points += DATA.INTERCEPT_BONUS;
     const closed = App.save.closed[App.char.id] || (App.save.closed[App.char.id] = {});
     closed[App.pack.id] = true;
     App.missionRewarded = true;
@@ -896,7 +1155,7 @@ function showScorePanel(ov) {
   const allUnverified = !b.rank;
 
   ov.innerHTML = `
-    <div class="aar">
+    <div class="aar${App.operation ? ' ops-aar' : ''}">
       <div class="aar-head">
         <span class="aar-kicker">CLASSIFIED // AGENT${esc(agentName())}</span>
         <h2 class="aar-title">AFTER-ACTION REPORT</h2>
@@ -908,6 +1167,7 @@ function showScorePanel(ov) {
       </div>
 
       <div class="aar-rows">
+        ${App.operation ? operationReportRows() : ''}
         <div class="aar-row"><span>INTELLIGENCE</span><b>${App.clips.length} / ${App.pack.steps.length}</b></div>
         <div class="aar-row"><span>CONTENT</span><b>${allUnverified ? '—' : esc(b.contentLabel)}</b></div>
         <div class="aar-row"><span>TRANSMISSION</span><b>${allUnverified ? 'HQ received the clips; words could not be checked.' : esc(b.transmissionLabel)}</b></div>
@@ -916,6 +1176,7 @@ function showScorePanel(ov) {
       <div class="aar-points">
         <div class="aar-row"><span>EVIDENCE RECORDED</span><b>${App.clips.length} × ${DATA.POINTS_PER_CLIP} = ${evidencePts}</b></div>
         <div class="aar-row"><span>MISSION BONUS</span><b>+${DATA.MISSION_BONUS}</b></div>
+        ${App.operation ? `<div class="aar-row"><span>INTERCEPT BONUS</span><b>+${App.operation.intercept && App.operation.intercept.success ? DATA.INTERCEPT_BONUS : 0}</b></div>` : ''}
         <div class="aar-row total"><span>TOTAL POINTS</span><b>${App.save.points}</b></div>
         <div class="aar-row"><span>AGENT RANK</span><b>${esc(newRank.name)}</b></div>
       </div>
