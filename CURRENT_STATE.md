@@ -41,8 +41,19 @@ yet, and adding that would be a genuine improvement.
 - Applied art (2026-09-12): all six dossier portraits (Ben, Mia, Leo, Emma, Sam, Lily), the four front-view NPC agents, the four back-of-head NPC agents, the title background, the archive background, the commander, the room background. Every phase-1/phase-2 background and character slot in `art/manifest.json` is now filled except `player_avatar` and `avatar_presets_others` (see below).
 - `room_background` was applied despite being photorealistic 3D-rendered rather than the game's 2D anime/cel-shaded style (both generated candidates came back this way) — accepted as-is per explicit instruction rather than blocked on style purity. Revisit if it reads as visually inconsistent in playtesting.
 
-## Current Work
-The artwork-first interface polish is implemented. Raster art replacement continues phase by phase (see `art/manifest.json`); backgrounds, NPCs and dossiers are done, and only the player-avatar system remains.
+## Current Work — Spy Operations (branch `feature/spy-operations`, not merged/deployed)
+Six minigames wrapped around the briefing, per the frozen contract `docs/OPERATIONS_SPEC.md`
+(read it first) and the 2026-11-12 entries in DESIGN_DECISIONS.md.
+- DONE (commit 387c278, reviewed in Chromium): framework — archive mode/setup/relaxed controls,
+  assignment card, intro card + mount/destroy, `js/missions.js`, `js/mg/kit.js` (loop, pause,
+  input, sprites), stand-in minigames (`js/mg/stub.js`), training reveal, short ending, badge
+  ceremony, escape/retry, badge collection, extended AAR. `npm test` (4 files) and
+  `npm run test:e2e` pass; e2e covers briefing-only + two full operations at 3 viewport sizes.
+- TODO: the six real games in their own files (`js/mg/{photo,typing,password,chase,cctv,drone}.js`
+  + `css/mg-*.css` + `test-mg-*.js`). Drafted work orders: intel trio, chase, cctv, drone. Each
+  slice must not edit framework files.
+- Running e2e locally: Playwright isn't in the repo; use a Playwright 1.63 install (matches cached
+  chromium-1243) via `NODE_PATH=<dir>/node_modules node test-e2e.js`.
 
 ## Known Issues
 - `player_avatar` preset 1: a properly transparent generation-2 candidate is approved (`use-as-is` in state.json) but `art/apply.js` still blocks it by design until the phase-3 face overlays exist (avatar_base, eyes_open, eyes_closed, mouth_closed/small/medium/wide) — see `art/apply.js`.
@@ -50,6 +61,7 @@ The artwork-first interface polish is implemented. Raster art replacement contin
 - The four `npc_agents_back` images are 1254x1254 (generator returned larger than the requested 1024x1024); square aspect is correct and they render fine at display size, but resize if exact source dimensions ever matter.
 
 ## Next Steps
-1. Build the phase-3 avatar face overlays (or the neutral-base + drawn-overlay approach noted in `art/manifest.json`), then apply `player_avatar` preset 1.
-2. `avatar_presets_others` (p2/p3/p4) is now unblocked since preset 1 is approved — `node art/generate.js --asset avatar_presets_others` has already prepared prompts referencing the approved preset-1 image as style reference; generate and review those next.
-3. After all four presets are approved: their own phase-3 overlays.
+1. Implement the six minigames (section above), then play all 9 pairings × 6 marks in the browser.
+2. Polish: livelier reveal cinematic (mark is currently a static portrait + wave emoji).
+3. Merge to `main` (= GitHub Pages deploy) only after full browser review.
+4. Art backlog (unchanged): phase-3 avatar face overlays → apply `player_avatar` preset 1 → `avatar_presets_others`.
