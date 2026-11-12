@@ -451,6 +451,8 @@ function mountMinigame(kind) {
     if (kind === 'intel') showArchive(); else finishOperation();
   });
   host.focus({ preventScroll: true });
+  // Automated tests can end a game through its own result callback (only with ?debug).
+  if (typeof location !== "undefined" && /[?&]debug\b/.test(location.search)) window.__mgDone = context.done;
   const instance = def.mount(host, context);
   // Games may finish synchronously during mount.
   if (App.mountedGame === mounted) mounted.instance = instance;

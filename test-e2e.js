@@ -13,7 +13,7 @@ const { chromium } = require(require.resolve('playwright', { paths: [__dirname, 
 const OUT = process.env.AB_SHOTS || path.join(__dirname, '.shots');
 fs.mkdirSync(OUT, { recursive: true });
 const SHOT = name => path.join(OUT, name + '.png');
-const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, '/');
+const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, '/') + '?debug';
 
 (async () => {
   const errors = [];
@@ -172,7 +172,8 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
     await page.click('#btn-mg-start');
     const initialSeed = await page.evaluate(() => (App.operation.seed + 0x9e3779b9 + App.operation.attempt) >>> 0);
     if (firstReveal) {
-      await page.click('[data-stub="escaped"]');
+      await page.waitForSelector('.mg-cctv');
+      await page.evaluate(() => __mgDone({ success: false, outcome: 'escaped', score: 30, wrongPicks: 0, markHides: 1, stats: {} }));
       await capture('ops-escape');
       const clipsBefore = await page.evaluate(() => App.clips.map(c => c.text));
       assert.equal(await page.evaluate(() => App.save.ops.badges.ESCAPE_SPECIALIST),1);
@@ -181,7 +182,8 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
       assert.notEqual(await page.evaluate(() => (App.operation.seed + 0x9e3779b9 + App.operation.attempt) >>> 0),initialSeed);
       assert.deepEqual(await page.evaluate(() => App.clips.map(c => c.text)),clipsBefore);
     }
-    await page.click('[data-stub="caught"]');
+    await page.waitForSelector('.mg-cctv');
+    await page.evaluate(() => __mgDone({ success: true, outcome: 'caught', score: 100, wrongPicks: 0, markHides: 2, stats: {} }));
     await capture(`ops${number}-caught`);
     await page.click('#btn-ending');
     await page.waitForSelector('#operation-ending');

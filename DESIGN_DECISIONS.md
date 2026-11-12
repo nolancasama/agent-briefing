@@ -111,3 +111,8 @@ A useful rule:
 - `Missions.badgesFor` consumes `{ intel: intelResult, clips: clipArrayOrCount, intercept: gameId, success, outcome, wrongPicks, markHides }`. It also accepts explicit `intelComplete` / `clipsSent` flags. Minigames continue returning only the frozen result interface; the framework supplies operation context.
 - Ending an operation after an escape counts as a completed operation for progression. Successful interceptions are counted separately. Each escape attempt increments `escapes`; retry preserves all earned badges, with each badge counted at most once per operation. Progression is finalized at the report; escape badges are saved immediately so they appear in the collection even if the player leaves before retrying.
 - `Missions.migrateSave` is the pure, shared migration entry point used by the browser and Node tests. Kit instances are constructed with `new Kit(host)` (also `Kit.create(host)`); timer handles expose `cancel()`. Touch controls accept key strings, `{key,label}` entries, or a key-to-label object.
+
+## 2026-11-12 — Drone town is a fixed place
+- The drone neighbourhood layout is fixed (same streets and blocks every mission); only people, the mark's itinerary and hiding choices vary with the seed. Children learn the town and can predict hiding spots, which the spec's "predict their next location" needs. Decided by the user.
+- Block archetypes borrowed (as ideas, not code) from the Godot `tower-command/UrbanHunter` district: houses with an alley, parking lot with a carport, construction site under a tarp, alongside park and covered market. That project's code is 3D Godot with combat mechanics and was not reused.
+- Rejected: shuffling block positions per mission (less learnable, no gameplay gain).
