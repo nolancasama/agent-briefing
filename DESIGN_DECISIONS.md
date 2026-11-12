@@ -116,3 +116,11 @@ A useful rule:
 - The drone neighbourhood layout is fixed (same streets and blocks every mission); only people, the mark's itinerary and hiding choices vary with the seed. Children learn the town and can predict hiding spots, which the spec's "predict their next location" needs. Decided by the user.
 - Block archetypes borrowed (as ideas, not code) from the Godot `tower-command/UrbanHunter` district: houses with an alley, parking lot with a carport, construction site under a tarp, alongside park and covered market. That project's code is 3D Godot with combat mechanics and was not reused.
 - Rejected: shuffling block positions per mission (less learnable, no gameplay gain).
+
+## 2026-11-12 — Minigame rules settled during implementation
+- Every intel game reveals all three of the pack's facts (photo: one round per fact; typing: fact words hidden in the stream; password: one vault per fact), so the dossier never shows a faded, unrevealed fact before recording.
+- Photo frames use a per-verb visual grammar (can = doing it, likes = ❤️, has = holding/beside, wants = 💭, doesn't like = yuck face + 💢). From tier 2 one decoy shows the right item with the opposite verb, so the verb decides the answer, not just the noun.
+- Chase: the mark cannot be caught before the last fork (it sprints to keep a lead), so the English fork clues always matter; hiding spots only appear after the forks. Escape needs a large gap held for several seconds (longer at low tiers) so a child pausing to read the radio does not lose.
+- CCTV and drone people follow seeded itineraries rather than live AI, so solvability (one full match, hide count/length, visibility) is proven in Node tests.
+- Drone scanning requires 2× zoom; at 1× only shirt colours are visible. An empty battery relaunches from base, never fails.
+- A `?debug` URL flag exposes test hooks (`window.__mgDone`, `window.__mg`) for automated playthroughs; nothing changes for players.
