@@ -49,9 +49,14 @@ Six minigames wrapped around the briefing, per the frozen contract `docs/OPERATI
   input, sprites), stand-in minigames (`js/mg/stub.js`), training reveal, short ending, badge
   ceremony, escape/retry, badge collection, extended AAR. `npm test` (4 files) and
   `npm run test:e2e` pass; e2e covers briefing-only + two full operations at 3 viewport sizes.
-- TODO: the six real games in their own files (`js/mg/{photo,typing,password,chase,cctv,drone}.js`
-  + `css/mg-*.css` + `test-mg-*.js`). Drafted work orders: intel trio, chase, cctv, drone. Each
-  slice must not edit framework files.
+- DONE (Claude, after Codex ran out of usage): intel games `photo` (per-verb picture grammar:
+  can=action, likes=❤️, has=holding, wants=💭, doesn't like=yuck+💢; opposite-verb decoys from
+  tier 2), `typing` (fact words hidden in the stream decrypt the file), `password` (3 vaults, one
+  per pack fact; extra clue sets for personality/can live in password.js), and `chase` (fact forks
+  incl. doesn't-like avoidance, shortcut lane, hiding after forks). Each has a `test-mg-*.js`.
+- TODO: `cctv` and `drone` (still stand-ins from `js/mg/stub.js`), then a 9-pairing × 6-mark browser
+  pass, then reveal polish.
+- `?tier=1|2|3` URL override added alongside `?intel=&intercept=&seed=`.
 - Running e2e locally: Playwright isn't in the repo; use a Playwright 1.63 install (matches cached
   chromium-1243) via `NODE_PATH=<dir>/node_modules node test-e2e.js`.
 
@@ -61,7 +66,7 @@ Six minigames wrapped around the briefing, per the frozen contract `docs/OPERATI
 - The four `npc_agents_back` images are 1254x1254 (generator returned larger than the requested 1024x1024); square aspect is correct and they render fine at display size, but resize if exact source dimensions ever matter.
 
 ## Next Steps
-1. Implement the six minigames (section above), then play all 9 pairings × 6 marks in the browser.
+1. Implement `cctv` and `drone`, then play all 9 pairings × 6 marks in the browser.
 2. Polish: livelier reveal cinematic (mark is currently a static portrait + wave emoji).
 3. Merge to `main` (= GitHub Pages deploy) only after full browser review.
 4. Art backlog (unchanged): phase-3 avatar face overlays → apply `player_avatar` preset 1 → `avatar_presets_others`.
