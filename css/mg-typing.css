@@ -1,0 +1,58 @@
+/* English Typing Hack — scoped to .mg-typing */
+.mg-typing { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 10px 16px; }
+.mg-typing .mgt-terminal { position: relative; width: min(100%, 980px); height: 100%; max-height: 600px; display: flex; flex-direction: column; gap: 10px;
+  background: radial-gradient(ellipse at 50% 0%, #0f2c2a, #061412 70%); border: 2px solid #1f6b5c; border-radius: 12px; padding: 14px 18px;
+  box-shadow: 0 0 0 4px #0a1d1a, 0 16px 40px rgba(0,0,0,.5), inset 0 0 60px rgba(40,220,160,.06); font-family: "Courier New", monospace; color: #9ff5cf; overflow: hidden; }
+.mg-typing .mgt-terminal::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px); }
+.mg-typing .mgt-head { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: .14em; color: #4fd6a2; border-bottom: 1px dashed #1f6b5c; padding-bottom: 6px; }
+.mg-typing .mgt-meters { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 12px; letter-spacing: .12em; }
+.mg-typing .mgt-bar { height: 14px; margin-top: 4px; border: 1px solid #2c8a73; border-radius: 3px; background: #04100e; overflow: hidden; }
+.mg-typing .mgt-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #26c48a, #8fffcf); transition: width .25s; }
+.mg-typing .mgt-bar.alert i { background: linear-gradient(90deg, #e0b23a, #ff7a3d); transition: none; }
+.mg-typing .mgt-bar.alert.hot { border-color: #ff6a4d; animation: mgtBlink .5s steps(2) infinite; }
+.mg-typing .mgt-relaxed b { display: block; margin-top: 4px; color: #6fbfa5; }
+.mg-typing .mgt-body { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
+.mg-typing .mgt-main { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-width: 0; }
+.mg-typing .mgt-hint { font-size: 13px; letter-spacing: .2em; color: #4fd6a2; }
+.mg-typing .mgt-word { font-size: clamp(40px, 7vw, 72px); font-weight: bold; letter-spacing: .06em; color: #d8fff0; white-space: nowrap; text-shadow: 0 0 14px rgba(80,255,180,.35); }
+.mg-typing .mgt-word.fact { color: #ffd77a; text-shadow: 0 0 16px rgba(255,190,60,.4); }
+.mg-typing .mgt-word span { display: inline-block; border-bottom: 4px solid transparent; }
+.mg-typing .mgt-word span.ok { color: #3dff9a; }
+.mg-typing .mgt-word.fact span.ok { color: #3dff9a; }
+.mg-typing .mgt-word span.cur { border-bottom-color: currentColor; animation: mgtCursor 1s steps(2) infinite; }
+.mg-typing .mgt-word span.sp { opacity: .5; }
+.mg-typing .mgt-word span.bad { color: #ff7b7b; animation: mgtShake .3s; }
+.mg-typing .mgt-word.frozen { filter: saturate(.3) brightness(.8); }
+.mg-typing .mgt-queue { font-size: 20px; color: #4c9a83; letter-spacing: .08em; min-height: 24px; white-space: nowrap; overflow: hidden; max-width: 100%; }
+.mg-typing .mgt-log { border-left: 1px dashed #1f6b5c; padding-left: 14px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+.mg-typing .mgt-log-title { font-size: 12px; letter-spacing: .2em; color: #4fd6a2; margin-bottom: 8px; }
+.mg-typing #mgt-log { overflow-y: auto; font-size: 15px; line-height: 1.5; }
+.mg-typing #mgt-log p { margin: 0 0 4px; color: #6fbfa5; }
+.mg-typing #mgt-log p.fact { color: #ffd77a; font-weight: bold; font-size: 18px; animation: mgtIn .4s; }
+.mg-typing #mgt-log p.warn { color: #ff9a7a; }
+.mg-typing .mgt-keys { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.mg-typing .mgt-keys[hidden] { display: none; }
+.mg-typing .mgt-keys div { display: flex; gap: 5px; }
+.mg-typing .mgt-keys button { width: 42px; height: 38px; border-radius: 6px; border: 1px solid #2c8a73; background: #0b2420; color: #bfffe4; font: bold 18px "Courier New", monospace; cursor: pointer; touch-action: manipulation; }
+.mg-typing .mgt-keys button:active { background: #26c48a; color: #04100e; }
+.mg-typing .mgt-keys button.space { width: 260px; font-size: 14px; letter-spacing: .2em; }
+.mg-typing .mgt-toggle { align-self: center; font-size: 12px; padding: 4px 10px; min-height: 0; }
+.mg-typing.alarm .mgt-terminal { animation: mgtAlarm .9s; }
+.mg-typing .mgt-granted { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: rgba(3,10,9,.9); }
+.mg-typing .mgt-granted-stamp { font: bold clamp(34px, 6vw, 60px) "Courier New", monospace; color: #3dff9a; letter-spacing: .1em; border: 4px solid #3dff9a; padding: 6px 22px; text-shadow: 0 0 20px rgba(60,255,150,.6); animation: mgtStamp .5s cubic-bezier(.2,1.6,.4,1); }
+.mg-typing .mgt-file { position: relative; background: linear-gradient(180deg, #f1e3bf, #dcc690); color: #3b2f17; border-radius: 6px; padding: 30px 30px 18px; min-width: min(90%, 460px); box-shadow: 0 12px 30px rgba(0,0,0,.5); animation: mgtSlide .6s .2s both; font-family: "Courier New", monospace; }
+.mg-typing .mgt-file-tab { position: absolute; top: -14px; left: 18px; background: #c9ad6d; padding: 3px 12px; border-radius: 4px 4px 0 0; font-size: 12px; font-weight: bold; letter-spacing: .12em; }
+.mg-typing .mgt-file p { margin: 4px 0; font-size: 22px; font-weight: bold; animation: mgtIn .4s both; }
+@keyframes mgtCursor { 50% { border-bottom-color: transparent; } }
+@keyframes mgtShake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes mgtBlink { 50% { box-shadow: 0 0 10px #ff6a4d; } }
+@keyframes mgtAlarm { 0%, 40%, 80% { box-shadow: 0 0 0 4px #ff4d3d, 0 0 40px #ff4d3d; } 20%, 60%, 100% { box-shadow: 0 0 0 4px #0a1d1a; } }
+@keyframes mgtIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+@keyframes mgtStamp { from { transform: scale(1.8); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes mgtSlide { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-height: 640px) {
+  .mg-typing { padding: 6px 12px; }
+  .mg-typing .mgt-terminal { padding: 10px 14px; gap: 6px; }
+  .mg-typing .mgt-keys button { height: 30px; width: 36px; font-size: 15px; }
+  .mg-typing .mgt-file p { font-size: 18px; }
+}

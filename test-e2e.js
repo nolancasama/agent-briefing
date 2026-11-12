@@ -137,12 +137,21 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
     await page.click('#btn-assignment');
     await capture(`ops${number}-intel-intro`);
     await page.click('#btn-mg-start');
-    await page.waitForSelector('[data-stub="continue"]');
+    await page.waitForSelector('.mg-photo');
     await page.evaluate(() => window.dispatchEvent(new Event('blur')));
     await page.waitForSelector('.mg-pause');
     await capture(`ops${number}-paused`);
     await page.getByRole('button',{name:'RESUME',exact:true}).click();
-    await page.click('[data-stub="continue"]');
+    // Play the real photo game: try frames 1-4 until each round confirms.
+    for (let round = 0; round < 3; round++) {
+      for (const key of ['1','2','3','4']) {
+        await page.keyboard.press(key);
+        await page.waitForTimeout(120);
+        if ((await page.locator('#mgp-status').innerText()).startsWith('MATCH')) break;
+      }
+      await page.waitForTimeout(2000);
+    }
+    await page.waitForSelector('#btn-open-file', {timeout:10000});
     await capture(`ops${number}-intel-result`);
     await page.click('#btn-open-file');
     await page.waitForFunction(() => document.querySelectorAll('.new-intel').length === 3);
@@ -214,7 +223,7 @@ const PAGE_URL = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, 
   const save = await page.evaluate(() => JSON.parse(localStorage.getItem('agent-briefing-v1')));
   assert.equal(save.points,420);
   assert.equal(save.ops.byMark.ben,2);
-  assert.equal(save.ops.best.photo,100); assert.equal(save.ops.best.cctv,100);
+  assert.ok(save.ops.best.photo >= 40 && save.ops.best.photo <= 100); assert.equal(save.ops.best.cctv,100);
   await browser.close();
 
   if (errors.length) {

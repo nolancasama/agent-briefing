@@ -363,7 +363,7 @@ function beginOperation(c) {
   const random = Missions.rng(seed);
   const games = Missions.pickGames(App.save, { intel: params.get('intel'), intercept: params.get('intercept') }, random);
   App.operation = {
-    games, seed, attempt: 0, tier: Missions.tierFor(App.save), relaxed: App.save.ops.relaxed,
+    games, seed, attempt: 0, tier: [1, 2, 3].includes(Number(params.get('tier'))) ? Number(params.get('tier')) : Missions.tierFor(App.save), relaxed: App.save.ops.relaxed,
     intel: null, intercept: null, finished: false, awarded: [], badges: { player: [], mark: [] },
   };
   App.missionRewarded = false;

@@ -212,6 +212,8 @@ const DATA = (() => {
     FACT_VISUALS[value] = { emoji, carry, place: { emoji: placeEmoji, word } };
   });
   CHARACTERS.forEach(c => { FACT_VISUALS[c.facts.has.value].carry = true; });
+  // The dossier icon for 'a new ball' is a gift; pictures need the ball itself.
+  FACT_VISUALS['a new ball'].emoji = '⚽';
 
   const INTEL_VOCAB = {
     1: ['cat', 'dog', 'sun', 'hat', 'pen', 'book', 'fish', 'ball', 'bird', 'happy'],

@@ -256,7 +256,8 @@ const Kit = (() => {
       const bottom = look.hair === 'long' ? -24 : -37;
       poly(g, [-12,-57, -14,bottom, 14,bottom, 13,-57, 6,-64, -6,-64], look.hairColor || '#3c2a20');
     }
-    oval(g, 0,-51,12,13,skin); oval(g, side ? 11 : -11,-50,2.5,3,skin);
+    if (!side) { oval(g, -12,-50,3,3.5,skin); oval(g, 12,-50,3,3.5,skin); }
+    oval(g, 0,-51,12,13,skin); if (side) oval(g, 11,-50,2.5,3,skin);
     if (side) oval(g,12,-49,3,2.5,skin);
     hair(g,look,false);
     g.strokeStyle = INK;
