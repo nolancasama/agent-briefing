@@ -94,3 +94,14 @@ A useful rule:
 - First-time agent creation visibly offers male/female procedural SVG models. Both retain full mouth animation and the same independently customizable skin, hair, clothes colors, sunglasses and outfit silhouette choices (suit, trench coat, skirt suit). These should eventually be replaced by art sets that preserve both customization and lip sync, not a single uneditable PNG.
 - HQ's last response comes from the seated center listener rather than a separate commander on the far right. The extra table wedge was removed because it conflicted with the painted seated characters and perspective.
 - Mic hardware is released on mission exit. Rewatching a debrief does not re-issue earned points.
+
+## 2026-11-12 — Spy Operations: minigames wrapped around the briefing
+- The briefing becomes the middle of an Operation: intel minigame → dossier → recording → HQ debrief → interception minigame → ending → badge ceremony → report. One intel + one interception game per operation (9 pairings). Full contract: `docs/OPERATIONS_SPEC.md`.
+- **English drives every answer, solution-first.** Intel games reveal the pack's facts; interception targets are identified by facts made visible (a carried prop tied to a fact plus shirt colour), with crowds validated so exactly one person matches all clues. Hobbies only count when shown by a visible prop. Chase uses fact clues at route forks (correct route = shortcut, never a dead end).
+- **BRIEFING ONLY mode kept** (archive toggle) so teachers short on time get the original flow unchanged. Added beyond the original plan.
+- **One global Relaxed mode** instead of per-game accessibility settings: removes failure timers/alert meters, floors drone battery, slows the chase mark.
+- Teacher-facing operation setup (AUTO or a chosen game per kind) and URL overrides, so specific pairings can be played in class and tested.
+- Intel games cannot be failed (mistakes cost score only); interception can end in a friendly escape with instant retry that keeps the recorded clips.
+- Wrong selections in CCTV/drone end with the decoy waving and "Not our target — sorry!" — never a detention. Interception is a shoulder-tap / mark stops and smiles.
+- Rejected: building all six games as one monolithic change, and a combined CCTV+drone engine (different camera models; shared crowd generation lives in `js/missions.js` instead).
+- Minigame art is procedural canvas (kit `drawChild`/`drawAgent`) plus emoji props, not new raster art, to keep the build dependency-free and fast on Chromebooks; the painted art remains for dossier, HQ and ceremony.
